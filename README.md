@@ -13,6 +13,7 @@ Web estática, sin paso de build.
 - `/academy-lab`
 - `/politicasgenyus` (#aviso-legal, #privacidad, #cookies)
 - `/puntoyaparte`
+- `/contacto`
 
 ## Publicar
 1. Sube el contenido de esta carpeta a la raíz de un repositorio de GitHub.
@@ -23,4 +24,4 @@ Web estática, sin paso de build.
 ## Integraciones
 - Academy + Lab: inscripción y contacto → Slack + Google Sheets.
 - Punto y aparte: inscripción → Google Sheets + email (Apps Script) + Slack.
-- Formulario de contacto de la Home/Eventos: solo muestra confirmación (sin envío conectado).
+- Formulario de /contacto (y Home/Eventos): solo muestra confirmación (sin envío conectado).

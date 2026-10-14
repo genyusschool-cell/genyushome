@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Genyus School</title>
+<link rel="icon" href="/assets/genyus-school-logo.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="/_ds/genyus-school-design-system-87b1a3d4-ed31-4494-8c36-a6c785d7ed07/tokens/fonts.css">
+<link rel="stylesheet" href="/_ds/genyus-school-design-system-87b1a3d4-ed31-4494-8c36-a6c785d7ed07/tokens/colors.css">
+<link rel="stylesheet" href="/_ds/genyus-school-design-system-87b1a3d4-ed31-4494-8c36-a6c785d7ed07/tokens/typography.css">
+<link rel="stylesheet" href="/_ds/genyus-school-design-system-87b1a3d4-ed31-4494-8c36-a6c785d7ed07/tokens/spacing.css">
+<link rel="stylesheet" href="/_ds/genyus-school-design-system-87b1a3d4-ed31-4494-8c36-a6c785d7ed07/styles.css">
+<script src="/_ds/genyus-school-design-system-87b1a3d4-ed31-4494-8c36-a6c785d7ed07/_ds_bundle.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:var(--ink-900);font-family:var(--font-body);-webkit-font-smoothing:antialiased}
+a{color:var(--ink-900);text-decoration:none}
+a:hover{color:var(--color-primary-ink)}
+*{box-sizing:border-box}
+input,textarea,select{font-family:var(--font-body)}
+
+@media (max-width:900px){[data-nav-links],[data-nav-cta]{display:none !important}[data-nav-menu]{display:block !important}}
+[data-nav-menu] summary{list-style:none}[data-nav-menu] summary::-webkit-details-marker{display:none}
+</style>
+</helmet>
+
+<div ref="{{ rootRef }}" style="position:relative;overflow-x:hidden;background:#fff">
+
+<!-- NAV -->
+<div style="position:fixed;top:16px;left:0;right:0;z-index:50;display:flex;justify-content:center;padding:0 16px">
+  <nav style="width:100%;max-width:1200px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:#fff;border-radius:28px;padding:10px 12px 10px clamp(14px,3vw,24px);box-shadow:0 0 0 1px rgba(14,17,22,0.06),0 16px 16px -8px rgba(0,0,0,0.03),0 10px 10px -5px rgba(0,0,0,0.03),0 5px 5px -2.5px rgba(0,0,0,0.03),0 3px 3px -1.5px rgba(0,0,0,0.03),0 1px 1px -0.5px rgba(0,0,0,0.03)">
+    <a href="#top" style="display:flex;align-items:center"><img src="/assets/genyus-school-logo.png" alt="Genyus School" style="height:40px;width:auto;display:block"></a>
+    <div data-nav-links style="display:flex;align-items:center;gap:4px;flex-wrap:wrap">
+      <a href="#top" style="padding:8px 14px;border-radius:999px;font-size:15px;font-weight:600;background:color-mix(in oklch, var(--gs-blue) 12%, white)">Home</a>
+      <a href="/nosotros" style="padding:8px 14px;border-radius:999px;font-size:15px;font-weight:500">Nosotros</a>
+      <a href="/programas" style="padding:8px 14px;border-radius:999px;font-size:15px;font-weight:500">Programas</a>
+      <a href="/eventos" style="padding:8px 14px;border-radius:999px;font-size:15px;font-weight:500">Eventos</a>
+      <a href="/academy-lab" style="padding:8px 14px;border-radius:999px;font-size:15px;font-weight:500">Academy + Lab</a>
+    </div>
+    <details data-nav-menu style="display:none;position:relative">
+      <summary style="cursor:pointer;display:flex;align-items:center;gap:8px;padding:11px 18px;border-radius:28px;font-size:15px;font-weight:700;box-shadow:0 0 0 1.5px var(--ink-200)"><span aria-hidden="true" style="display:flex;flex-direction:column;gap:4px"><span style="width:16px;height:2px;border-radius:2px;background:var(--ink-900)"></span><span style="width:16px;height:2px;border-radius:2px;background:var(--ink-900)"></span><span style="width:16px;height:2px;border-radius:2px;background:var(--ink-900)"></span></span>Menú</summary>
+      <div style="position:absolute;right:0;top:calc(100% + 12px);width:min(280px,calc(100vw - 32px));display:flex;flex-direction:column;gap:2px;padding:10px;border-radius:22px;background:#fff;box-shadow:0 0 0 1px rgba(14,17,22,0.06),0 18px 48px rgba(14,17,22,0.14)">
+      <a href="#top" style="padding:12px 16px;border-radius:14px;font-size:16px;font-weight:600;background:color-mix(in oklch, var(--gs-blue) 12%, white)">Home</a>
+      <a href="/nosotros" style="padding:12px 16px;border-radius:14px;font-size:16px;font-weight:500">Nosotros</a>
+      <a href="/programas" style="padding:12px 16px;border-radius:14px;font-size:16px;font-weight:500">Programas</a>
+      <a href="/eventos" style="padding:12px 16px;border-radius:14px;font-size:16px;font-weight:500">Eventos</a>
+      <a href="/academy-lab" style="padding:12px 16px;border-radius:14px;font-size:16px;font-weight:500">Academy + Lab</a>
+    <a data-m href="#contacto" style="margin-top:6px;text-align:center;padding:12px 20px;border-radius:28px;font-size:15px;font-weight:700;border:1.5px solid transparent;background:linear-gradient(#fff,#fff) padding-box, linear-gradient(90deg,var(--gs-pink),var(--gs-rose) 42%,var(--gs-orange)) border-box">Contáctanos</a>
+      </div>
+    </details>
+    <a data-nav-cta href="#contacto" style="padding:11px 20px;border-radius:28px;font-size:15px;font-weight:700;border:1.5px solid transparent;background:linear-gradient(#fff,#fff) padding-box, linear-gradient(90deg,var(--gs-pink),var(--gs-rose) 42%,var(--gs-orange)) border-box">Contáctanos</a>
+  </nav>
+</div>
+
+<!-- HERO -->
+<section id="top" data-screen-label="Hero" style="position:relative;min-height:min(100vh,860px);display:flex;align-items:flex-end;overflow:hidden;background:var(--ink-900)">
+  <img src="/assets/hero-genyus.jpeg" alt="Alumnos y equipo Genyus en un evento" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 35%">
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,17,22,0.35) 0%,rgba(14,17,22,0.15) 35%,rgba(14,17,22,0.75) 100%)"></div>
+  <div style="position:relative;width:100%;max-width:1200px;margin:0 auto;padding:140px 24px 72px;display:flex;flex-direction:column;gap:24px;color:#fff">
+    <span style="align-self:flex-start;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,0.18);backdrop-filter:blur(8px);color:#fff;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;line-height:1.4;text-wrap:pretty">Modelo pedagógico® aplicado en centros educativos y administraciones públicas</span>
+    <h1 style="margin:0;max-width:880px;font-family:var(--font-display);font-weight:400;font-size:clamp(44px,6.6vw,88px);line-height:1;letter-spacing:-0.035em;text-wrap:balance;text-shadow:0 2px 24px rgba(0,0,0,0.25)">Competencia <em style="font-style:normal;background:linear-gradient(90deg,var(--gs-pink),var(--gs-rose) 42%,var(--gs-orange));-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none">emprendedora</em> y habilidades para la vida, integradas en el aula</h1>
+    <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-top:8px">
+      <a href="#programas" style="padding:14px 26px;border-radius:28px;font-size:16px;font-weight:700;background:#fff;color:var(--ink-900)" style-active="transform:scale(0.96)">Ver programas</a>
+      <a href="#contacto" style="padding:12.5px 24px;border-radius:28px;border:1.5px solid #fff;font-size:16px;font-weight:700;color:#fff" style-hover="background:rgba(255,255,255,0.14)" style-active="transform:scale(0.96)">¿Hablamos? →</a>
+    </div>
+  </div>
+</section>
+
+<!-- LOGOS -->
+<section data-screen-label="Logos" style="max-width:1200px;margin:0 auto;padding:56px 24px 48px">
+  <div style="display:flex;flex-direction:column;gap:36px;padding:40px 32px;border-radius:24px;box-shadow:0 0 0 1px rgba(14,17,22,0.06)">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-around;align-items:center;gap:28px 48px">
+      <sc-for list="{{ logosTop }}" as="l" hint-placeholder-count="4">
+        <img src="{{ l.src }}" alt="" style="height:{{ l.h }}px;width:auto;max-width:220px;object-fit:contain;filter:grayscale(1);opacity:0.75">
+      </sc-for>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-around;align-items:center;gap:28px 48px">
+      <sc-for list="{{ logosBottom }}" as="l" hint-placeholder-count="5">
+        <img src="{{ l.src }}" alt="" style="height:{{ l.h }}px;width:auto;max-width:220px;object-fit:contain;filter:grayscale(1);opacity:0.75">
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- AWARD -->
+<section data-screen-label="Premio" style="max-width:1200px;margin:0 auto;padding:32px 24px 80px">
+  <div style="position:relative;border-radius:24px;overflow:hidden;background:var(--grad-school);color:#fff;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));align-items:center;gap:24px;padding:48px">
+    <h3 style="margin:0;font-family:var(--font-poster);font-weight:400;font-size:clamp(40px,5.4vw,72px);line-height:1;letter-spacing:0.005em;text-transform:uppercase;display:flex;flex-direction:column">
+      <span>Premio</span><span>Mejor proyecto</span><span>de educación</span><span>de España 2025</span>
+    </h3>
+    <img src="https://framerusercontent.com/images/esZyCSI2Enyx9IPLSba8gFNF5nc.png?width=2045&amp;height=2078" alt="" style="width:100%;max-width:340px;justify-self:center;height:auto;display:block">
+  </div>
+</section>
+
+<!-- POR QUÉ COLABORAR -->
+<section data-screen-label="Por qué colaborar" style="max-width:1200px;margin:0 auto;padding:80px 24px;border-top:1px solid var(--ink-200);display:flex;flex-direction:column;gap:40px">
+  <div style="display:flex;flex-direction:column;gap:16px;max-width:760px">
+    <span style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-primary-ink)">Por qué colaborar</span>
+    <h2 style="margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(34px,4vw,49px);line-height:1.04;letter-spacing:-0.03em;text-wrap:balance">Aplicación real de la competencia emprendedora en contextos educativos</h2>
+    <p style="margin:0;font-size:18px;line-height:1.45;color:var(--ink-700);text-wrap:pretty">Modelo pedagógico aplicado para el desarrollo estructurado y llave en mano de las habilidades y competencia emprendedora</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:16px">
+    <sc-for list="{{ stats }}" as="s" hint-placeholder-count="5">
+      <div style="border-radius:24px;padding:24px;background:{{ s.bg }};display:flex;flex-direction:column;gap:8px;min-height:150px;justify-content:space-between">
+        <span style="font-family:var(--font-display);font-size:44px;line-height:1;letter-spacing:-0.03em">{{ s.n }}</span>
+        <span style="font-size:15px;line-height:1.35;color:var(--ink-800)">{{ s.label }}</span>
+      </div>
+    </sc-for>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:16px">
+    <div style="border-radius:24px;padding:28px;display:flex;gap:16px;align-items:flex-start;box-shadow:0 0 0 1px rgba(14,17,22,0.08),0 16px 16px -8px rgba(0,0,0,0.03),0 5px 5px -2.5px rgba(0,0,0,0.03)">
+      <span style="flex:none;width:12px;height:12px;border-radius:4px;margin-top:6px;background:var(--gs-blue)"></span>
+      <p style="margin:0;font-size:18px;line-height:1.45;text-wrap:pretty">Colaboración con administraciones públicas y redes educativas para la implementación del modelo en contexto real.</p>
+    </div>
+    <div style="border-radius:24px;padding:28px;display:flex;gap:16px;align-items:flex-start;box-shadow:0 0 0 1px rgba(14,17,22,0.08),0 16px 16px -8px rgba(0,0,0,0.03),0 5px 5px -2.5px rgba(0,0,0,0.03)">
+      <span style="flex:none;width:12px;height:12px;border-radius:4px;margin-top:6px;background:var(--gs-pink)"></span>
+      <p style="margin:0;font-size:18px;line-height:1.45;text-wrap:pretty">Aprender haciendo: aplicación real, integrado en la práctica docente y evaluable competencialmente.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMAS -->
+<section id="programas" data-screen-label="Programas" style="max-width:1200px;margin:0 auto;padding:80px 24px;border-top:1px solid var(--ink-200);display:flex;flex-direction:column;gap:40px">
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap">
+    <div style="display:flex;flex-direction:column;gap:16px;max-width:680px">
+      <span style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-primary-ink)">Nuestros programas</span>
+      <h2 style="margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(34px,4vw,49px);line-height:1.04;letter-spacing:-0.03em">Implementaciones Genyus</h2>
+      <p style="margin:0;font-size:18px;line-height:1.45;color:var(--ink-700);text-wrap:pretty">Aplicaciones del modelo Genyus en centros educativos y administraciones públicas, alineadas con la LOMLOE y con evidencias socioeducativas.</p>
+    </div>
+    <a href="/programas" style="padding:12px 22px;border-radius:28px;font-size:14px;font-weight:700;letter-spacing:0.04em;border:1.5px solid var(--ink-300)">VER TODOS LOS PROGRAMAS</a>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:16px">
+    <div style="flex:1.6 1 460px;display:flex;min-width:0">
+    <a href="/programas/genyusgo" style="position:relative;overflow:hidden;border-radius:24px;display:flex;flex-direction:column;justify-content:flex-end;flex:1 1 auto;min-height:620px;color:#fff;background:#07060b" style-hover="transform:translateY(-4px)" style-active="transform:scale(0.98)">
+      <img src="/assets/prog-genyus-go-space.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:30% 50%;display:block">
+      <img src="/assets/yusi/yusi-wave.png" alt="" aria-hidden="true" style="position:absolute;right:clamp(16px,3vw,36px);bottom:clamp(150px,22%,200px);width:clamp(120px,14vw,180px);height:auto;z-index:2;transform:rotate(6deg);transition:transform 380ms cubic-bezier(.34,1.56,.64,1);filter:drop-shadow(4px 0 0 #fff) drop-shadow(-4px 0 0 #fff) drop-shadow(0 4px 0 #fff) drop-shadow(0 -4px 0 #fff) drop-shadow(0 14px 18px rgba(14,17,22,0.3))" style-hover="transform:rotate(0deg) scale(1.08)">
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,color-mix(in oklch, var(--gs-blue) 45%, transparent) 0%,color-mix(in oklch, var(--gs-blue) 88%, black 8%) 100%)"></div>
+      <div style="position:relative;z-index:3;padding:clamp(28px,4vw,44px);display:flex;flex-direction:column;gap:12px;max-width:min(560px,calc(100% - 140px))">
+        <span style="align-self:flex-start;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,0.92);color:var(--ink-900);font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase">Plataforma</span>
+        <h3 style="margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(36px,4vw,52px);line-height:1.08;letter-spacing:-0.02em;text-wrap:balance">Genyus Go</h3>
+        <p style="margin:0;font-size:17px;line-height:1.5;text-wrap:pretty">Plataforma y experiencias para integrar la competencia emprendedora en el aprendizaje del curso. Incluye evidencias educativas y evaluación competencial.</p>
+        <span style="font-size:14px;font-weight:700;letter-spacing:0.04em">VER MÁS →</span>
+      </div>
+    </a>
+    </div>
+    <div style="flex:1 1 320px;display:flex;flex-direction:column;gap:16px;min-width:0">
+    <a href="/programas/sem-insti" style="position:relative;overflow:hidden;border-radius:24px;display:flex;flex-direction:column;justify-content:flex-end;flex:1 1 auto;min-height:272px;color:#fff;background:var(--ink-900)" style-hover="transform:translateY(-4px)" style-active="transform:scale(0.98)">
+      <img src="/assets/prog-sem-instituciones.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,color-mix(in oklch, var(--gs-pink) 45%, transparent) 0%,color-mix(in oklch, var(--gs-pink) 88%, black 8%) 100%)"></div>
+      <div style="position:relative;padding:28px;display:flex;flex-direction:column;gap:12px;max-width:480px">
+        <span style="align-self:flex-start;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,0.92);color:var(--ink-900);font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase">Instituciones</span>
+        <h3 style="margin:0;font-family:var(--font-display);font-weight:400;font-size:28px;line-height:1.08;letter-spacing:-0.02em;text-wrap:balance">Semana del Emprendimiento Junior de tu Ayuntamiento</h3>
+        <p style="margin:0;font-size:15px;line-height:1.5;text-wrap:pretty">Implementación municipal en los centros de tu territorio. Impacto medible y visibilidad institucional.</p>
+        <span style="font-size:14px;font-weight:700;letter-spacing:0.04em">VER MÁS →</span>
+      </div>
+    </a>
+    <a href="/programas/sem-colegios" style="position:relative;overflow:hidden;border-radius:24px;display:flex;flex-direction:column;justify-content:flex-end;flex:1 1 auto;min-height:272px;color:#fff;background:var(--ink-900)" style-hover="transform:translateY(-4px)" style-active="transform:scale(0.98)">
+      <img src="/assets/prog-sem-colegios.jpeg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,color-mix(in oklch, var(--gs-orange) 45%, transparent) 0%,color-mix(in oklch, var(--gs-orange) 88%, black 8%) 100%)"></div>
+      <div style="position:relative;padding:28px;display:flex;flex-direction:column;gap:12px;max-width:480px">
+        <span style="align-self:flex-start;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,0.92);color:var(--ink-900);font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase">Colegios</span>
+        <h3 style="margin:0;font-family:var(--font-display);font-weight:400;font-size:28px;line-height:1.08;letter-spacing:-0.02em;text-wrap:balance">Semana del Emprendimiento de tu Colegio</h3>
+        <p style="margin:0;font-size:15px;line-height:1.5;text-wrap:pretty">Implementación en colegios y grupos educativos. Despliegue coordinado por etapas/ centros. Información, acompañamiento, Hackathon y evidencias de aprendizaje.</p>
+        <span style="font-size:14px;font-weight:700;letter-spacing:0.04em">VER MÁS →</span>
+      </div>
+    </a>
+    </div>
+  </div>
+  <a href="#contacto" style="border-radius:24px;padding:28px 32px;background:color-mix(in oklch, var(--gs-yellow) 22%, white);display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap">
+    <h3 style="margin:0;font-family:var(--font-display);font-weight:400;font-size:28px;line-height:1.15;letter-spacing:-0.02em">Si eres familia y quieres llevarlo a tu centro, pincha aquí</h3>
+    <span style="font-size:24px;line-height:1">→</span>
+  </a>
+</section>
+
+<!-- ACADEMY + LAB -->
+<section id="academy-lab" data-screen-label="Academy + Lab" style="max-width:1200px;margin:0 auto;padding:80px 24px;border-top:1px solid var(--ink-200)">
+  <div style="border-radius:24px;overflow:hidden;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));box-shadow:0 0 0 1px rgba(14,17,22,0.08),0 16px 16px -8px rgba(0,0,0,0.03),0 5px 5px -2.5px rgba(0,0,0,0.03)">
+    <div style="background:var(--grad-school);color:#fff;padding:clamp(28px,4vw,48px);display:flex;flex-direction:column;gap:20px;justify-content:space-between">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <span style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase">Academy + Lab · Curso 26-27</span>
+        <h2 style="margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(34px,4vw,49px);line-height:1.04;letter-spacing:-0.03em;text-wrap:balance">Despertamos la mente emprendedora de tu hijo/a</h2>
+        <p style="margin:0;font-size:18px;line-height:1.45;text-wrap:pretty">Dos itinerarios en directo para niños y jóvenes de 5.º de Primaria a 4.º de la ESO.</p>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <span style="padding:6px 12px;border-radius:999px;background:rgba(255,255,255,0.22);font-size:13px;font-weight:600">Clases en directo</span>
+        <span style="padding:6px 12px;border-radius:999px;background:rgba(255,255,255,0.22);font-size:13px;font-weight:600">Grupos reducidos</span>
+        <span style="padding:6px 12px;border-radius:999px;background:rgba(255,255,255,0.22);font-size:13px;font-weight:600">Sesiones de 90 min</span>
+      </div>
+      <a href="/academy-lab" style="align-self:flex-start;padding:14px 26px;border-radius:28px;font-size:16px;font-weight:700;background:#fff;color:var(--ink-900)" style-active="transform:scale(0.96)">Descubrir Academy + Lab</a>
+    </div>
+    <div style="background:#fff;display:grid;grid-template-rows:1fr 1fr">
+      <div style="padding:clamp(24px,3.5vw,40px);display:flex;flex-direction:column;gap:10px;border-bottom:1px solid var(--ink-200)">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap">
+          <h3 style="margin:0;font-family:var(--font-display);font-weight:400;font-size:31px;line-height:1.1;letter-spacing:-0.02em">Genyus Academy</h3>
+          <span style="font-size:15px;font-weight:700;color:var(--color-primary-ink)">80 € / mes</span>
+        </div>
+        <span style="font-size:14px;font-weight:700;color:var(--color-primary-ink)">La extraescolar de emprendimiento</span>
+        <p style="margin:0;font-size:16px;line-height:1.5;color:var(--ink-700);text-wrap:pretty">Clases semanales en directo de 90 minutos. Un itinerario progresivo por curso escolar, de 5.º de Primaria a 4.º de la ESO.</p>
+        <span style="font-size:13px;color:var(--ink-600)">Frecuencia semanal · Grupos de 4 a 10 alumnos</span>
+      </div>
+      <div style="padding:clamp(24px,3.5vw,40px);display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap">
+          <h3 style="margin:0;font-family:var(--font-display);font-weight:400;font-size:31px;line-height:1.1;letter-spacing:-0.02em;display:flex;align-items:center;gap:10px">Genyus Lab <span style="padding:4px 10px;border-radius:999px;background:color-mix(in oklch, var(--gs-pink) 12%, white);color:#B0126A;font-family:var(--font-body);font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase">Premium</span></h3>
+          <span style="font-size:15px;font-weight:700;color:#B0126A">100 € / mes</span>
+        </div>
+        <span style="font-size:14px;font-weight:700;color:#B0126A">Mentorías de alto rendimiento</span>
+        <p style="margin:0;font-size:16px;line-height:1.5;color:var(--ink-700);text-wrap:pretty">Mentorías grupales quincenales para alumnos con un proyecto propio en marcha. Acompañamiento estratégico y acceso restringido por candidatura.</p>
+        <span style="font-size:13px;color:var(--ink-600)">Frecuencia quincenal · Grupos de 4 a 6 alumnos · 13-17 años</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METODOLOGÍA -->
+<section data-screen-label="Metodología" style="max-width:1200px;margin:0 auto;padding:80px 24px;border-top:1px solid var(--ink-200);display:flex;flex-direction:column;gap:40px">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:24px 64px;align-items:end">
+    <h2 style="margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(34px,4vw,49px);line-height:1.04;letter-spacing:-0.03em">Nuestra Metodología</h2>
+    <p style="margin:0;font-size:18px;line-height:1.45;color:var(--ink-700);text-wrap:pretty">Inspiramos pasión por aprender y actuar con propósito. Representamos un impulso educativo que fusiona innovación, creatividad y emprendimiento desde la infancia, guiando a niños y jóvenes, a partir de los 5 años, para que descubran su talento, desarrollen habilidades esenciales y generen un impacto positivo en su entorno.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:16px">
+    <sc-for list="{{ steps }}" as="st" hint-placeholder-count="4">
+      <div style="border-radius:24px;padding:28px;display:flex;flex-direction:column;gap:16px;background:#fff;box-shadow:0 0 0 1px rgba(14,17,22,0.08)">
+        <span style="font-family:var(--font-poster);font-size:56px;line-height:1;color:{{ st.color }}">{{ st.n }}</span>
+        <h3 style="margin:0;font-family:var(--font-display);font-weight:400;font-size:28px;line-height:1.1;letter-spacing:-0.02em">{{ st.title }}</h3>
+        <p style="margin:0;font-size:15px;line-height:1.55;color:var(--ink-700)">{{ st.text }}</p>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section data-screen-label="Testimonios" style="max-width:1200px;margin:0 auto;padding:80px 24px;border-top:1px solid var(--ink-200);display:flex;flex-direction:column;gap:40px">
+  <div style="display:flex;flex-direction:column;gap:16px;max-width:720px;align-self:center;text-align:center;align-items:center">
+    <span style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-primary-ink)">Testimonios</span>
+    <h2 style="margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(34px,4vw,49px);line-height:1.04;letter-spacing:-0.03em;text-wrap:balance">La confianza emprendedora que nos mueve</h2>
+    <p style="margin:0;font-size:18px;line-height:1.45;color:var(--ink-700)">Ayuntamientos, colegios, y familias confirman con sus palabras que vamos por buen camino.</p>
+  </div>
+  <div style="columns:3 300px;column-gap:16px">
+    <sc-for list="{{ testimonials }}" as="t" hint-placeholder-count="5">
+      <figure style="break-inside:avoid;margin:0 0 16px;border-radius:24px;padding:28px;background:{{ t.bg }};display:flex;flex-direction:column;gap:20px">
+        <blockquote style="margin:0;font-size:17px;line-height:1.5;color:var(--ink-900);text-wrap:pretty">"{{ t.quote }}"</blockquote>
+        <figcaption style="display:flex;align-items:center;gap:12px">
+          <img src="{{ t.img }}" alt="" style="width:48px;height:48px;border-radius:50%;object-fit:cover;flex:none;box-shadow:0 0 0 2px #fff">
+          <span style="display:flex;flex-direction:column;gap:2px">
+            <span style="font-size:15px;font-weight:700">{{ t.name }}</span>
+            <span style="font-size:13px;color:var(--ink-600)">{{ t.role }}</span>
+          </span>
+        </figcaption>
+      </figure>
+    </sc-for>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto" data-screen-label="Contacto" style="max-width:1200px;margin:0 auto;padding:80px 24px;border-top:1px solid var(--ink-200)">
+  <div style="border-radius:24px;padding:clamp(28px,5vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:48px;box-shadow:0 0 0 1px rgba(14,17,22,0.06),0 20px 20px -10px rgba(0,0,0,0.07),0 10px 10px -5px rgba(0,0,0,0.04),0 3px 3px -1.5px rgba(0,0,0,0.03)">
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <h2 style="margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(44px,5.4vw,76px);line-height:1.15;letter-spacing:-0.035em">¿<em style="font-style:normal;display:inline-block;padding:0.06em 0.08em 0.14em;margin:0 -0.04em;background:linear-gradient(90deg,var(--gs-pink),var(--gs-rose) 42%,var(--gs-orange));-webkit-background-clip:text;background-clip:text;color:transparent">Hablamos</em>?</h2>
+      <p style="margin:0;font-size:18px;line-height:1.45;color:var(--ink-700);max-width:420px">Cuéntanos en qué centro estás y qué programa te interesa. Te contactamos en menos de 24 horas.</p>
+    </div>
+    <form onSubmit="{{ submit }}" style="display:flex;flex-direction:column;gap:22px">
+      <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+        <div style="border-radius:16px;padding:16px 20px;background:color-mix(in oklch, var(--state-success) 14%, white);font-size:15px;font-weight:600">Gracias. Te contactamos en menos de 24 horas.</div>
+      </sc-if>
+      <label style="display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:600">Nombre y apellido
+        <input type="text" style="padding:14px 16px;font-size:16px;border:1.5px solid var(--ink-300);border-radius:16px;outline:none;color:var(--ink-900)">
+      </label>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <span style="font-size:14px;font-weight:600">¿Prefieres que te escribamos o que te llamemos?</span>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <sc-for list="{{ prefOpts }}" as="o" hint-placeholder-count="2">
+            <button type="button" onClick="{{ o.onClick }}" style="padding:10px 18px;border-radius:999px;font-size:15px;font-weight:600;cursor:pointer;font-family:var(--font-body);border:1.5px solid {{ o.border }};background:{{ o.bg }};color:var(--ink-900)">{{ o.label }}</button>
+          </sc-for>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <span style="font-size:14px;font-weight:600">¿Eres una institución, colegio o padre?</span>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <sc-for list="{{ whoOpts }}" as="o" hint-placeholder-count="3">
+            <button type="button" onClick="{{ o.onClick }}" style="padding:10px 18px;border-radius:999px;font-size:15px;font-weight:600;cursor:pointer;font-family:var(--font-body);border:1.5px solid {{ o.border }};background:{{ o.bg }};color:var(--ink-900)">{{ o.label }}</button>
+          </sc-for>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <span style="font-size:14px;font-weight:600">Producto que te interesa</span>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <sc-for list="{{ prodOpts }}" as="o" hint-placeholder-count="4">
+            <button type="button" onClick="{{ o.onClick }}" style="padding:10px 18px;border-radius:999px;font-size:15px;font-weight:600;cursor:pointer;font-family:var(--font-body);border:1.5px solid {{ o.border }};background:{{ o.bg }};color:var(--ink-900)">{{ o.label }}</button>
+          </sc-for>
+        </div>
+      </div>
+      <label style="display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:600">Déjanos tu comentario para que podamos asesorarte mejor
+        <textarea rows="4" style="padding:14px 16px;font-size:16px;border:1.5px solid var(--ink-300);border-radius:16px;outline:none;resize:vertical;color:var(--ink-900)"></textarea>
+      </label>
+      <button type="submit" style="align-self:flex-start;padding:16px 36px;border-radius:28px;border:none;cursor:pointer;font-family:var(--font-body);font-size:17px;font-weight:700;color:#fff;background:var(--grad-school);box-shadow:var(--shadow-brand)" style-active="transform:scale(0.96)">Enviar</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer data-screen-label="Footer" style="background:var(--ink-900);color:#fff">
+  <div style="max-width:1200px;margin:0 auto;padding:64px 24px 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:40px">
+    <div style="display:flex;flex-direction:column;gap:20px;grid-column:span 2;min-width:0">
+      <img src="/assets/genyus-blanco.png" alt="Genyus School" style="height:30px;width:auto;align-self:flex-start">
+      <p style="margin:0;font-size:16px;line-height:1.5;color:var(--ink-300);max-width:380px">Educar en emprendimiento a nuestros niños/as hoy, es el mayor motor de desarrollo socioeconómico, mañana.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a href="https://www.facebook.com/GenyusSchool/" style="padding:8px 14px;border-radius:999px;border:1px solid var(--ink-600);color:#fff;font-size:13px">Facebook</a>
+        <a href="https://www.linkedin.com/company/genyusschool/" style="padding:8px 14px;border-radius:999px;border:1px solid var(--ink-600);color:#fff;font-size:13px">LinkedIn</a>
+        <a href="https://www.instagram.com/genyusschool/" style="padding:8px 14px;border-radius:999px;border:1px solid var(--ink-600);color:#fff;font-size:13px">Instagram</a>
+        <a href="https://www.youtube.com/genyusschool" style="padding:8px 14px;border-radius:999px;border:1px solid var(--ink-600);color:#fff;font-size:13px">YouTube</a>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <h4 style="margin:0 0 4px;font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gs-blue)">Genyus School</h4>
+      <a href="/nosotros" style="color:#fff;font-size:15px">Nosotros</a>
+      <a href="/programas" style="color:#fff;font-size:15px">Programas</a>
+      <a href="/eventos" style="color:#fff;font-size:15px">Eventos (proximamente)</a>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <h4 style="margin:0 0 4px;font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gs-pink)">Programas</h4>
+      <a href="/programas/genyusgo" style="color:#fff;font-size:15px">Genyus Go</a>
+      <a href="/programas/sem-insti" style="color:#fff;font-size:15px">SEM Instituciones</a>
+      <a href="/programas/sem-colegios" style="color:#fff;font-size:15px">SEM Colegios</a>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <h4 style="margin:0 0 4px;font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gs-orange)">Políticas generales</h4>
+      <a href="/politicasgenyus#aviso-legal" style="color:#fff;font-size:15px">Aviso legal</a>
+      <a href="/politicasgenyus#privacidad" style="color:#fff;font-size:15px">Política de privacidad</a>
+      <a href="/politicasgenyus#cookies" style="color:#fff;font-size:15px">Política de cookies</a>
+    </div>
+  </div>
+  <div style="max-width:1200px;margin:0 auto;padding:0 24px 32px">
+    <img src="https://framerusercontent.com/images/hLXNBPbhbG1sD3nvQJ1FVBjqA.jpeg?width=768&amp;height=76" alt="" style="width:100%;max-width:640px;height:auto;display:block;border-radius:8px">
+  </div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;scrollReveal&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { pref: 'Correo', who: null, prod: null, sent: false };
+  rootRef = React.createRef();
+  componentDidMount() {
+    const root = this.rootRef.current;
+    if (!root || this.props.scrollReveal === false || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const els = [...root.querySelectorAll('section > *, footer > *')].filter(el => el.getBoundingClientRect().top > innerHeight);
+    const showAll = () => els.forEach(el => { el.style.opacity = '1'; el.style.transform = 'none'; });
+    this.fallback = setTimeout(() => { if (document.visibilityState === 'hidden') showAll(); }, 2500);
+    addEventListener('beforeprint', showAll);
+    els.forEach(el => {
+      const i = [...el.parentElement.children].indexOf(el);
+      Object.assign(el.style, { opacity: '0', transform: 'translateY(40px)', transition: `opacity 700ms cubic-bezier(.2,.7,.2,1) ${i*90}ms, transform 800ms cubic-bezier(.34,1.3,.5,1) ${i*90}ms` });
+    });
+    this.io = new IntersectionObserver(entries => entries.forEach(e => {
+      if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'none'; this.io.unobserve(e.target); }
+    }), { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    els.forEach(el => this.io.observe(el));
+  }
+  componentWillUnmount() { this.io && this.io.disconnect(); clearTimeout(this.fallback); }
+  opts(list, key) {
+    return list.map(label => {
+      const on = this.state[key] === label;
+      return {
+        label,
+        bg: on ? 'color-mix(in oklch, var(--gs-blue) 14%, white)' : '#fff',
+        border: on ? 'var(--gs-blue)' : 'var(--ink-300)',
+        onClick: () => this.setState({ [key]: label })
+      };
+    });
+  }
+  renderVals() {
+    const v = this.vals();
+    return Object.assign(v, { logosTop: v.logos.slice(0, 4), logosBottom: v.logos.slice(4) });
+  }
+  vals() {
+    const img = id => `https://framerusercontent.com/images/${id}`;
+    const wash = c => `color-mix(in oklch, var(${c}) 13%, white)`;
+    return {
+      rootRef: this.rootRef,
+      logos: [
+        ['e3xbpjHcefNjpdbD98kBl9255yM.png', 40], ['yqI2DC2yXynOEvMe7TAKislzqn0.png', 36], ['3QJbl3gWjjEOAeSmXoGCXP1blfU.png', 36],
+        ['Qf3v7jGIG92WispGomkDeTMMwjE.png', 56], ['ge1OpAjqHFsHePRmyc5KaKDgrjg.png', 34], ['6RCXL4O2RbBgGiMAgUnEASmN65s.png', 40],
+        ['VrbpIoV8ll20jh4ltYXNsCOCVz4.png', 56], ['KzQgDFS2n4ZtosPdWoqs09jOms.png', 60], ['RSkTjK6yx6e319lB6UxNoRhgE4.png', 34]
+      ].map(([id, h]) => ({ src: img(id), h: Math.round(h * 1.4) })),
+      stats: [
+        { n: '+350', label: 'centros educativos', bg: wash('--gs-blue') },
+        { n: '+20', label: 'instituciones públicas', bg: wash('--gs-pink') },
+        { n: '+25.000', label: 'estudiantes', bg: wash('--gs-orange') },
+        { n: '4', label: 'premios nacionales', bg: 'color-mix(in oklch, var(--gs-yellow) 26%, white)' },
+        { n: '+60', label: 'menciones en medios de comunicación.', bg: wash('--gs-rose') }
+      ],
+      steps: [
+        { n: '01.', title: 'Activación', color: 'var(--gs-blue)', text: 'Despierta el interés y motiva a los estudiantes conectando con sus conocimientos previos, activando el aprendizaje mediante actividades breves que generan curiosidad y preparan el terreno para la exploración, construyendo sobre lo que ya saben para un inicio sólido y engaging.' },
+        { n: '02.', title: 'Exploración', color: 'var(--gs-pink)', text: 'Los alumnos indagan, experimentan y descubren por sí mismos, resolviendo dudas y construyendo nuevos conceptos a partir de sus ideas iniciales, en un proceso de práctica activa que fomenta la autonomía y el aprendizaje significativo.' },
+        { n: '03.', title: 'Reflexión', color: 'var(--gs-orange)', text: 'Analizan las experiencias y datos de la exploración para extraer conclusiones, interpretar lo aprendido, identificar aciertos y errores, y reajustar el enfoque, conectando teoría con práctica mediante preguntas sobre el "por qué" para validar y fortalecer conocimientos futuros.' },
+        { n: '04.', title: 'Aplicación', color: 'var(--gs-rose)', text: 'Ponen en práctica lo aprendido, conectando conceptos teóricos con la vida cotidiana, resolviendo problemas reales y demostrando pensamiento crítico y autonomía a través de actividades prácticas, proyectos o desafíos que generan soluciones concretas e impactantes.' }
+      ],
+      testimonials: [
+        { quote: 'La educación, emprendimiento es importante en Zaragoza y en toda España. Si no la conocen desde pequeños, es muy difícil que luego la puedan tener en su mente a la hora de elegirlo.', name: 'Natalia Chueca', role: 'Alcaldesa de Zaragoza', img: img('UViiY4Zaov7CC6Spu2DWVjG78rk.png?width=400'), bg: wash('--gs-blue') },
+        { quote: 'Para el Ayuntamiento de Majadahonda es muy importante el emprendimiento, porque ya hay emprendedores, ya hay niños con ideas, niños con proyectos y Genyus School potencia esto.', name: 'María Dolores Moreno Molino', role: 'Alcaldesa de Majadahonda', img: img('yf1KBg9j7D8iYyiORp9YPeTdtw.jpeg?width=400'), bg: wash('--gs-pink') },
+        { quote: 'Una experiencia muy recomendable para otros centros educativos porque la dinámica es maravillosa, es muy, muy intensa. Los he visto muy participativos, muy ilusionados y han colaborado mucho el trabajo en equipo', name: 'Francho Lafuente', role: 'CEIP Don Pedro Oros', img: img('uHsfaac831ZIjFtNlRMqvB5n4Rs.png'), bg: 'color-mix(in oklch, var(--gs-yellow) 24%, white)' },
+        { quote: 'Hace más de dos años que tenemos aplicamos la metodología Genyus en nuestro colegio como una asignatura más, los alumnos, los padres y nosotros estamos muy contentos con los resultados.', name: 'Colegio Peñacorada', role: 'Grupo Arenales', img: img('VDtV24aGYSrMKd9QXQNbfLhJ68.png'), bg: wash('--gs-orange') },
+        { quote: 'Se ha podido observar y se ha podido desarrollar muy bien esta actividad, a loa niños les ha encantado y creo que le aporta mucho para su futuro.', name: 'Vanesa Motilva', role: 'Docente Colegio Alemán', img: img('xelxCALKIoWQrUT0mdmdyuDDo.jpeg'), bg: wash('--gs-rose') }
+      ],
+      prefOpts: this.opts(['Correo', 'Llamada'], 'pref'),
+      whoOpts: this.opts(['Institución', 'Colegio', 'Padre'], 'who'),
+      prodOpts: this.opts(['SEM Instituciones', 'SEM Colegio', 'Genyus Go Colegios', 'Genyus Academy/LAB'], 'prod'),
+      sent: this.state.sent,
+      submit: e => { e.preventDefault(); this.setState({ sent: true }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

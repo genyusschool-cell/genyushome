@@ -1,0 +1,64 @@
+/* Genyus School — Webfonts
+   Helotypo  → display / headlines (brand primary display face)
+   Nobel Uno → body, UI, everything running text
+   Anton     → heavy poster headlines (used in vibrant graphic pieces) */
+
+@font-face {
+  font-family: "Helotypo";
+  src: url("../assets/fonts/Helotypo.otf") format("opentype"),
+       url("../assets/fonts/Helotypo.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nobel Uno";
+  src: url("../assets/fonts/NobelUno-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Nobel Uno";
+  src: url("../assets/fonts/NobelUno-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Nobel Uno";
+  src: url("../assets/fonts/NobelUno-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Nobel Uno";
+  src: url("../assets/fonts/NobelUno-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Nobel Uno";
+  src: url("../assets/fonts/NobelUno-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Nobel Uno";
+  src: url("../assets/fonts/NobelUno-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Anton";
+  src: url("../assets/fonts/Anton-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}

@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<title>Genyus School</title>
+<link rel="icon" href="/assets/genyus-school-logo.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/support.js"></script>
+</head>
+<body>
+
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="/_ds/genyus-school-design-system-87b1a3d4-ed31-4494-8c36-a6c785d7ed07/tokens/fonts.css">
+  <link rel="stylesheet" href="/_ds/genyus-school-design-system-87b1a3d4-ed31-4494-8c36-a6c785d7ed07/tokens/colors.css">
+  <link rel="stylesheet" href="/_ds/genyus-school-design-system-87b1a3d4-ed31-4494-8c36-a6c785d7ed07/tokens/typography.css">
+  <link rel="stylesheet" href="/_ds/genyus-school-design-system-87b1a3d4-ed31-4494-8c36-a6c785d7ed07/tokens/spacing.css">
+  <link rel="stylesheet" href="/_ds/genyus-school-design-system-87b1a3d4-ed31-4494-8c36-a6c785d7ed07/styles.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script src="/_ds/genyus-school-design-system-87b1a3d4-ed31-4494-8c36-a6c785d7ed07/_ds_bundle.js"></script>
+  <script src="/image-slot.js"></script>
+  <style>
+    html { scroll-behavior: smooth; scroll-padding-top: 110px; }
+    body { margin: 0; background: #fff; color: var(--ink-900); font-family: var(--font-body); -webkit-font-smoothing: antialiased; }
+    a { color: #C93A84; text-decoration: underline; text-underline-offset: 3px; }
+    a:hover { color: var(--ink-900); }
+    * { box-sizing: border-box; }
+  </style>
+</helmet>
+
+<div style="min-height:100vh;background:#fff;overflow-x:clip">
+
+  <header id="inicio" style="position:sticky;top:0;z-index:20;background:rgba(255,255,255,0.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--ink-200)">
+    <div style="max-width:1200px;margin:0 auto;padding:12px clamp(16px,4vw,24px);display:flex;align-items:center;justify-content:space-between;gap:12px 24px;flex-wrap:wrap">
+      <a href="#inicio" aria-label="Inicio" style="display:flex;align-items:center;gap:clamp(14px,3.4vw,36px);text-decoration:none">
+        <img src="/assets/puntoyaparte/logo-anaya.png" alt="Grupo Anaya" style="height:clamp(18px,4vw,34px);width:auto">
+        <img src="/assets/puntoyaparte/logo-genyus.png" alt="Genyus School" style="height:clamp(32px,7vw,56px);width:auto">
+        <img src="/assets/puntoyaparte/logo-teamlabs.png" alt="TeamLabs/ Face the Next" style="height:clamp(26px,5.6vw,46px);width:auto">
+      </a>
+      <x-import component-from-global-scope="GenyusSchoolDesignSystem_87b1a3.Button" variant="secondary" size="md" sc-camel-on-click="{{ goForm }}" hint-size="130px,42px">Inscríbete</x-import>
+    </div>
+  </header>
+
+  <sc-if value="{{ landingView }}" hint-placeholder-val="{{ true }}">
+  <section data-screen-label="Hero" style="background:#E04C97;color:#fff;overflow:hidden">
+    <div style="max-width:1200px;margin:0 auto;padding:0 24px 64px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:48px;align-items:end">
+      <div style="position:relative;padding:250px 0 0 92px;min-width:0">
+        <svg width="140" height="520" sc-camel-view-box="0 0 140 520" fill="none" style="position:absolute;left:0;top:0;overflow:visible" aria-hidden="true">
+          <path data-draw="1" d="M64 0 V92 A78 78 0 0 0 46 246" stroke="#fff" stroke-width="3.5" stroke-linecap="round"></path>
+          <path data-draw="1" data-delay="250" d="M82 94 A78 78 0 0 1 64 248 V500" stroke="#fff" stroke-width="3.5" stroke-linecap="round"></path>
+        </svg>
+        <h1 data-reveal="up" data-delay="300" style="margin:0;font-family:var(--font-body);font-weight:300;font-size:clamp(44px,8vw,96px);line-height:1;letter-spacing:-0.01em">Punto y aparte</h1>
+        <p data-reveal="up" data-delay="450" style="margin:14px 0 0;font-weight:700;font-size:clamp(17px,2vw,22px);letter-spacing:0.06em;text-transform:uppercase;line-height:1.3;max-width:520px">Un foro para construir respuestas desde la escuela</p>
+        <p data-reveal="up" data-delay="650" style="margin:40px 0 0;font-family:var(--font-display);font-size:clamp(28px,3.4vw,40px);line-height:1.15;max-width:560px;text-wrap:pretty">¿Qué talentos merece la pena seguir descubriendo en nuestras escuelas?</p>
+        <div data-reveal="up" data-delay="800" style="margin-top:32px;display:flex;flex-direction:column;gap:4px;font-size:18px;line-height:1.4">
+          <strong style="font-weight:700">29 de octubre · 16:30 a 19:30 h + networking</strong>
+          <span>CIEM Zaragoza</span>
+        </div>
+        <div data-reveal="up" data-delay="900" style="margin-top:28px;display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+          <x-import component-from-global-scope="GenyusSchoolDesignSystem_87b1a3.Button" size="lg" sc-camel-on-click="{{ goForm }}" dc-props="{{ heroBtnProps }}" hint-size="210px,54px">Reserva tu plaza</x-import>
+        </div>
+        <div data-stagger="up" style="margin-top:24px;display:flex;gap:8px;flex-wrap:wrap">
+          <span style="padding:7px 16px;border-radius:999px;background:#fff;color:#FF35A5;font-size:14px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase">Gratuito</span>
+          <span style="padding:7px 14px;border-radius:999px;border:1.5px solid rgba(255,255,255,0.7);font-size:14px;font-weight:600">Para equipos directivos</span>
+          <span style="padding:7px 14px;border-radius:999px;border:1.5px solid rgba(255,255,255,0.7);font-size:14px;font-weight:600">Plazas limitadas</span>
+          <span style="padding:7px 14px;border-radius:999px;border:1.5px solid rgba(255,255,255,0.7);font-size:14px;font-weight:600">Equipos de 5 personas</span>
+        </div>
+      </div>
+      <div data-reveal="scale" data-delay="200" style="position:relative;width:100%;margin-top:48px">
+        <div data-parallax="0.06" style="position:relative;width:100%;aspect-ratio:4/5;max-height:640px;border-radius:22px;overflow:hidden;box-shadow:0 30px 60px rgba(90,10,50,0.28)">
+          <image-slot id="hero-evento" shape="rounded" radius="22" src="/assets/puntoyaparte/hero-evento.jpg" placeholder="Imagen del evento"></image-slot>
+        </div>
+        <svg width="150" height="150" sc-camel-view-box="0 0 150 150" fill="none" style="position:absolute;left:-56px;bottom:-40px;pointer-events:none" aria-hidden="true"><circle data-draw="1" data-delay="900" cx="75" cy="75" r="72" stroke="#fff" stroke-width="3.5"></circle></svg>
+      </div>
+    </div>
+    <div style="max-width:1200px;margin:0 auto;padding:0 24px 48px">
+      <div data-stagger="up" style="border-top:1px solid rgba(255,255,255,0.45);padding-top:36px;display:flex;align-items:center;justify-content:space-between;gap:32px 48px;flex-wrap:wrap">
+        <img src="/assets/puntoyaparte/logo-genyus-footer.png" alt="Genyus School" style="height:78px;width:auto">
+        <img src="/assets/puntoyaparte/logo-teamlabs-footer.png" alt="TeamLabs/ Face the Next" style="height:64px;width:auto">
+        <img src="/assets/puntoyaparte/logo-extra-footer.png" alt="Grupo Anaya" style="height:48px;width:auto">
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="De qué va" style="padding:112px 24px">
+    <div style="max-width:1200px;margin:0 auto">
+      <p data-reveal="up" style="margin:0;font-size:14px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#C93A84">Una pregunta, una tarde, un compromiso</p>
+      <div style="margin-top:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:40px 64px;align-items:start">
+        <h2 data-reveal="left" style="margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(36px,4.6vw,56px);line-height:1.08;text-wrap:balance">El talento no se encuentra: se diseña.</h2>
+        <p data-reveal="up" data-delay="150" style="margin:0;font-size:19px;line-height:1.6;color:var(--ink-700);text-wrap:pretty">Punto y aparte reúne a equipos directivos para pasar, en una sola tarde, de una gran pregunta a una acción concreta que probar el lunes. Sin ponencias interminables: debate, retos y prototipos en grupos de trabajo reducidos.</p>
+      </div>
+      <div data-reveal="scale" style="margin-top:64px;padding:48px 40px;border-radius:22px;background:#4E9FD5;color:#fff">
+        <p style="margin:0;font-family:var(--font-display);font-size:clamp(28px,3.6vw,44px);line-height:1.15;text-wrap:balance;max-width:900px">¿Qué talentos merece la pena seguir descubriendo en nuestras escuelas?</p>
+      </div>
+      <h3 data-reveal="up" style="margin:72px 0 24px;font-size:22px;font-weight:700">Así será la tarde:</h3>
+      <div data-stagger="up" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:20px">
+        <sc-for list="{{ formats }}" as="f" hint-placeholder-count="3">
+          <div style="padding:32px 28px;border-radius:22px;border:1px solid var(--ink-200);background:#fff;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:20px;transition:transform 260ms var(--ease-bounce), box-shadow 260ms ease" style-hover="transform:translateY(-6px);box-shadow:var(--shadow-md)">
+            <div style="width:56px;height:56px;border-radius:999px;display:grid;place-items:center;color:#fff;background:{{ f.color }}">
+              {{ f.iconEl }}
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <span style="font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-500)">{{ f.label }}</span>
+              <p style="margin:0;font-size:18px;line-height:1.5;color:var(--ink-800)">{{ f.text }}</p>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="A quién va dirigido" style="background:#4E9FD5;color:#fff;padding:104px 24px">
+    <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:40px 64px;align-items:start">
+      <h2 data-reveal="left" style="margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(36px,4.6vw,56px);line-height:1.08">Esta tarde es para ti si…</h2>
+      <div data-stagger="up" style="display:flex;flex-direction:column;gap:20px;font-size:20px;line-height:1.55;text-wrap:pretty">
+        <p style="margin:0;font-size:24px;line-height:1.4;font-weight:600">Diriges, coordinas o lideras un centro educativo y te preguntas qué talento se te está escapando.</p>
+        <p style="margin:0">Está pensada para equipos directivos: direcciones, jefaturas de estudios y coordinaciones. Compartirás equipo con compañeros/as de otros centros, con perfiles distintos al tuyo.</p>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Te llevas" style="padding:104px 24px 56px">
+    <div style="max-width:1200px;margin:0 auto">
+      <h2 data-reveal="left" style="margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(36px,4.6vw,56px);line-height:1.08">Te llevas</h2>
+      <div data-stagger="scale" style="margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:20px">
+        <sc-for list="{{ takeaways }}" as="t" hint-placeholder-count="4">
+          <div style="padding:28px 24px;border-radius:22px;background:#FDF1E6;display:flex;flex-direction:column;gap:16px;transition:transform 260ms var(--ease-bounce)" style-hover="transform:translateY(-6px) rotate(-1deg)">
+            <span style="display:flex;color:#D9761A">{{ t.iconEl }}</span>
+            <p style="margin:0;font-size:17px;line-height:1.5;color:var(--ink-800)"><strong style="font-weight:700;color:var(--ink-900)">{{ t.title }}</strong>{{ t.text }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Programa" style="padding:56px 24px 112px">
+    <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:40px 80px;align-items:start">
+      <div data-stagger="left" style="display:flex;flex-direction:column;gap:20px;position:sticky;top:120px">
+        <h2 style="margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(36px,4.6vw,56px);line-height:1.08">Programa</h2>
+        <p style="margin:0;font-size:19px;line-height:1.6;color:var(--ink-700)">De 16:30 a 19:30 h + networking de cierre. Equipos fijos de 5 personas: es el reto el que avanza, no tú.</p>
+      </div>
+      <ol data-stagger="right" style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column">
+        <sc-for list="{{ schedule }}" as="s" hint-placeholder-count="8">
+          <li style="display:grid;grid-template-columns:64px 52px minmax(0,1fr);gap:16px;align-items:stretch">
+            <span style="padding-top:14px;font-weight:700;font-size:17px;font-variant-numeric:tabular-nums;color:{{ s.timeColor }}">{{ s.time }}</span>
+            <div style="display:flex;flex-direction:column;align-items:center">
+              <div style="width:52px;height:52px;flex:none;border-radius:999px;display:grid;place-items:center;background:{{ s.dotBg }};color:{{ s.dotFg }};border:{{ s.dotBorder }}">
+                {{ s.iconEl }}
+              </div>
+              <div style="flex:1;width:2px;min-height:20px;background:{{ s.lineColor }}"></div>
+            </div>
+            <div style="padding:12px 0 28px;display:flex;flex-direction:column;gap:2px">
+              <span style="font-size:19px;font-weight:700;line-height:1.35">{{ s.title }}</span>
+              <span style="font-size:16px;line-height:1.5;color:var(--ink-600)">{{ s.text }}</span>
+            </div>
+          </li>
+        </sc-for>
+      </ol>
+    </div>
+  </section>
+
+  <section data-screen-label="Quién lo organiza" style="background:var(--ink-050);padding:104px 24px">
+    <div style="max-width:1200px;margin:0 auto">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:40px 64px;align-items:start">
+        <h2 data-reveal="left" style="margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(36px,4.6vw,56px);line-height:1.08">Quién lo organiza</h2>
+        <p data-reveal="up" data-delay="150" style="margin:0;font-size:19px;line-height:1.6;color:var(--ink-700);text-wrap:pretty">Punto y aparte es una iniciativa de Anaya, Genyus y TeamLabs/, que unen su experiencia en educación, emprendimiento e innovación abierta para construir respuestas desde la escuela.</p>
+      </div>
+      <div data-stagger="up" style="margin-top:48px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px">
+        <div style="padding:32px 28px;border-radius:22px;background:#fff;border:1px solid var(--ink-200);display:flex;flex-direction:column;gap:20px">
+          <div style="height:110px;display:flex;align-items:center"><img src="/assets/puntoyaparte/logo-anaya.png" alt="Grupo Anaya" style="height:52px;width:auto;max-width:100%"></div>
+          <p style="margin:0;font-size:17px;line-height:1.6;color:var(--ink-700)">Grupo editorial de referencia en España, especializado en la publicación de contenidos educativos, literatura infantil y juvenil, y materiales didácticos.</p>
+        </div>
+        <div style="padding:32px 28px;border-radius:22px;background:#fff;border:1px solid var(--ink-200);display:flex;flex-direction:column;gap:20px">
+          <div style="height:110px;display:flex;align-items:center"><img src="/assets/puntoyaparte/logo-genyus.png" alt="Genyus School" style="height:100px;width:auto;max-width:100%"></div>
+          <p style="margin:0;font-size:17px;line-height:1.6;color:var(--ink-700)">Es el modelo pedagógico de referencia para la integración estructural de la competencia emprendedora en el sistema educativo y en los centros.</p>
+        </div>
+        <div style="padding:32px 28px;border-radius:22px;background:#fff;border:1px solid var(--ink-200);display:flex;flex-direction:column;gap:20px">
+          <div style="height:110px;display:flex;align-items:center"><img src="/assets/puntoyaparte/logo-teamlabs.png" alt="TeamLabs/ Face the Next" style="height:80px;width:auto;max-width:100%"></div>
+          <p style="margin:0;font-size:17px;line-height:1.6;color:var(--ink-700)">Laboratorio de aprendizaje enfocado en el emprendimiento en equipo y el diseño de experiencias educativas radicales. Su grado LEINN es un referente en la transformación de la educación superior.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="inscripcion" data-screen-label="Inscripción" style="background:#F09134;padding:104px 24px">
+    <div data-reveal="up" style="max-width:880px;margin:0 auto;background:#fff;border-radius:22px;box-shadow:var(--shadow-lg);padding:clamp(28px,5vw,56px)">
+      <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:20px;align-items:flex-start;padding:24px 0">
+          <div style="width:64px;height:64px;border-radius:999px;background:#E04C97;color:#fff;display:grid;place-items:center">
+            {{ checkIcon }}
+          </div>
+          <h2 style="margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(32px,4vw,44px);line-height:1.1">¡Gracias por inscribirte!</h2>
+          <p style="margin:0;font-size:18px;line-height:1.6;color:var(--ink-700);max-width:640px">Hemos recibido tu solicitud de plaza para el Foro «Punto y aparte» en Zaragoza. Te confirmaremos tu asistencia por email. Además, unos días antes te haremos llegar una pregunta para ir calentando motores.</p>
+        </div>
+      </sc-if>
+      <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+        <h2 style="margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(32px,4vw,48px);line-height:1.1">Inscripción presencial</h2>
+        <p style="margin:16px 0 0;font-size:17px;line-height:1.6;color:var(--ink-700);text-wrap:pretty">Completa tus datos para solicitar tu plaza en el Foro «Punto y aparte: construir respuestas desde la escuela», dirigido a equipos directivos, que tendrá lugar el 29 de octubre, de 16:30 a 19:30 h, en el CIEM Zaragoza. Las plazas son limitadas. Te confirmaremos tu inscripción por email.</p>
+        <sc-if value="{{ hasErrors }}" hint-placeholder-val="{{ false }}">
+          <div role="alert" style="margin-top:28px;padding:14px 18px;border-radius:14px;background:#FDECEF;color:#B4153A;font-size:15px;font-weight:600;display:flex;gap:10px;align-items:center">
+            {{ alertIcon }}
+            <span>Revisa los campos marcados: faltan datos obligatorios.</span>
+          </div>
+        </sc-if>
+        <div style="margin-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px">
+          <sc-for list="{{ fields }}" as="fd" hint-placeholder-count="9">
+            <x-import component-from-global-scope="GenyusSchoolDesignSystem_87b1a3.Input" label="{{ fd.label }}" type="{{ fd.type }}" value="{{ fd.value }}" error="{{ fd.error }}" sc-camel-on-change="{{ fd.onChange }}" placeholder="{{ fd.placeholder }}" hint-size="100%,72px"></x-import>
+          </sc-for>
+        </div>
+
+        <div style="margin-top:32px;display:flex;flex-direction:column;gap:12px">
+          <span style="font-size:14px;font-weight:600;color:var(--ink-800)">Dimensión de interés <span style="font-weight:400;color:var(--ink-500)">(opcional)</span></span>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <sc-for list="{{ dims }}" as="d" hint-placeholder-count="4">
+              <button type="button" sc-camel-on-click="{{ d.toggle }}" aria-pressed="{{ d.on }}" style="font-family:var(--font-body);font-size:15px;font-weight:600;padding:10px 18px;border-radius:999px;cursor:pointer;border:1.5px solid {{ d.border }};background:{{ d.bg }};color:{{ d.fg }}">{{ d.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+        <div style="margin-top:24px;display:flex;flex-direction:column;gap:12px">
+          <span style="font-size:14px;font-weight:600;color:var(--ink-800)">Titularidad del centro <span style="font-weight:400;color:var(--ink-500)">(opcional)</span></span>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <sc-for list="{{ tits }}" as="d" hint-placeholder-count="3">
+              <button type="button" sc-camel-on-click="{{ d.toggle }}" aria-pressed="{{ d.on }}" style="font-family:var(--font-body);font-size:15px;font-weight:600;padding:10px 18px;border-radius:999px;cursor:pointer;border:1.5px solid {{ d.border }};background:{{ d.bg }};color:{{ d.fg }}">{{ d.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="margin-top:36px;padding-top:28px;border-top:1px solid var(--ink-200);display:flex;flex-direction:column;gap:14px">
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <x-import component-from-global-scope="GenyusSchoolDesignSystem_87b1a3.Checkbox" id="cb-privacy" checked="{{ privacy }}" sc-camel-on-change="{{ togglePrivacy }}" label="{{ privacyLabel }}" dc-props="{{ cbProps }}" hint-size="100%,48px"></x-import>
+            <sc-if value="{{ privacyErr }}" hint-placeholder-val="{{ false }}">
+              <span style="font-size:13px;color:var(--state-danger);padding-left:32px">Debes aceptar la política de privacidad para enviar.</span>
+            </sc-if>
+          </div>
+          <x-import component-from-global-scope="GenyusSchoolDesignSystem_87b1a3.Checkbox" id="cb-news" checked="{{ news }}" sc-camel-on-change="{{ toggleNews }}" label="Acepto recibir de Grupo Anaya, S.A.U., Genyus Minds, S.L. y TeamLabs, S.L. comunicaciones sobre futuros encuentros, iniciativas, actividades, productos y servicios relacionados con educación, innovación, liderazgo y talento, por medios electrónicos." dc-props="{{ cbProps }}" hint-size="100%,48px"></x-import>
+        </div>
+        <div style="margin-top:32px;display:flex;align-items:center;gap:20px;flex-wrap:wrap">
+          <x-import component-from-global-scope="GenyusSchoolDesignSystem_87b1a3.Button" size="lg" sc-camel-on-click="{{ submit }}" dc-props="{{ submitProps }}" hint-size="140px,54px">{{ submitLabel }}</x-import>
+          <span style="font-size:14px;color:var(--ink-500)">* Campos obligatorios</span>
+        </div>
+      </sc-if>
+    </div>
+  </section>
+
+  </sc-if>
+  <sc-if value="{{ legalView }}" hint-placeholder-val="{{ false }}">
+<section style="background:#E04C97;color:#fff;padding:72px 24px 56px">
+    <div style="max-width:880px;margin:0 auto;display:flex;flex-direction:column;gap:16px">
+      <a href="#inicio" style="color:#fff;font-size:15px;font-weight:700">← Volver a la página del Foro</a>
+      <h1 style="margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(40px,6vw,64px);line-height:1.05">Textos legales</h1>
+      <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+        <a href="#privacidad" style="color:#E04C97;background:#fff;text-decoration:none;padding:10px 18px;border-radius:999px;font-weight:700;font-size:15px">Política de Privacidad</a>
+        <a href="#aviso-legal" style="color:#E04C97;background:#fff;text-decoration:none;padding:10px 18px;border-radius:999px;font-weight:700;font-size:15px">Aviso Legal</a>
+        <a href="#cookies" style="color:#E04C97;background:#fff;text-decoration:none;padding:10px 18px;border-radius:999px;font-weight:700;font-size:15px">Política de Cookies</a>
+      </div>
+    </div>
+  </section>
+
+  <main style="max-width:880px;margin:0 auto;padding:64px 24px 96px;display:flex;flex-direction:column;gap:80px;font-size:17px;line-height:1.65;color:var(--ink-700)">
+
+    <article id="privacidad" style="display:flex;flex-direction:column;gap:16px">
+      <h2 style="margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(32px,4vw,44px);line-height:1.1;color:var(--ink-900)">Política de Privacidad</h2>
+      <p style="margin:0;font-size:14px;color:var(--ink-500)">Última actualización: 6 de octubre de 2026</p>
+      <h3 style="margin:24px 0 0;font-size:20px;line-height:1.35;color:var(--ink-900)">1. ¿Quiénes son los responsables del tratamiento?</h3>
+      <p style="margin:0">Los datos personales facilitados a través de la landing y del formulario de inscripción de Punto y Aparte serán tratados conjuntamente por las tres entidades organizadoras, que actúan como corresponsables del tratamiento:</p>
+      <ul style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:8px">
+        <li>GRUPO ANAYA, S.A.U. · CIF A-37002805 · C/ Valentín Beato, 21, 28037 Madrid (España).</li>
+        <li>GENYUS MINDS, S.L. · NIF B75529420 · Avda. de la Costa, 108, planta 10, puerta C, 33204 Gijón, Asturias (España) · <a href="mailto:info@genyusschool.com">info@genyusschool.com</a>.</li>
+        <li>TEAMLABS, S.L. · NIF B86561099 · Plaza de San Martín, 1, 28013 Madrid (España) · <a href="mailto:info@teamlabs.es">info@teamlabs.es</a> · DPO: <a href="mailto:dpo@teamlabs.es">dpo@teamlabs.es</a>.</li>
+      </ul>
+      <p style="margin:0">Las entidades han determinado conjuntamente las finalidades esenciales del tratamiento vinculado a Punto y Aparte y deberán establecer internamente sus respectivas responsabilidades conforme al artículo 26 del RGPD. La persona interesada podrá ejercer sus derechos frente a cualquiera de los corresponsables.</p>
+      <h3 style="margin:24px 0 0;font-size:20px;line-height:1.35;color:var(--ink-900)">2. ¿Qué datos tratamos?</h3>
+      <p style="margin:0">Podremos tratar los datos que facilites en el formulario: nombre, apellidos, correo electrónico, teléfono cuando lo facilites, código postal, centro educativo, etapas educativas, ciclos cuando proceda, cargo o actividad profesional y, en su caso, preferencias o dimensiones de interés. También podremos tratar la información necesaria para gestionar tu asistencia y las comunicaciones derivadas del Foro.</p>
+      <h3 style="margin:24px 0 0;font-size:20px;line-height:1.35;color:var(--ink-900)">3. ¿Para qué utilizamos tus datos?</h3>
+      <p style="margin:0">Para gestionar Punto y Aparte: recibir y tramitar la solicitud de plaza; confirmar o gestionar la asistencia; organizar mesas, contenidos y logística; enviar información práctica antes, durante y después del encuentro; atender consultas; realizar seguimiento y evaluación del Foro; y mantener las comunicaciones necesarias sobre la propia iniciativa Punto y Aparte.</p>
+      <p style="margin:0">Solo si marcas la casilla opcional correspondiente, las tres entidades podrán enviarte comunicaciones electrónicas sobre futuros encuentros, iniciativas, actividades, productos y servicios relacionados con educación, innovación, liderazgo y talento.</p>
+      <h3 style="margin:24px 0 0;font-size:20px;line-height:1.35;color:var(--ink-900)">4. Base jurídica</h3>
+      <p style="margin:0">La gestión de tu solicitud y participación se basa en las actuaciones necesarias para atender tu petición de inscripción y gestionar tu participación en el Foro. Las comunicaciones promocionales posteriores se basarán en tu consentimiento, que es voluntario y puede retirarse en cualquier momento sin afectar a la licitud del tratamiento previo a su retirada.</p>
+      <h3 style="margin:24px 0 0;font-size:20px;line-height:1.35;color:var(--ink-900)">5. ¿Quién puede acceder a los datos?</h3>
+      <p style="margin:0">Los datos podrán ser accesibles para Grupo Anaya, Genyus Minds y TeamLabs/ en la medida necesaria para las finalidades descritas. También podrán acceder proveedores que presten servicios tecnológicos, de alojamiento web, formularios, correo electrónico, CRM, organización o soporte del evento, actuando, cuando corresponda, como encargados del tratamiento y sujetos a las obligaciones contractuales y de seguridad exigibles.</p>
+      <p style="margin:0">No se comunicarán los datos a terceros para finalidades incompatibles con las aquí descritas, salvo obligación legal. Si algún proveedor implica transferencias internacionales de datos, se aplicarán las garantías previstas en el RGPD.</p>
+      <h3 style="margin:24px 0 0;font-size:20px;line-height:1.35;color:var(--ink-900)">6. ¿Durante cuánto tiempo conservaremos los datos?</h3>
+      <p style="margin:0">Los datos necesarios para gestionar el Foro se conservarán durante el tiempo necesario para organizarlo, realizar su seguimiento y atender posibles responsabilidades legales. Cuando hayas autorizado comunicaciones posteriores, los datos destinados a esa finalidad se conservarán mientras no retires tu consentimiento u solicites su supresión, sin perjuicio de los plazos de conservación exigidos legalmente.</p>
+      <h3 style="margin:24px 0 0;font-size:20px;line-height:1.35;color:var(--ink-900)">7. Tus derechos</h3>
+      <p style="margin:0">Puedes solicitar acceso, rectificación, supresión, oposición, limitación del tratamiento y portabilidad de tus datos, así como retirar el consentimiento cuando el tratamiento se base en él. Puedes dirigirte a cualquiera de los corresponsables. Para Punto y Aparte puedes escribir a <a href="mailto:info@genyusschool.com">info@genyusschool.com</a>. En el caso de TeamLabs/, también puedes contactar con su DPO en <a href="mailto:dpo@teamlabs.es">dpo@teamlabs.es</a>.</p>
+      <p style="margin:0">Si consideras que el tratamiento no se ajusta a la normativa, puedes presentar una reclamación ante la Agencia Española de Protección de Datos (AEPD).</p>
+      <h3 style="margin:24px 0 0;font-size:20px;line-height:1.35;color:var(--ink-900)">8. Seguridad y actualización</h3>
+      <p style="margin:0">Los corresponsables aplicarán medidas técnicas y organizativas adecuadas para proteger los datos personales frente a pérdida, alteración, acceso o divulgación no autorizados. Esta política podrá actualizarse cuando cambien las finalidades, herramientas o condiciones del tratamiento. La versión vigente será la publicada en esta landing.</p>
+    </article>
+
+    <article id="aviso-legal" style="display:flex;flex-direction:column;gap:16px;padding-top:56px;border-top:1px solid var(--ink-200)">
+      <h2 style="margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(32px,4vw,44px);line-height:1.1;color:var(--ink-900)">Aviso Legal</h2>
+      <p style="margin:0;font-size:14px;color:var(--ink-500)">Última actualización: 6 de octubre de 2026</p>
+      <h3 style="margin:24px 0 0;font-size:20px;line-height:1.35;color:var(--ink-900)">1. Identificación y objeto</h3>
+      <p style="margin:0">La página www.genyusschool.com/puntoyaparte forma parte del sitio web de Genyus School y contiene información e inscripción relativa al Foro Punto y Aparte, iniciativa organizada conjuntamente por Grupo Anaya, S.A.U., Genyus Minds, S.L. y TeamLabs, S.L.</p>
+      <p style="margin:0">A efectos de la presente landing, los datos de las entidades organizadoras son:</p>
+      <ul style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:8px">
+        <li>GRUPO ANAYA, S.A.U. · CIF A-37002805 · C/ Valentín Beato, 21, 28037 Madrid. Inscrita en el Registro Mercantil de Madrid, Tomo 4.897 Gral. 4.060, Folio 1 y ss., Hoja M-38.852.</li>
+        <li>GENYUS MINDS, S.L. · NIF B75529420 · Avda. de la Costa, 108, planta 10, puerta C, 33204 Gijón, Asturias · contacto: <a href="mailto:info@genyusschool.com">info@genyusschool.com</a>.</li>
+        <li>TEAMLABS, S.L. · NIF B86561099 · Plaza de San Martín, 1, 28013 Madrid · <a href="mailto:info@teamlabs.es">info@teamlabs.es</a>. Inscrita en el Registro Mercantil de Madrid, Tomo 32.800, Folio 40, Sección 8, Hoja M-590411.</li>
+      </ul>
+      <h3 style="margin:24px 0 0;font-size:20px;line-height:1.35;color:var(--ink-900)">2. Condiciones de uso</h3>
+      <p style="margin:0">El acceso y uso de esta landing atribuye la condición de usuario e implica la aceptación de las condiciones aquí recogidas. El usuario se compromete a utilizarla de forma lícita, diligente y respetuosa con los derechos de terceros y a facilitar información veraz cuando solicite una plaza.</p>
+      <p style="margin:0">La solicitud de inscripción no garantiza automáticamente una plaza. Dado que las plazas son limitadas, la asistencia quedará sujeta a confirmación por parte de la organización.</p>
+      <h3 style="margin:24px 0 0;font-size:20px;line-height:1.35;color:var(--ink-900)">3. Propiedad intelectual e industrial</h3>
+      <p style="margin:0">Los textos, diseños, elementos gráficos, marcas, logotipos, fotografías y demás contenidos de la landing pertenecen a sus respectivos titulares o se utilizan con autorización. No podrán reproducirse, distribuirse, transformarse o explotarse fuera de los límites legalmente permitidos sin autorización del titular correspondiente.</p>
+      <h3 style="margin:24px 0 0;font-size:20px;line-height:1.35;color:var(--ink-900)">4. Responsabilidad</h3>
+      <p style="margin:0">Las entidades organizadoras procurarán que la información de la landing sea correcta y esté actualizada, pero podrán modificar el programa, contenidos, horarios, ponentes, ubicación u otros aspectos organizativos cuando resulte necesario, informando de los cambios relevantes por los medios disponibles. No se garantiza la disponibilidad ininterrumpida del sitio cuando existan incidencias técnicas o causas ajenas a su control razonable.</p>
+      <h3 style="margin:24px 0 0;font-size:20px;line-height:1.35;color:var(--ink-900)">5. Enlaces externos</h3>
+      <p style="margin:0">La landing puede incluir enlaces a sitios de terceros. Las entidades organizadoras no controlan esos sitios ni responden de sus contenidos, políticas o disponibilidad, salvo en los supuestos previstos legalmente.</p>
+      <h3 style="margin:24px 0 0;font-size:20px;line-height:1.35;color:var(--ink-900)">6. Protección de datos y cookies</h3>
+      <p style="margin:0">El tratamiento de datos personales se rige por la <a href="#privacidad">Política de Privacidad</a> de Punto y Aparte. El uso de cookies y tecnologías similares se regula en la <a href="#cookies">Política de Cookies</a> publicada en esta misma landing.</p>
+      <h3 style="margin:24px 0 0;font-size:20px;line-height:1.35;color:var(--ink-900)">7. Legislación aplicable</h3>
+      <p style="margin:0">Este aviso se rige por la legislación española. Cualquier controversia se someterá a los juzgados y tribunales que resulten competentes conforme a la normativa aplicable, sin perjuicio de los derechos que correspondan a consumidores o usuarios cuando resulten de aplicación.</p>
+    </article>
+
+    <article id="cookies" style="display:flex;flex-direction:column;gap:16px;padding-top:56px;border-top:1px solid var(--ink-200)">
+      <h2 style="margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(32px,4vw,44px);line-height:1.1;color:var(--ink-900)">Política de Cookies</h2>
+      <p style="margin:0;font-size:14px;color:var(--ink-500)">Última actualización: 6 de octubre de 2026</p>
+      <h3 style="margin:24px 0 0;font-size:20px;line-height:1.35;color:var(--ink-900)">1. ¿Qué son las cookies?</h3>
+      <p style="margin:0">Las cookies y tecnologías similares son pequeños archivos o identificadores que pueden almacenarse o consultarse en el dispositivo del usuario al visitar una página web. Pueden ser necesarias para el funcionamiento del sitio o utilizarse, previo consentimiento cuando sea exigible, para medición, personalización o publicidad.</p>
+      <h3 style="margin:24px 0 0;font-size:20px;line-height:1.35;color:var(--ink-900)">2. ¿Quién utiliza cookies en esta landing?</h3>
+      <p style="margin:0">La landing www.genyusschool.com/puntoyaparte se aloja dentro del sitio de Genyus School y puede utilizar cookies propias y, si se incorporan servicios externos, cookies de terceros. En relación con los tratamientos vinculados a Punto y Aparte, Grupo Anaya, S.A.U., Genyus Minds, S.L. y TeamLabs, S.L. actúan como corresponsables en los términos indicados en la <a href="#privacidad">Política de Privacidad</a>.</p>
+      <h3 style="margin:24px 0 0;font-size:20px;line-height:1.35;color:var(--ink-900)">3. Tipos de cookies</h3>
+      <ul style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:8px">
+        <li><strong style="color:var(--ink-900)">Cookies técnicas o necesarias:</strong> Permiten funciones esenciales como la navegación, seguridad, gestión de sesión, preferencias de privacidad o funcionamiento del formulario. Cuando sean estrictamente necesarias, no requieren consentimiento.</li>
+        <li><strong style="color:var(--ink-900)">Cookies de preferencias:</strong> Permiten recordar determinadas opciones del usuario cuando no sean estrictamente necesarias.</li>
+        <li><strong style="color:var(--ink-900)">Cookies de análisis o medición:</strong> Permiten conocer de forma agregada cómo se utiliza la landing y medir su rendimiento.</li>
+        <li><strong style="color:var(--ink-900)">Cookies publicitarias o de seguimiento:</strong> Permiten medir campañas, crear perfiles o mostrar publicidad relacionada con los intereses del usuario, cuando se utilicen.</li>
+      </ul>
+      <h3 style="margin:24px 0 0;font-size:20px;line-height:1.35;color:var(--ink-900)">4. Cookies utilizadas</h3>
+      <p style="margin:0">Antes de publicar la landing, el responsable técnico deberá auditar las cookies que realmente se instalan y completar la tabla siguiente. No deben declararse cookies que no se utilicen ni omitirse cookies activas.</p>
+      <div style="overflow-x:auto;border:1px solid var(--ink-200);border-radius:14px">
+        <sc-raw-table style="width:100%;border-collapse:collapse;font-size:15px;min-width:600px">
+          <sc-raw-thead>
+            <sc-raw-tr style="background:var(--ink-050);text-align:left;color:var(--ink-900)">
+              <sc-raw-th style="padding:12px 16px">Cookie/proveedor</sc-raw-th>
+              <sc-raw-th style="padding:12px 16px">Finalidad</sc-raw-th>
+              <sc-raw-th style="padding:12px 16px">Tipo</sc-raw-th>
+              <sc-raw-th style="padding:12px 16px">Duración</sc-raw-th>
+              <sc-raw-th style="padding:12px 16px">Propia/tercero</sc-raw-th>
+            </sc-raw-tr>
+          </sc-raw-thead>
+          <sc-raw-tbody>
+            <sc-raw-tr style="border-top:1px solid var(--ink-200)">
+              <sc-raw-td style="padding:12px 16px">[COMPLETAR TRAS AUDITORÍA]</sc-raw-td>
+              <sc-raw-td style="padding:12px 16px">[finalidad]</sc-raw-td>
+              <sc-raw-td style="padding:12px 16px">[técnica/analítica/etc.]</sc-raw-td>
+              <sc-raw-td style="padding:12px 16px">[duración]</sc-raw-td>
+              <sc-raw-td style="padding:12px 16px">[propia/tercero]</sc-raw-td>
+            </sc-raw-tr>
+          </sc-raw-tbody>
+        </sc-raw-table>
+      </div>
+      <h3 style="margin:24px 0 0;font-size:20px;line-height:1.35;color:var(--ink-900)">5. Gestión del consentimiento</h3>
+      <p style="margin:0">Al acceder por primera vez, el usuario deberá poder aceptar, rechazar o configurar las cookies no necesarias. Rechazarlas no debe impedir el acceso a la landing, salvo las funcionalidades que dependan legítimamente de una tecnología concreta. El usuario podrá cambiar o retirar su consentimiento posteriormente mediante el panel de configuración de cookies accesible desde la web.</p>
+      <h3 style="margin:24px 0 0;font-size:20px;line-height:1.35;color:var(--ink-900)">6. Cookies de terceros y transferencias internacionales</h3>
+      <p style="margin:0">Si se utilizan servicios de terceros, la tabla de cookies deberá identificar al proveedor y enlazar a la información correspondiente. Algunos proveedores pueden tratar datos fuera del Espacio Económico Europeo; en tal caso se aplicarán las garantías exigidas por la normativa de protección de datos.</p>
+      <h3 style="margin:24px 0 0;font-size:20px;line-height:1.35;color:var(--ink-900)">7. Actualizaciones</h3>
+      <p style="margin:0">Esta Política de Cookies se actualizará cuando cambien las cookies, proveedores o finalidades utilizadas en la landing. Se recomienda revisarla periódicamente.</p>
+    </article>
+  </main>
+  </sc-if>
+
+  <footer style="padding:56px 24px 40px;border-top:1px solid var(--ink-200)">
+    <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:32px">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap">
+        <div style="display:flex;align-items:center;gap:28px;flex-wrap:wrap">
+          <img src="/assets/puntoyaparte/logo-anaya.png" alt="Grupo Anaya" style="height:40px;width:auto">
+          <img src="/assets/puntoyaparte/logo-genyus.png" alt="Genyus School" style="height:68px;width:auto">
+          <img src="/assets/puntoyaparte/logo-teamlabs.png" alt="TeamLabs/ Face the Next" style="height:56px;width:auto">
+        </div>
+        <div style="font-size:15px;color:var(--ink-700)">Contacto: <a href="mailto:info@genyusschool.com">info@genyusschool.com</a></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:14px;color:var(--ink-500)">
+        <span>Foro «Punto y aparte» · 29 de octubre · CIEM Zaragoza</span>
+        <div style="display:flex;gap:20px;flex-wrap:wrap">
+          <a href="#privacidad">Política de Privacidad</a>
+          <a href="#aviso-legal">Aviso Legal</a>
+          <a href="#cookies">Política de Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script="" data-props="{&quot;previewState&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Formulario&quot;,&quot;Errores&quot;,&quot;Enviado&quot;],&quot;default&quot;:&quot;Formulario&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Formulario&quot;},&quot;slackWebhook&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://hooks.slack.com/services/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&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Integraciones&quot;},&quot;sheetEndpoint&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://script.google.com/macros/s/AKfycbz-gAOcw3eHukAQBTB1Kv0c1K8ug941p-tkkaELy8_0EO37fnBUfz5DVSq6Evd74Rp-/exec&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Integraciones&quot;}}">
+const PINK = '#E04C97', ORANGE = '#F09134', BLUE = '#4E9FD5';
+const FIELDS = [
+  { key: 'nombre', label: 'Nombre *' },
+  { key: 'apellidos', label: 'Apellidos *' },
+  { key: 'email', label: 'Email *', type: 'email' },
+  { key: 'telefono', label: 'Teléfono *', type: 'tel' },
+  { key: 'centro', label: 'Centro educativo *' },
+  { key: 'localidad', label: 'Localidad *' },
+  { key: 'etapas', label: 'Etapas *', placeholder: 'Infantil, Primaria, ESO…' },
+  { key: 'ciclos', label: 'Ciclos *', placeholder: 'Si aplica, indícalos' },
+  { key: 'cargo', label: 'Cargo *', placeholder: 'Dirección, jefatura de estudios…' },
+];
+const DIMS = ['Inclusión', 'Bienestar', 'Pensamiento', 'Liderazgo'];
+const TITS = ['Pública', 'Concertada', 'Privada'];
+const LEGAL = ['privacidad', 'aviso-legal', 'cookies'];
+
+function ic(name, size, sw) {
+  const L = window.lucide; if (!L || !L.icons) return null;
+  const key = name.split('-').map(w => w[0].toUpperCase() + w.slice(1)).join('');
+  let node = L.icons[key]; if (!node) return null;
+  if (node[0] === 'svg') node = node[2] || [];
+  return React.createElement('svg', { width: size, height: size, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: sw || 2, strokeLinecap: 'round', strokeLinejoin: 'round', 'aria-hidden': true },
+    node.map(([tag, attrs], i) => React.createElement(tag, { key: i, ...attrs })));
+}
+
+class Component extends DCLogic {
+  state = { values: {}, tried: false, privacy: false, news: false, dims: [], tit: null, sent: false };
+
+  componentDidMount() {
+    this.onHash = () => {
+      const id = location.hash.slice(1);
+      const legal = LEGAL.includes(id);
+      this.setState({ legal }, () => setTimeout(() => {
+        const el = legal && document.getElementById(id);
+        window.scrollTo({ top: el ? el.getBoundingClientRect().top + scrollY - 100 : 0, behavior: 'instant' });
+        this.scan();
+      }, 30));
+    };
+    addEventListener('hashchange', this.onHash); if (location.hash) this.onHash();
+    this.setupMotion();
+    if (!window.lucide) { const t = setInterval(() => { if (window.lucide) { clearInterval(t); this.forceUpdate(); } }, 100); }
+    const p = this.props.previewState;
+    if (p === 'Errores') this.setState({ tried: true });
+    if (p === 'Enviado') this.setState({ sent: true });
+  }
+  componentWillUnmount() { removeEventListener('hashchange', this.onHash); if (this.io) this.io.disconnect(); if (this.onScroll) removeEventListener('scroll', this.onScroll); }
+
+  setupMotion() {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+    this.io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { this.show(e.target); this.io.unobserve(e.target); } }), { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+    this.scan();
+    this.onScroll = () => document.querySelectorAll('[data-parallax]').forEach(el => {
+      const r = el.parentElement.getBoundingClientRect();
+      el.style.transform = 'translate3d(0,' + ((r.top + r.height / 2 - innerHeight / 2) * -(+el.dataset.parallax)).toFixed(1) + 'px,0)';
+    });
+    addEventListener('scroll', this.onScroll, { passive: true }); this.onScroll();
+  }
+  prep(el, delay) {
+    el.dataset.rv = '1'; el.dataset.d = delay;
+    const from = { up: 'translateY(40px)', left: 'translateX(-48px)', right: 'translateX(48px)', scale: 'scale(0.92)' };
+    el.style.opacity = '0'; el.style.transform = from[el.dataset.reveal] || from.up;
+    el.style.transition = 'opacity 700ms cubic-bezier(.2,.7,.2,1) ' + delay + 'ms, transform 900ms cubic-bezier(.22,1.15,.36,1) ' + delay + 'ms';
+    this.io.observe(el);
+  }
+  show(el) {
+    if (el.tagName === 'path' || el.tagName === 'circle') { requestAnimationFrame(() => { el.style.strokeDashoffset = '0'; }); return; }
+    requestAnimationFrame(() => { el.style.opacity = '1'; el.style.transform = 'none'; });
+    setTimeout(() => { el.style.transition = ''; el.style.transform = ''; el.style.opacity = ''; }, (+el.dataset.d || 0) + 1000);
+  }
+  scan() {
+    if (!this.io) return;
+    document.querySelectorAll('[data-draw]:not([data-rv])').forEach(el => {
+      el.dataset.rv = '1'; const len = el.getTotalLength();
+      el.style.strokeDasharray = len; el.style.strokeDashoffset = len; el.getBoundingClientRect();
+      el.style.transition = 'stroke-dashoffset 1600ms cubic-bezier(.6,0,.2,1) ' + (+el.dataset.delay || 0) + 'ms';
+      this.io.observe(el);
+    });
+    document.querySelectorAll('[data-reveal]:not([data-rv])').forEach(el => this.prep(el, +el.dataset.delay || 0));
+    document.querySelectorAll('[data-stagger]').forEach(p => Array.from(p.children).forEach((c, i) => {
+      if (c.dataset.rv) return; if (!c.dataset.reveal) c.dataset.reveal = p.dataset.stagger; this.prep(c, i * 110);
+    }));
+  }
+
+  componentDidUpdate(prev) {
+    this.scan();
+    const p = this.props.previewState;
+    if (p !== prev.previewState) this.setState({ tried: p === 'Errores', sent: p === 'Enviado' });
+  }
+
+  errorFor(key) {
+    const v = (this.state.values[key] || '').trim();
+    if (!this.state.tried) return undefined;
+    if (!v) return 'Este campo es obligatorio';
+    if (key === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) return 'Introduce un email válido';
+    return undefined;
+  }
+
+  chip(label, on, toggle) {
+    return { label, on, toggle,
+      bg: on ? 'var(--ink-900)' : '#fff', fg: on ? '#fff' : 'var(--ink-800)',
+      border: on ? 'var(--ink-900)' : 'var(--ink-300)' };
+  }
+
+  renderVals() {
+    const s = this.state;
+    const fields = FIELDS.map(f => ({
+      label: f.label, type: f.type || 'text', placeholder: f.placeholder || '',
+      value: s.values[f.key] || '', error: this.errorFor(f.key),
+      onChange: e => { const v = e.target.value; this.setState(st => ({ values: { ...st.values, [f.key]: v } })); },
+    }));
+    const fieldErrors = fields.some(f => f.error);
+    const privacyErr = s.tried && !s.privacy;
+    const toForm = () => {
+      const el = document.getElementById('inscripcion');
+      if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 72, behavior: 'smooth' });
+    };
+    const goForm = () => {
+      if (!this.state.legal) return toForm();
+      history.pushState('', '', location.pathname + location.search);
+      this.setState({ legal: false }, () => setTimeout(() => { this.scan(); toForm(); }, 60));
+    };
+    return {
+      goForm, legalView: !!s.legal, landingView: !s.legal,
+      cbProps: { style: { alignItems: 'flex-start', lineHeight: 1.5 } },
+      privacyLabel: React.createElement('span', null, 'He leído y acepto la ', React.createElement('a', { href: '#privacidad', onClick: e => e.stopPropagation() }, 'Política de Privacidad'), ' y el tratamiento de mis datos por Grupo Anaya, S.A.U., Genyus Minds, S.L. y TeamLabs, S.L., como corresponsables, para gestionar mi solicitud de plaza, participación y comunicaciones relacionadas con Punto y Aparte. *'),
+      checkIcon: ic('check', 32, 3), alertIcon: ic('circle-alert', 20),
+      heroBtnProps: { style: { background: '#fff', color: PINK, boxShadow: '0 10px 30px rgba(90,10,50,0.25)' } },
+      submitProps: { style: { background: PINK, color: '#fff', boxShadow: '0 10px 28px rgba(224,76,151,0.35)', minWidth: 160 } },
+      formats: this.withIcons(26, [
+        { icon: 'messages-square', label: 'Debate', color: PINK, text: 'Debatiremos un caso incómodo del sistema educativo.' },
+        { icon: 'target', label: 'Retos', color: ORANGE, text: 'Retaremos cuatro dimensiones: inclusión, bienestar emocional, pensamiento y liderazgo.' },
+        { icon: 'lightbulb', label: 'Prototipo', color: BLUE, text: 'Diseñaremos tu «plan del lunes» y lo pondremos a prueba ante la sala.' },
+      ]),
+      takeaways: this.withIcons(30, [
+        { icon: 'rocket', title: 'Tu plan del lunes: ', text: 'un mini-prototipo listo para probar en tu centro.' },
+        { icon: 'pen-line', title: 'Un compromiso concreto, ', text: 'con tus propias palabras.' },
+        { icon: 'file-text', title: 'El Informe Ejecutivo del Foro: ', text: '10 ideas clave, 5 retos priorizados y los compromisos de toda la sala.' },
+        { icon: 'users', title: 'Contactos ', text: 'con otros equipos directivos y un networking de cierre con vino o almuerzo.' },
+      ]),
+      schedule: this.schedule(),
+      fields,
+      dims: DIMS.map(d => this.chip(d, s.dims.includes(d), () => this.setState(st => ({ dims: st.dims.includes(d) ? st.dims.filter(x => x !== d) : [...st.dims, d] })))),
+      tits: TITS.map(t => this.chip(t, s.tit === t, () => this.setState(st => ({ tit: st.tit === t ? null : t })))),
+      privacy: s.privacy, news: s.news, privacyErr,
+      togglePrivacy: () => this.setState(st => ({ privacy: !st.privacy })),
+      toggleNews: () => this.setState(st => ({ news: !st.news })),
+      hasErrors: fieldErrors || privacyErr,
+      sent: s.sent, notSent: !s.sent, submitLabel: s.sending ? 'Enviando…' : 'Enviar',
+      submit: () => {
+        const ok = FIELDS.every(f => {
+          const v = (s.values[f.key] || '').trim();
+          return v && (f.key !== 'email' || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v));
+        }) && s.privacy;
+        if (ok) { if (!s.sending) this.send().then(goForm); }
+        else this.setState({ tried: true });
+      },
+    };
+  }
+
+  async send() {
+    const s = this.state, v = s.values;
+    this.setState({ sending: true });
+    const data = {
+      fecha_registro: new Date().toISOString(),
+      nombre: v.nombre, apellidos: v.apellidos, email: v.email, telefono: v.telefono,
+      centro: v.centro, localidad: v.localidad, etapas: v.etapas, ciclos: v.ciclos, cargo: v.cargo,
+      dimensiones: s.dims.join(', '), titularidad: s.tit || '',
+      acepta_privacidad: 'Sí', version_privacidad: 'Política de Privacidad · 6 de octubre de 2026',
+      acepta_comunicaciones: s.news ? 'Sí' : 'No', origen: location.href,
+    };
+    const jobs = [];
+    const slack = this.props.slackWebhook ?? 'https://hooks.slack.com/services/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';
+    if (slack) {
+      const text = ':tada: *Nueva inscripción · Punto y aparte*\n' +
+        '*' + data.nombre + ' ' + data.apellidos + '* · ' + data.cargo + '\n' +
+        data.centro + ' (' + data.localidad + ')\n' +
+        'Email: ' + data.email + ' · Tel: ' + data.telefono + '\n' +
+        'Etapas: ' + data.etapas + (data.ciclos ? ' · Ciclos: ' + data.ciclos : '') + '\n' +
+        (data.dimensiones ? 'Dimensiones: ' + data.dimensiones + '\n' : '') +
+        (data.titularidad ? 'Titularidad: ' + data.titularidad + '\n' : '') +
+        'Comunicaciones: ' + data.acepta_comunicaciones;
+      jobs.push(fetch(slack, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: 'payload=' + encodeURIComponent(JSON.stringify({ text })) }));
+    }
+    const sheet = this.props.sheetEndpoint || 'https://script.google.com/macros/s/AKfycbz-gAOcw3eHukAQBTB1Kv0c1K8ug941p-tkkaELy8_0EO37fnBUfz5DVSq6Evd74Rp-/exec';
+    if (sheet) jobs.push(fetch(sheet, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(data) }));
+    await Promise.allSettled(jobs);
+    this.setState({ sending: false, sent: true });
+  }
+
+  withIcons(size, list) { return list.map(x => ({ ...x, iconEl: ic(x.icon, size) })); }
+
+  schedule() {
+    const rows = [
+      { time: '16:30', icon: 'door-open', title: 'Recepción y networking', text: 'Llegada, reparto en equipos y primeras ideas en el panel.', hl: PINK },
+      { time: '16:55', icon: 'hand', title: 'Apertura', text: 'Bienvenida de Anaya, Genyus y TeamLabs/.' },
+      { time: '17:05', icon: 'messages-square', title: 'El caso incómodo', text: 'Debate abierto a partir de un caso real.' },
+      { time: '17:35', icon: 'target', title: 'Reto 1: conversaciones en equipo', text: 'Inclusión, bienestar, pensamiento y liderazgo.' },
+      { time: '18:00', icon: 'coffee', title: 'Cohesión y descanso', text: 'Pausa, movimiento y cruce entre equipos.' },
+      { time: '18:30', icon: 'lightbulb', title: 'Reto 2: sprint de prototipado', text: 'Cada equipo diseña su «plan del lunes».' },
+      { time: '19:05', icon: 'presentation', title: 'A prueba ante la sala', text: 'Presentamos los prototipos y recogemos feedback.' },
+      { time: '19:30', icon: 'wine', title: 'Cierre, compromisos y networking', text: 'Cada persona deja su compromiso y seguimos la conversación.', hl: ORANGE },
+    ];
+    return rows.map((r, i) => ({
+      ...r,
+      iconEl: ic(r.icon, 22),
+      timeColor: r.hl || 'var(--ink-500)',
+      dotBg: r.hl || '#fff',
+      dotFg: r.hl ? '#fff' : 'var(--ink-700)',
+      dotBorder: r.hl ? '0' : '1.5px solid var(--ink-300)',
+      lineColor: i === rows.length - 1 ? 'transparent' : 'var(--ink-200)',
+    }));
+  }
+}
+</script>
+
+
+</body></html>

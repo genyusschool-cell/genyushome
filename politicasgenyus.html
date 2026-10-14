@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Genyus School</title>
+<link rel="icon" href="/assets/genyus-school-logo.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="/_ds/genyus-school-design-system-87b1a3d4-ed31-4494-8c36-a6c785d7ed07/tokens/fonts.css">
+<link rel="stylesheet" href="/_ds/genyus-school-design-system-87b1a3d4-ed31-4494-8c36-a6c785d7ed07/tokens/colors.css">
+<link rel="stylesheet" href="/_ds/genyus-school-design-system-87b1a3d4-ed31-4494-8c36-a6c785d7ed07/tokens/typography.css">
+<link rel="stylesheet" href="/_ds/genyus-school-design-system-87b1a3d4-ed31-4494-8c36-a6c785d7ed07/tokens/spacing.css">
+<link rel="stylesheet" href="/_ds/genyus-school-design-system-87b1a3d4-ed31-4494-8c36-a6c785d7ed07/styles.css">
+<script src="/_ds/genyus-school-design-system-87b1a3d4-ed31-4494-8c36-a6c785d7ed07/_ds_bundle.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:var(--ink-900);font-family:var(--font-body);-webkit-font-smoothing:antialiased}
+a{color:var(--ink-900);text-decoration:none}
+a:hover{color:var(--color-primary-ink)}
+*{box-sizing:border-box}
+input,textarea,select{font-family:var(--font-body)}
+
+@media (max-width:900px){[data-nav-links],[data-nav-cta]{display:none !important}[data-nav-menu]{display:block !important}}
+[data-nav-menu] summary{list-style:none}[data-nav-menu] summary::-webkit-details-marker{display:none}
+</style>
+</helmet>
+
+<div ref="{{ rootRef }}" style="position:relative;overflow-x:hidden;background:#fff">
+
+<!-- NAV -->
+<div style="position:fixed;top:16px;left:0;right:0;z-index:50;display:flex;justify-content:center;padding:0 16px">
+  <nav style="width:100%;max-width:1200px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:#fff;border-radius:28px;padding:10px 12px 10px clamp(14px,3vw,24px);box-shadow:0 0 0 1px rgba(14,17,22,0.06),0 16px 16px -8px rgba(0,0,0,0.03),0 10px 10px -5px rgba(0,0,0,0.03),0 5px 5px -2.5px rgba(0,0,0,0.03),0 3px 3px -1.5px rgba(0,0,0,0.03),0 1px 1px -0.5px rgba(0,0,0,0.03)">
+    <a href="/" style="display:flex;align-items:center"><img src="/assets/genyus-school-logo.png" alt="Genyus School" style="height:40px;width:auto;display:block"></a>
+    <div data-nav-links style="display:flex;align-items:center;gap:4px;flex-wrap:wrap">
+      <a href="/" style="padding:8px 14px;border-radius:999px;font-size:15px;font-weight:500">Home</a>
+      <a href="/nosotros" style="padding:8px 14px;border-radius:999px;font-size:15px;font-weight:500">Nosotros</a>
+      <a href="/programas" style="padding:8px 14px;border-radius:999px;font-size:15px;font-weight:500">Programas</a>
+      <a href="/eventos" style="padding:8px 14px;border-radius:999px;font-size:15px;font-weight:500">Eventos</a>
+      <a href="/academy-lab" style="padding:8px 14px;border-radius:999px;font-size:15px;font-weight:500">Academy + Lab</a>
+    </div>
+    <details data-nav-menu style="display:none;position:relative">
+      <summary style="cursor:pointer;display:flex;align-items:center;gap:8px;padding:11px 18px;border-radius:28px;font-size:15px;font-weight:700;box-shadow:0 0 0 1.5px var(--ink-200)"><span aria-hidden="true" style="display:flex;flex-direction:column;gap:4px"><span style="width:16px;height:2px;border-radius:2px;background:var(--ink-900)"></span><span style="width:16px;height:2px;border-radius:2px;background:var(--ink-900)"></span><span style="width:16px;height:2px;border-radius:2px;background:var(--ink-900)"></span></span>Menú</summary>
+      <div style="position:absolute;right:0;top:calc(100% + 12px);width:min(280px,calc(100vw - 32px));display:flex;flex-direction:column;gap:2px;padding:10px;border-radius:22px;background:#fff;box-shadow:0 0 0 1px rgba(14,17,22,0.06),0 18px 48px rgba(14,17,22,0.14)">
+      <a href="/" style="padding:12px 16px;border-radius:14px;font-size:16px;font-weight:500">Home</a>
+      <a href="/nosotros" style="padding:12px 16px;border-radius:14px;font-size:16px;font-weight:500">Nosotros</a>
+      <a href="/programas" style="padding:12px 16px;border-radius:14px;font-size:16px;font-weight:500">Programas</a>
+      <a href="/eventos" style="padding:12px 16px;border-radius:14px;font-size:16px;font-weight:500">Eventos</a>
+      <a href="/academy-lab" style="padding:12px 16px;border-radius:14px;font-size:16px;font-weight:500">Academy + Lab</a>
+    <a data-m href="/nosotros#contacto" style="margin-top:6px;text-align:center;padding:12px 20px;border-radius:28px;font-size:15px;font-weight:700;border:1.5px solid transparent;background:linear-gradient(#fff,#fff) padding-box, linear-gradient(90deg,var(--gs-pink),var(--gs-rose) 42%,var(--gs-orange)) border-box">Contáctanos</a>
+      </div>
+    </details>
+    <a data-nav-cta href="/nosotros#contacto" style="padding:11px 20px;border-radius:28px;font-size:15px;font-weight:700;border:1.5px solid transparent;background:linear-gradient(#fff,#fff) padding-box, linear-gradient(90deg,var(--gs-pink),var(--gs-rose) 42%,var(--gs-orange)) border-box">Contáctanos</a>
+  </nav>
+</div>
+
+<!-- HERO -->
+<section id="top" data-screen-label="Hero" style="position:relative;min-height:min(56vh,480px);display:flex;align-items:flex-end;overflow:hidden;background:var(--ink-900)">
+  <img src="https://framerusercontent.com/images/DavOSRpuxbuR1A0IkEQnbkK9pzA.jpg?width=2400" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,17,22,0.35) 0%,rgba(14,17,22,0.2) 40%,rgba(14,17,22,0.8) 100%)"></div>
+  <div style="position:relative;width:100%;max-width:1200px;margin:0 auto;padding:140px 24px 56px;color:#fff">
+    <h1 style="margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(44px,6.4vw,84px);line-height:1.02;letter-spacing:-0.035em;text-shadow:0 2px 24px rgba(0,0,0,0.3)">Políticas generales</h1>
+  </div>
+</section>
+
+<!-- SELECTOR -->
+<section id="politicas" data-screen-label="Selector" style="max-width:1200px;margin:0 auto;padding:56px 24px 24px">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:14px">
+    <a href="#aviso-legal" style="display:flex;align-items:center;gap:14px;padding:20px 22px;border-radius:22px;background:color-mix(in oklch, var(--gs-blue) 13%, white);color:var(--ink-900)" style-hover="transform:translateY(-3px)" style-active="transform:scale(0.97)">
+      <span style="font-family:var(--font-poster);font-size:32px;line-height:1">01</span>
+      <span style="font-size:17px;font-weight:700;line-height:1.25;flex:1">Aviso legal</span>
+      <span aria-hidden="true" style="font-size:20px">↓</span>
+    </a>
+    <a href="#privacidad" style="display:flex;align-items:center;gap:14px;padding:20px 22px;border-radius:22px;background:color-mix(in oklch, var(--gs-pink) 13%, white);color:var(--ink-900)" style-hover="transform:translateY(-3px)" style-active="transform:scale(0.97)">
+      <span style="font-family:var(--font-poster);font-size:32px;line-height:1">02</span>
+      <span style="font-size:17px;font-weight:700;line-height:1.25;flex:1">Política de privacidad</span>
+      <span aria-hidden="true" style="font-size:20px">↓</span>
+    </a>
+    <a href="#cookies" style="display:flex;align-items:center;gap:14px;padding:20px 22px;border-radius:22px;background:color-mix(in oklch, var(--gs-orange) 13%, white);color:var(--ink-900)" style-hover="transform:translateY(-3px)" style-active="transform:scale(0.97)">
+      <span style="font-family:var(--font-poster);font-size:32px;line-height:1">03</span>
+      <span style="font-size:17px;font-weight:700;line-height:1.25;flex:1">Política de cookies</span>
+      <span aria-hidden="true" style="font-size:20px">↓</span>
+    </a>
+  </div>
+</section>
+
+<!-- AVISO LEGAL -->
+<section id="aviso-legal" data-screen-label="Aviso legal" style="max-width:860px;margin:0 auto;padding:40px 24px 64px;display:flex;flex-direction:column;gap:16px">
+  <span style="font-family:var(--font-poster);font-size:44px;line-height:1;color:var(--color-primary-ink)">01</span>
+  <h2 style="margin:0 0 8px;font-family:var(--font-display);font-weight:400;font-size:clamp(34px,4vw,49px);line-height:1.04;letter-spacing:-0.03em">Aviso legal</h2>
+  <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-700);text-wrap:pretty"><strong style="color:var(--ink-900)">LEY DE LOS SERVICIOS DE LA SOCIEDAD DE LA INFORMACIÓN (LSSI)</strong></p>
+  <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-700);text-wrap:pretty">GENYUS SCHOOL, responsable del sitio web, en adelante RESPONSABLE, pone a disposición de los usuarios el presente documento, con el que pretende dar cumplimiento a las obligaciones dispuestas en la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSICE), BOE N.º 166, así como informar a todos los usuarios del sitio web respecto a cuáles son las condiciones de uso.</p>
+  <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-700);text-wrap:pretty">Toda persona que acceda a este sitio web asume el papel de usuario, comprometiéndose a la observancia y cumplimiento riguroso de las disposiciones aquí dispuestas, así como a cualquier otra disposición legal que fuera de aplicación.</p>
+  <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-700);text-wrap:pretty">GENYUS SCHOOL se reserva el derecho de modificar cualquier tipo de información que pudiera aparecer en el sitio web, sin que exista obligación de preavisar o poner en conocimiento de los usuarios dichas obligaciones, entendiéndose como suficiente la publicación en el sitio web de GENYUS SCHOOL.</p>
+  <h3 style="margin:28px 0 0;font-size:18px;font-weight:700;line-height:1.35;color:var(--ink-900)">1. DATOS IDENTIFICATIVOS</h3>
+  <div style="padding:20px 24px;border-radius:16px;background:var(--ink-050);display:grid;grid-template-columns:fit-content(42%) minmax(0,1fr);gap:6px 16px;font-size:15px;line-height:1.5;color:var(--ink-700);overflow-wrap:anywhere">
+        <span style="font-weight:700;color:var(--ink-900)">Nombre de dominio</span><span>https://genyusschool.com/</span>
+        <span style="font-weight:700;color:var(--ink-900)">Nombre comercial</span><span>GENYUS SCHOOL</span>
+        <span style="font-weight:700;color:var(--ink-900)">Representante legal</span><span>GENYUS MINDS S.L.</span>
+        <span style="font-weight:700;color:var(--ink-900)">CIF</span><span>B75529420</span>
+        <span style="font-weight:700;color:var(--ink-900)">Domicilio social</span><span>CÁMARA DE COMERCIO DE GIJÓN – CTRA. DE SOMIÓ 652, 33203 GIJÓN</span>
+        <span style="font-weight:700;color:var(--ink-900)">Teléfono</span><span>649 347 471</span>
+        <span style="font-weight:700;color:var(--ink-900)">e-mail</span><span>info@genyusschool.com</span>
+      </div>
+  <h3 style="margin:28px 0 0;font-size:18px;font-weight:700;line-height:1.35;color:var(--ink-900)">2. DERECHOS DE PROPIEDAD INTELECTUAL E INDUSTRIAL</h3>
+  <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-700);text-wrap:pretty">El sitio web, incluyendo a título enunciativo, pero no limitativo su programación, edición, compilación y demás elementos necesarios para su funcionamiento, los diseños, logotipos, texto y/o gráficos, son propiedad del RESPONSABLE o, si es el caso, dispone de licencia o autorización expresa por parte de los autores. Todos los contenidos del sitio web se encuentran debidamente protegidos por la normativa de propiedad intelectual e industrial, así como inscritos en los registros públicos correspondientes.</p>
+  <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-700);text-wrap:pretty">Independientemente de la finalidad para la que fueran destinados, la reproducción total o parcial, uso, explotación, distribución y comercialización, requiere en todo caso la autorización escrita previa por parte del RESPONSABLE. Cualquier uso no autorizado previamente se considera un incumplimiento grave de los derechos de propiedad intelectual o industrial del autor.</p>
+  <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-700);text-wrap:pretty">Los diseños, logotipos, texto y/o gráficos ajenos al RESPONSABLE y que pudieran aparecer en el sitio web, pertenecen a sus respectivos propietarios, siendo ellos mismos responsables de cualquier posible controversia que pudiera suscitarse respecto a los mismos. El RESPONSABLE autoriza expresamente a que terceros puedan redirigir directamente a los contenidos concretos del sitio web, y en todo caso redirigir al sitio web principal de https://genyusschool.com/.</p>
+  <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-700);text-wrap:pretty">El RESPONSABLE reconoce a favor de sus titulares los correspondientes derechos de propiedad intelectual e industrial, no implicando su sola mención o aparición en el sitio web la existencia de derechos o responsabilidad alguna sobre los mismos, como tampoco respaldo, patrocinio o recomendación por parte del mismo.</p>
+  <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-700);text-wrap:pretty">Para realizar cualquier tipo de observación respecto a posibles incumplimientos de los derechos de propiedad intelectual o industrial, así como sobre cualquiera de los contenidos del sitio web, puede hacerlo a través del correo electrónico info@genyusschool.com.</p>
+  <h3 style="margin:28px 0 0;font-size:18px;font-weight:700;line-height:1.35;color:var(--ink-900)">3. EXENCIÓN DE RESPONSABILIDADES</h3>
+  <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-700);text-wrap:pretty">El RESPONSABLE se exime de cualquier tipo de responsabilidad derivada de la información publicada en su sitio web siempre que esta información haya sido manipulada o introducida por un tercero ajeno al mismo.</p>
+  <h3 style="margin:28px 0 0;font-size:18px;font-weight:700;line-height:1.35;color:var(--ink-900)">Uso de Cookies</h3>
+  <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-700);text-wrap:pretty">Este sitio web puede utilizar cookies técnicas (pequeños archivos de información que el servidor envía al ordenador de quien accede a la página) para llevar a cabo determinadas funciones que son consideradas imprescindibles para el correcto funcionamiento y visualización del sitio. Las cookies utilizadas tienen, en todo caso, carácter temporal, con la única finalidad de hacer más eficaz la navegación, y desaparecen al terminar la sesión del usuario. En ningún caso, estas cookies proporcionan por sí mismas datos de carácter personal y no se utilizarán para la recogida de los mismos.</p>
+  <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-700);text-wrap:pretty">Mediante el uso de cookies también es posible que el servidor donde se encuentra la web reconozca el navegador utilizado por el usuario con la finalidad de que la navegación sea más sencilla, permitiendo, por ejemplo, el acceso de los usuarios que se hayan registrado previamente a las áreas, servicios, promociones o concursos reservados exclusivamente a ellos sin tener que registrarse en cada visita. También se pueden utilizar para medir la audiencia, parámetros de tráfico, controlar el progreso y número de entradas, etc., siendo en estos casos cookies prescindibles técnicamente, pero beneficiosas para el usuario. Este sitio web no instalará cookies prescindibles sin el consentimiento previo del usuario.</p>
+  <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-700);text-wrap:pretty">El usuario tiene la posibilidad de configurar su navegador para ser alertado de la recepción de cookies y para impedir su instalación en su equipo. Por favor, consulte las instrucciones de su navegador para ampliar esta información.</p>
+  <h3 style="margin:28px 0 0;font-size:18px;font-weight:700;line-height:1.35;color:var(--ink-900)">Política de enlaces</h3>
+  <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-700);text-wrap:pretty">Desde el sitio web, es posible que se redirija a contenidos de terceros sitios web. Dado que el RESPONSABLE no puede controlar siempre los contenidos introducidos por terceros en sus respectivos sitios web, no asume ningún tipo de responsabilidad respecto a dichos contenidos. En todo caso, procederá a la retirada inmediata de cualquier contenido que pudiera contravenir la legislación nacional o internacional, la moral o el orden público, procediendo a la retirada inmediata de la redirección a dicho sitio web, poniendo en conocimiento de las autoridades competentes el contenido en cuestión.</p>
+  <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-700);text-wrap:pretty">El RESPONSABLE no se hace responsable de la información y contenidos almacenados, a título enunciativo pero no limitativo, en foros, chats, generadores de blogs, comentarios, redes sociales o cualquier otro medio que permita a terceros publicar contenidos de forma independiente en la página web del RESPONSABLE. Sin embargo, y en cumplimiento de lo dispuesto en los artículos 11 y 16 de la LSSICE, se pone a disposición de todos los usuarios, autoridades y fuerzas de seguridad, colaborando de forma activa en la retirada o, en su caso, bloqueo de todos aquellos contenidos que puedan afectar o contravenir la legislación nacional o internacional, los derechos de terceros o la moral y el orden público. En caso de que el usuario considere que existe en el sitio web algún contenido que pudiera ser susceptible de esta clasificación, se ruega lo notifique de forma inmediata al administrador del sitio web.</p>
+  <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-700);text-wrap:pretty">Este sitio web se ha revisado y probado para que funcione correctamente. En principio, puede garantizarse el correcto funcionamiento los 365 días del año, 24 horas al día. Sin embargo, el RESPONSABLE no descarta la posibilidad de que existan ciertos errores de programación, o que acontezcan causas de fuerza mayor, catástrofes naturales, huelgas o circunstancias semejantes que hagan imposible el acceso a la página web.</p>
+  <h3 style="margin:28px 0 0;font-size:18px;font-weight:700;line-height:1.35;color:var(--ink-900)">Direcciones IP</h3>
+  <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-700);text-wrap:pretty">Los servidores del sitio web podrán detectar de manera automática la dirección IP y el nombre de dominio utilizados por el usuario. Una dirección IP es un número asignado automáticamente a un ordenador cuando este se conecta a Internet. Toda esta información se registra en un fichero de actividad del servidor debidamente inscrito que permite el posterior procesamiento de los datos con el fin de obtener mediciones únicamente estadísticas que permitan conocer el número de impresiones de páginas, el número de visitas realizadas a los servidores web, el orden de visitas, el punto de acceso, etc.</p>
+  <h3 style="margin:28px 0 0;font-size:18px;font-weight:700;line-height:1.35;color:var(--ink-900)">4. LEY APLICABLE Y JURISDICCIÓN</h3>
+  <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-700);text-wrap:pretty">Para la resolución de todas las controversias o cuestiones relacionadas con el presente sitio web o de las actividades en él desarrolladas, será de aplicación la legislación española, a la que se someten expresamente las partes, siendo competentes para la resolución de todos los conflictos derivados o relacionados con su uso los Juzgados y Tribunales más cercanos a GIJÓN.</p>
+  <h3 style="margin:28px 0 0;font-size:18px;font-weight:700;line-height:1.35;color:var(--ink-900)">5. POLÍTICA DE REEMBOLSO</h3>
+  <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-700);text-wrap:pretty"><strong style="color:var(--ink-900)">A) ¿Puedo pedir el reembolso de mi pedido?</strong><br>Puedes solicitar el reembolso de tu pedido, siempre que se encuentre dentro del plazo de 14 días siguientes desde el momento de la compra.</p>
+  <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-700);text-wrap:pretty"><strong style="color:var(--ink-900)">1. Compras realizadas en la web (método de pago tarjeta/Stripe)</strong><br>Debes ponerte en contacto con nosotros a través de nuestro email info@genyusschool.com indicándonos el nombre y apellidos del tutor, del niño o niña, el Programa comprado, días y horario del mismo, así como el motivo por el cual solicitas el reembolso.</p>
+  <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-700);text-wrap:pretty"><strong style="color:var(--ink-900)">2. Compras realizadas en la web (método de pago local o efectivo/transferencia)</strong><br>Debes ponerte en contacto con nosotros a través de nuestro email info@genyusschool.com indicándonos el nombre y apellidos del tutor, del niño o niña, el Programa comprado, días y horario del mismo, así como el motivo por el cual solicitas el reembolso.<br>Además, necesitaremos que nos envíes los datos de la cuenta bancaria donde deseas que se ingrese el reembolso, que se tramitará mediante transferencia bancaria: nombre completo, número de identificación, número de cuenta y nombre de tu entidad bancaria.</p>
+  <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-700);text-wrap:pretty"><strong style="color:var(--ink-900)">B) ¿Puedo cambiar un programa por otro?</strong><br>Puedes solicitar el cambio de curso, siempre que se encuentre dentro del plazo de 14 días desde el momento de la compra.<br>Para gestionarlo, por favor escríbenos a nuestro email info@genyusschool.com indicándonos el curso que deseas cambiar y por cuál quieres hacerlo, así como días y horario.</p>
+  <a href="#politicas" style="align-self:flex-start;margin-top:24px;font-size:14px;font-weight:700;color:var(--ink-600)">↑ Volver a las políticas</a>
+</section>
+
+<!-- POLÍTICA DE PRIVACIDAD -->
+<section id="privacidad" data-screen-label="Política de Privacidad" style="max-width:860px;margin:0 auto;padding:80px 24px 64px;border-top:1px solid var(--ink-200);display:flex;flex-direction:column;gap:16px">
+  <span style="font-family:var(--font-poster);font-size:44px;line-height:1;color:var(--color-primary-ink)">02</span>
+  <h2 style="margin:0 0 8px;font-family:var(--font-display);font-weight:400;font-size:clamp(34px,4vw,49px);line-height:1.04;letter-spacing:-0.03em">Política de Privacidad</h2>
+  <h3 style="margin:28px 0 0;font-size:18px;font-weight:700;line-height:1.35;color:var(--ink-900)">¿Quién es el responsable del tratamiento de tus datos personales?</h3>
+  <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-700);text-wrap:pretty">GENYUS SCHOOL es el RESPONSABLE del tratamiento de los datos personales del USUARIO y le informa que estos datos serán tratados de conformidad con lo dispuesto en el Reglamento (UE) 2016/679 de 27 de abril (GDPR) y la Ley Orgánica 3/2018 de 5 de diciembre (LOPDGDD).</p>
+  <h3 style="margin:28px 0 0;font-size:18px;font-weight:700;line-height:1.35;color:var(--ink-900)">¿Para qué tratamos tus datos personales?</h3>
+  <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-700);text-wrap:pretty">Para mantener una relación comercial con el usuario. Las operaciones previstas para realizar el tratamiento son:</p>
+  <ul style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:8px;font-size:16px;line-height:1.65;color:var(--ink-700)"><li>Remisión de comunicaciones comerciales publicitarias por email, fax, SMS, MMS, redes sociales sociales o cualquier otro medio electrónico o físico, presente o futuro, que posibilite realizar comunicaciones comerciales. Estas comunicaciones serán realizadas por el RESPONSABLE y relacionadas sobre sus productos y servicios, o de sus colaboradores o proveedores con los que éste haya alcanzado algún acuerdo de promoción. En este caso, los terceros nunca tendrán acceso a los datos personales.</li><li>Realizar estudios de mercado y análisis estadísticos.</li><li>Tramitar encargos, solicitudes, dar respuestas a las consultas o cualquier tipo de petición que sea realizada por el USUARIO a través de cualquiera de las formas de contacto que se ponen a su disposición en la página web del RESPONSABLE.</li><li>Remitir el boletín informativo online, sobre novedades, ofertas y promociones en nuestra actividad.</li></ul>
+  <h3 style="margin:28px 0 0;font-size:18px;font-weight:700;line-height:1.35;color:var(--ink-900)">¿Por qué motivo podemos tratar tus datos personales?</h3>
+  <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-700);text-wrap:pretty">Porque el tratamiento está legitimado por el artículo 6 del GDPR de la siguiente forma:</p>
+  <ul style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:8px;font-size:16px;line-height:1.65;color:var(--ink-700)"><li>Por el consentimiento del USUARIO: remisión de comunicaciones comerciales y el boletín informativo.</li><li>Por interés legítimo del RESPONSABLE: realizar estudios de mercado, análisis estadísticos, etc. y tramitar encargos, solicitudes, etc. a petición del USUARIO.</li></ul>
+  <h3 style="margin:28px 0 0;font-size:18px;font-weight:700;line-height:1.35;color:var(--ink-900)">¿Durante cuánto tiempo guardaremos tus datos personales?</h3>
+  <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-700);text-wrap:pretty">Se se conservarán durante no más tiempo del necesario para mantener el fin del tratamiento o existan prescripciones legales que dictaminen su custodia y cuando ya no sea necesario para ello, se suprimirán con medidas de seguridad adecuadas para garantizar la anonimización de los datos o la destrucción total de los mismos.</p>
+  <h3 style="margin:28px 0 0;font-size:18px;font-weight:700;line-height:1.35;color:var(--ink-900)">¿A quién facilitamos tus datos personales?</h3>
+  <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-700);text-wrap:pretty">No está prevista ninguna comunicación de datos personales a terceros salvo, si fuese necesario para el desarrollo y ejecución de las finalidades del tratamientoen, a nuestros proveedores de servicios relacionados con comunicaciones, con los cuales el RESPONSABLE tiene suscritos los contratos de confidencialidad y de encargado de tratamiento exigidos por la normativa vigente de privacidad.</p>
+  <h3 style="margin:28px 0 0;font-size:18px;font-weight:700;line-height:1.35;color:var(--ink-900)">¿Cuáles son tus derechos?</h3>
+  <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-700);text-wrap:pretty">Los derechos que asisten al USUARIO son:</p>
+  <ul style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:8px;font-size:16px;line-height:1.65;color:var(--ink-700)"><li>Derecho a retirar el consentimiento en cualquier momento.</li><li>Derecho de acceso, rectificación, portabilidad y supresión de sus datos y a la limitación u oposición al su tratamiento.</li><li>Derecho a presentar una reclamación ante la autoridad de control (www.aepd.es) si considera que el tratamiento no se ajusta a la normativa vigente.</li></ul>
+  <h3 style="margin:28px 0 0;font-size:18px;font-weight:700;line-height:1.35;color:var(--ink-900)">Datos de contacto para ejercer sus derechos:</h3>
+  <div style="padding:20px 24px;border-radius:16px;background:var(--ink-050);display:grid;grid-template-columns:fit-content(42%) minmax(0,1fr);gap:6px 16px;font-size:15px;line-height:1.5;color:var(--ink-700);overflow-wrap:anywhere">
+        <span style="font-weight:700;color:var(--ink-900)">Nombre comercial</span><span>GENYUS SCHOOL</span>
+        <span style="font-weight:700;color:var(--ink-900)">Representante legal</span><span>GENYUS MINDS S.L.</span>
+        <span style="font-weight:700;color:var(--ink-900)">CIF</span><span>B75529420</span>
+        <span style="font-weight:700;color:var(--ink-900)">Domicilio social</span><span>CÁMARA DE COMERCIO DE GIJÓN – CTRA. DE SOMIÓ 652, 33203 GIJÓN</span>
+        <span style="font-weight:700;color:var(--ink-900)">Teléfono</span><span>649 347 471</span>
+        <span style="font-weight:700;color:var(--ink-900)">e-mail</span><span>info@genyusschool.com</span>
+      </div>
+  <h3 style="margin:36px 0 0;padding-top:28px;border-top:1px solid var(--ink-200);font-family:var(--font-display);font-weight:400;font-size:26px;line-height:1.15;letter-spacing:-0.02em;color:var(--ink-900)">Consentimiento para el tratamiento de datos personales</h3>
+  <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-700);text-wrap:pretty"><strong style="color:var(--ink-900)">GENYUS SCHOOL</strong> es el Responsable del tratamiento de los datos personales del Usuario y le informa de que estos datos serán tratados de conformidad con lo dispuesto en el Reglamento (UE) 2016/679, de 27 de abril (GDPR), y la Ley Orgánica 3/2018, de 5 de diciembre (LOPDGDD), por lo que se le facilita la siguiente información del tratamiento:</p>
+  <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-700);text-wrap:pretty"><strong style="color:var(--ink-900)">Fines y legitimación del tratamiento</strong>: mantener una relación comercial (por interés legítimo del responsable, art. 6.1.f GDPR) y el envío de comunicaciones de productos o servicios (por consentimiento del interesado, art. 6.1.a GDPR).</p>
+  <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-700);text-wrap:pretty"><strong style="color:var(--ink-900)">Criterios de conservación de los datos</strong>: se conservarán durante no más tiempo del necesario para mantener el fin del tratamiento o existan prescripciones legales que dictaminen su custodia y cuando ya no sea necesario para ello, se suprimirán con medidas de seguridad adecuadas para garantizar la anonimización de los datos o la destrucción total de los mismos.</p>
+  <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-700);text-wrap:pretty"><strong style="color:var(--ink-900)">Comunicación de los datos</strong>: no se comunicarán los datos a terceros, salvo obligación legal.</p>
+  <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-700);text-wrap:pretty"><strong style="color:var(--ink-900)">Derechos que asisten al Usuario:</strong><br>– Derecho a retirar el consentimiento en cualquier momento.<br>– Derecho de acceso, rectificación, portabilidad y supresión de sus datos, y de limitación u oposición a su tratamiento.<br>– Derecho a presentar una reclamación ante la Autoridad de control (www.aepd.es) si considera que el tratamiento no se ajusta a la normativa vigente.</p>
+  <h3 style="margin:28px 0 0;font-size:18px;font-weight:700;line-height:1.35;color:var(--ink-900)">Datos de contacto para ejercer sus derechos:</h3>
+  <div style="padding:20px 24px;border-radius:16px;background:var(--ink-050);display:grid;grid-template-columns:fit-content(42%) minmax(0,1fr);gap:6px 16px;font-size:15px;line-height:1.5;color:var(--ink-700);overflow-wrap:anywhere">
+        <span style="font-weight:700;color:var(--ink-900)">Nombre comercial</span><span>GENYUS SCHOOL</span>
+        <span style="font-weight:700;color:var(--ink-900)">Representante legal</span><span>GENYUS MINDS S.L.</span>
+        <span style="font-weight:700;color:var(--ink-900)">NIF</span><span>B75529420</span>
+        <span style="font-weight:700;color:var(--ink-900)">Domicilio social</span><span>CÁMARA DE COMERCIO DE GIJÓN – CTRA. DE SOMIÓ 652, 33203 GIJÓN</span>
+        <span style="font-weight:700;color:var(--ink-900)">Teléfono</span><span>649 347 471</span>
+        <span style="font-weight:700;color:var(--ink-900)">e-mail</span><span>info@genyusschool.com</span>
+      </div>
+  <h3 style="margin:36px 0 0;padding-top:28px;border-top:1px solid var(--ink-200);font-family:var(--font-display);font-weight:400;font-size:26px;line-height:1.15;letter-spacing:-0.02em;color:var(--ink-900)">Consentimiento en la INSCRIPCIÓN A ACTIVIDADES</h3>
+  <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-700);text-wrap:pretty"><strong style="color:var(--ink-900)">PROTECCIÓN DE DATOS:</strong> De acuerdo con lo dispuesto en el Reglamento (UE) 2016/679, de 27 de abril (GDPR), y la Ley Orgánica 3/2018, de 5 de diciembre (LOPDGDD), consiento que mis datos se traten bajo la responsabilidad de GENYUS SCHOOL para enviarme información comercial y que los conserve durante no más tiempo del necesario para mantener el fin del tratamiento o mientras existan prescripciones legales que dictaminen su custodia. Autorizo a que comuniquen los datos a sus empresas asociadas para la misma finalidad. Me doy por informado de que tengo derecho a revocar este consentimiento en cualquier momento y a ejercer los derechos de acceso, rectificación, portabilidad y supresión de mis datos, y los de limitación y oposición al tratamiento dirigiéndome a CÁMARA DE COMERCIO DE GIJÓN – CTRA. DE SOMIÓ 652, 33203 GIJÓN. Email: info@genyusschool.com. También estoy informado de que puedo reclamar ante la autoridad de control a www.aepd.es.</p>
+  <h3 style="margin:36px 0 0;padding-top:28px;border-top:1px solid var(--ink-200);font-family:var(--font-display);font-weight:400;font-size:26px;line-height:1.15;letter-spacing:-0.02em;color:var(--ink-900)">Consentimiento para la suscripción a Newsletter</h3>
+  <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-700);text-wrap:pretty"><strong style="color:var(--ink-900)">PUBLICIDAD</strong>: En cumplimiento de lo previsto en el artículo 21 de la Ley 34/2002 de Servicios de la Sociedad de la Información y Comercio Electrónico (LSSI), solicitamos su consentimiento para la suscripción y envío de nuestra newsletter.</p>
+  <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-700);text-wrap:pretty"><strong style="color:var(--ink-900)">Fines y legitimación del tratamiento</strong>: envío de comunicaciones de productos o servicios a través del Boletín de Noticas al que se ha suscrito (con el consentimiento del interesado, art. 6.1.a GDPR).<br><strong style="color:var(--ink-900)">Criterios de conservación de los datos</strong>: se conservarán durante no más tiempo del necesario para mantener el fin del tratamiento o mientras existan prescripciones legales que dictaminen su custodia y cuando ya no sea necesario para ello, se suprimirán con medidas de seguridad adecuadas para garantizar la anonimización de los datos o la destrucción total de los mismos.<br><strong style="color:var(--ink-900)">Comunicación de los datos</strong>: no se comunicarán los datos a terceros, salvo obligación legal.<br><strong style="color:var(--ink-900)">Derechos que asisten al Interesado</strong>:<br>– Derecho a retirar el consentimiento en cualquier momento.<br>– Derecho de acceso, rectificación, portabilidad y supresión de sus datos, y de limitación u oposición a su tratamiento.<br>– Derecho a presentar una reclamación ante la Autoridad de control (www.aepd.es) si considera que el tratamiento no se ajusta a la normativa vigente.</p>
+  <h3 style="margin:36px 0 0;padding-top:28px;border-top:1px solid var(--ink-200);font-family:var(--font-display);font-weight:400;font-size:26px;line-height:1.15;letter-spacing:-0.02em;color:var(--ink-900)">E-MAIL: correo electrónico y publicidad</h3>
+  <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-700);text-wrap:pretty"><strong style="color:var(--ink-900)">PROTECCIÓN DE DATOS</strong>: De conformidad con lo dispuesto en el Reglamento (UE) 2016/679, de 27 de abril (GDPR), y la Ley Orgánica 3/2018, de 5 de diciembre (LOPDGDD), le informamos de que los datos personales y la dirección de correo electrónico del interesado, se tratarán bajo la responsabilidad de GENYUS SCHOOL por un interés legítimo y para el envío de comunicaciones sobre nuestros productos y servicios, y se conservarán mientras ninguna de las partes se oponga a ello. Los datos no se comunicarán a terceros, salvo obligación legal. Le informamos de que puede ejercer los derechos de acceso, rectificación, portabilidad y supresión de sus datos y los de limitación y oposición a su tratamiento dirigiéndose a CÁMARA DE COMERCIO DE GIJÓN – CTRA. DE SOMIÓ 652, 33203 GIJÓN. Email: info@genyusschool.com. Si considera que el tratamiento no se ajusta a la normativa vigente, podrá presentar una reclamación ante la autoridad de control en www.aepd.es.</p>
+  <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-700);text-wrap:pretty"><strong style="color:var(--ink-900)">PUBLICIDAD:</strong> En cumplimiento de lo previsto en el artículo 21 de la Ley 34/2002 de Servicios de la Sociedad de la Información y Comercio Electrónico (LSSICE), si usted no desea recibir más información sobre nuestros productos y/o servicios, puede darse de baja enviando un correo electrónico a info@genyusschool.com, indicando en el Asunto «BAJA» o «NO ENVIAR».</p>
+  <h3 style="margin:36px 0 0;padding-top:28px;border-top:1px solid var(--ink-200);font-family:var(--font-display);font-weight:400;font-size:26px;line-height:1.15;letter-spacing:-0.02em;color:var(--ink-900)">Consentimiento explícito para el tratamiento de imágenes</h3>
+  <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-700);text-wrap:pretty">GENYUS SCHOOL es el <strong style="color:var(--ink-900)">Responsable del tratamiento</strong> de los datos personales del <strong style="color:var(--ink-900)">Interesado</strong> y le informa de que estos datos se tratarán de conformidad con lo dispuesto en el Reglamento (UE) 2016/679, de 27 de abril (GDPR), la Ley Orgánica 3/2018, de 5 de diciembre (LOPDGDD), y la Ley (ES) 1/1982 de protección civil, derecho al honor, intimidad personal y familiar y a la propia imagen, por lo que se le facilita la siguiente información del tratamiento:</p>
+  <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-700);text-wrap:pretty"><strong style="color:var(--ink-900)">Fines y legitimación del tratamiento</strong>: grabación de imágenes y vídeos de las actividades llevadas a cabo por el Responsable del tratamiento para dar publicidad de las mismas en los medios de comunicación (por consentimiento del interesado, art. 6.1.a GDPR). En ningún caso se publicará el nombre del Interesado.</p>
+  <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-700);text-wrap:pretty"><strong style="color:var(--ink-900)">Criterios de conservación de los datos</strong>: se conservarán durante no más tiempo del necesario para mantener el fin del tratamiento o existan prescripciones legales que dictaminen su custodia y cuando ya no sea necesario para ello, se suprimirán con medidas de seguridad adecuadas para garantizar la anonimización de los datos o la destrucción total de los mismos.</p>
+  <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-700);text-wrap:pretty"><strong style="color:var(--ink-900)">Comunicación de los datos</strong>: no se comunicarán los datos a terceros sin su consentimiento, salvo obligación legal.</p>
+  <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-700);text-wrap:pretty"><strong style="color:var(--ink-900)">Derechos que asisten al Interesado:</strong><br>– Derecho a retirar el consentimiento en cualquier momento.<br>– Derecho de acceso, rectificación, portabilidad y supresión de sus datos, y de limitación u oposición a su tratamiento.<br>– Derecho a presentar una reclamación ante la Autoridad de control (www.aepd.es) si considera que el tratamiento no se ajusta a la normativa vigente.</p>
+  <h3 style="margin:28px 0 0;font-size:18px;font-weight:700;line-height:1.35;color:var(--ink-900)">Datos de contacto para ejercer sus derechos:</h3>
+  <div style="padding:20px 24px;border-radius:16px;background:var(--ink-050);display:grid;grid-template-columns:fit-content(42%) minmax(0,1fr);gap:6px 16px;font-size:15px;line-height:1.5;color:var(--ink-700);overflow-wrap:anywhere">
+        <span style="font-weight:700;color:var(--ink-900)">Nombre comercial</span><span>GENYUS SCHOOL</span>
+        <span style="font-weight:700;color:var(--ink-900)">Representante legal</span><span>GENYUS MINDS S.L.</span>
+        <span style="font-weight:700;color:var(--ink-900)">NIF</span><span>B75529420</span>
+        <span style="font-weight:700;color:var(--ink-900)">Domicilio social</span><span>CÁMARA DE COMERCIO DE GIJÓN – CTRA. DE SOMIÓ 652, 33203 GIJÓN</span>
+        <span style="font-weight:700;color:var(--ink-900)">Teléfono</span><span>649 347 471</span>
+        <span style="font-weight:700;color:var(--ink-900)">e-mail</span><span>info@genyusschool.com</span>
+      </div>
+  <a href="#politicas" style="align-self:flex-start;margin-top:24px;font-size:14px;font-weight:700;color:var(--ink-600)">↑ Volver a las políticas</a>
+</section>
+
+<!-- POLÍTICA DE COOKIES -->
+<section id="cookies" data-screen-label="Política de Cookies" style="max-width:860px;margin:0 auto;padding:80px 24px 64px;border-top:1px solid var(--ink-200);display:flex;flex-direction:column;gap:16px">
+  <span style="font-family:var(--font-poster);font-size:44px;line-height:1;color:var(--color-primary-ink)">03</span>
+  <h2 style="margin:0 0 8px;font-family:var(--font-display);font-weight:400;font-size:clamp(34px,4vw,49px);line-height:1.04;letter-spacing:-0.03em">Política de Cookies</h2>
+  <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-700);text-wrap:pretty">En cumplimiento de la <a href="https://www.boe.es/buscar/pdf/2002/BOE-A-2002-13758-consolidado.pdf" target="_blank" rel="noopener" style="color:var(--color-primary-ink);font-weight:600;text-decoration:underline;text-underline-offset:3px">Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y Comercio Electrónico</a> le informamos de que este Sitio Web, al igual que la mayoría de los sitios en Internet, usa Cookies para mejorar y optimizar la experiencia del usuario. A continuación encontrará información detallada sobre qué son las “Cookies”, qué tipología utiliza este sitio web, cómo cambiar la configuración de sus cookies, y qué ocurre si deshabilita las Cookies.</p>
+  <h3 style="margin:28px 0 0;font-size:18px;font-weight:700;line-height:1.35;color:var(--ink-900)">Qué son las cookies</h3>
+  <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-700);text-wrap:pretty">Las cookies son archivos que se pueden descargar en su equipo a través de las páginas web. Son herramientas que tienen un papel esencial para la prestación de numerosos servicios de la sociedad de la información. Entre otros, permiten a una página web almacenar y recuperar información sobre los hábitos de navegación de un usuario o de su equipo y, dependiendo de la información obtenida, se pueden utilizar para reconocer al usuario y mejorar el servicio ofrecido.</p>
+  <h3 style="margin:28px 0 0;font-size:18px;font-weight:700;line-height:1.35;color:var(--ink-900)">Tipos de cookies</h3>
+  <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-700);text-wrap:pretty">Según quien sea la entidad que gestione el dominio desde donde se envían las cookies y trate los datos que se obtengan se pueden distinguir dos tipos: cookies propias y cookies de terceros .</p>
+  <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-700);text-wrap:pretty">Existe también una segunda clasificación según el plazo de tiempo que permanecen almacenadas en el navegador del cliente, pudiendo tratarse de cookies de sesión o cookies persistentes .</p>
+  <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-700);text-wrap:pretty">Por último, existe otra clasificación con cinco tipos de cookies según la finalidad para la que se traten los datos obtenidos: cookies técnicas, cookies de personalización, cookies de análisis, cookies publicitarias y cookies de publicidad comportamental .</p>
+  <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-700);text-wrap:pretty">Para más información a este respecto puede consultar la Guía sobre el uso de las cookies de la <a href="https://www.aepd.es/es" target="_blank" rel="noopener" style="color:var(--color-primary-ink);font-weight:600;text-decoration:underline;text-underline-offset:3px">Agencia Española de Protección de Datos</a>.</p>
+  <h3 style="margin:28px 0 0;font-size:18px;font-weight:700;line-height:1.35;color:var(--ink-900)">Cómo modificar la configuración de las Cookies</h3>
+  <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-700);text-wrap:pretty"><em>GENYUS SCHOOL</em> asume que usted acepta el uso de cookies. No obstante, usted puede restringir, bloquear o borrar las cookies de este Sitio Web, o cualquier otra página, utilizando su navegador. En cada navegador la operativa es diferente, la función de «Ayuda» le mostrará cómo hacerlo.</p>
+  <div style="display:flex;flex-wrap:wrap;gap:8px"><a href="http://windows.microsoft.com/es-es/internet-explorer/delete-manage-cookies#ie=ie-11" target="_blank" rel="noopener" style="padding:9px 16px;border-radius:999px;font-size:14px;font-weight:700;color:var(--ink-900);box-shadow:0 0 0 1.5px var(--ink-200)" style-hover="box-shadow:0 0 0 1.5px var(--ink-900)">Internet Explorer</a><a href="https://www.apple.com/legal/privacy/es/cookies/" target="_blank" rel="noopener" style="padding:9px 16px;border-radius:999px;font-size:14px;font-weight:700;color:var(--ink-900);box-shadow:0 0 0 1.5px var(--ink-200)" style-hover="box-shadow:0 0 0 1.5px var(--ink-900)">Safari</a><a href="https://support.google.com/chrome/answer/95647?hl=es" target="_blank" rel="noopener" style="padding:9px 16px;border-radius:999px;font-size:14px;font-weight:700;color:var(--ink-900);box-shadow:0 0 0 1.5px var(--ink-200)" style-hover="box-shadow:0 0 0 1.5px var(--ink-900)">Chrome</a><a href="https://support.mozilla.org/es/kb/cookies-informacion-que-los-sitios-web-guardan-en-?redirectlocale=en-US&amp;redirectslug=Cookies" target="_blank" rel="noopener" style="padding:9px 16px;border-radius:999px;font-size:14px;font-weight:700;color:var(--ink-900);box-shadow:0 0 0 1.5px var(--ink-200)" style-hover="box-shadow:0 0 0 1.5px var(--ink-900)">Firefox</a><a href="https://www.opera.com/help/tutorials/security/cookies/#sitenav" target="_blank" rel="noopener" style="padding:9px 16px;border-radius:999px;font-size:14px;font-weight:700;color:var(--ink-900);box-shadow:0 0 0 1.5px var(--ink-200)" style-hover="box-shadow:0 0 0 1.5px var(--ink-900)">Opera</a><a href="https://privacy.microsoft.com/es-es/windows-10-microsoft-edge-and-privacy" target="_blank" rel="noopener" style="padding:9px 16px;border-radius:999px;font-size:14px;font-weight:700;color:var(--ink-900);box-shadow:0 0 0 1.5px var(--ink-200)" style-hover="box-shadow:0 0 0 1.5px var(--ink-900)">Edge</a></div>
+  <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-700);text-wrap:pretty">Además, también puede gestionar el almacén de cookies en su navegador a través de herramientas como las siguientes:</p>
+  <div style="display:flex;flex-wrap:wrap;gap:8px"><a href="https://www.ghostery.com/" target="_blank" rel="noopener" style="padding:9px 16px;border-radius:999px;font-size:14px;font-weight:700;color:var(--ink-900);box-shadow:0 0 0 1.5px var(--ink-200)" style-hover="box-shadow:0 0 0 1.5px var(--ink-900)">Ghostery</a><a href="https://www.youronlinechoices.com/es/" target="_blank" rel="noopener" style="padding:9px 16px;border-radius:999px;font-size:14px;font-weight:700;color:var(--ink-900);box-shadow:0 0 0 1.5px var(--ink-200)" style-hover="box-shadow:0 0 0 1.5px var(--ink-900)">Your online choices</a></div>
+  <h3 style="margin:28px 0 0;font-size:18px;font-weight:700;line-height:1.35;color:var(--ink-900)">Qué ocurre si se deshabilitan las cookies</h3>
+  <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-700);text-wrap:pretty">Algunas funcionalidades de los servicios o áreas de este Sitio Web podrían no funcionar correctamente.</p>
+  <h3 style="margin:28px 0 0;font-size:18px;font-weight:700;line-height:1.35;color:var(--ink-900)">Actualización de la Política de Cookies</h3>
+  <p style="margin:0;font-size:16px;line-height:1.7;color:var(--ink-700);text-wrap:pretty">Es posible que se actualice la política de cookies de la Página Web, por ello, le recomiendo revisar esta política cada vez que acceda a este Sitio Web con el objetivo de estar adecuadamente informado sobre cómo y para qué se usan las cookies.</p>
+  <a href="#politicas" style="align-self:flex-start;margin-top:24px;font-size:14px;font-weight:700;color:var(--ink-600)">↑ Volver a las políticas</a>
+</section>
+
+<!-- FOOTER -->
+<footer data-screen-label="Footer" style="background:var(--ink-900);color:#fff">
+  <div style="max-width:1200px;margin:0 auto;padding:64px 24px 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:40px">
+    <div style="display:flex;flex-direction:column;gap:20px;grid-column:span 2;min-width:0">
+      <img src="/assets/genyus-blanco.png" alt="Genyus School" style="height:30px;width:auto;align-self:flex-start">
+      <p style="margin:0;font-size:16px;line-height:1.5;color:var(--ink-300);max-width:380px">Educar en emprendimiento a nuestros niños/as hoy, es el mayor motor de desarrollo socioeconómico, mañana.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a href="https://www.facebook.com/GenyusSchool/" style="padding:8px 14px;border-radius:999px;border:1px solid var(--ink-600);color:#fff;font-size:13px">Facebook</a>
+        <a href="https://www.linkedin.com/company/genyusschool/" style="padding:8px 14px;border-radius:999px;border:1px solid var(--ink-600);color:#fff;font-size:13px">LinkedIn</a>
+        <a href="https://www.instagram.com/genyusschool/" style="padding:8px 14px;border-radius:999px;border:1px solid var(--ink-600);color:#fff;font-size:13px">Instagram</a>
+        <a href="https://www.youtube.com/genyusschool" style="padding:8px 14px;border-radius:999px;border:1px solid var(--ink-600);color:#fff;font-size:13px">YouTube</a>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <h4 style="margin:0 0 4px;font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gs-blue)">Genyus School</h4>
+      <a href="/nosotros" style="color:#fff;font-size:15px">Nosotros</a>
+      <a href="/programas" style="color:#fff;font-size:15px">Programas</a>
+      <a href="/eventos" style="color:#fff;font-size:15px">Eventos (proximamente)</a>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <h4 style="margin:0 0 4px;font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gs-pink)">Programas</h4>
+      <a href="/programas/genyusgo" style="color:#fff;font-size:15px">Genyus Go</a>
+      <a href="/programas/sem-insti" style="color:#fff;font-size:15px">SEM Instituciones</a>
+      <a href="/programas/sem-colegios" style="color:#fff;font-size:15px">SEM Colegios</a>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <h4 style="margin:0 0 4px;font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gs-orange)">Políticas generales</h4>
+      <a href="/politicasgenyus#aviso-legal" style="color:#fff;font-size:15px">Aviso legal</a>
+      <a href="/politicasgenyus#privacidad" style="color:#fff;font-size:15px">Política de privacidad</a>
+      <a href="/politicasgenyus#cookies" style="color:#fff;font-size:15px">Política de cookies</a>
+    </div>
+  </div>
+  <div style="max-width:1200px;margin:0 auto;padding:0 24px 32px">
+    <img src="https://framerusercontent.com/images/hLXNBPbhbG1sD3nvQJ1FVBjqA.jpeg?width=768&amp;height=76" alt="" style="width:100%;max-width:640px;height:auto;display:block;border-radius:8px">
+  </div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;scrollReveal&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { pref: 'Correo', who: null, prod: null, sent: false };
+  rootRef = React.createRef();
+  componentDidMount() {
+    const root = this.rootRef.current;
+    if (!root || this.props.scrollReveal === false || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const els = [...root.querySelectorAll('section > *, footer > *')].filter(el => el.getBoundingClientRect().top > innerHeight);
+    const showAll = () => els.forEach(el => { el.style.opacity = '1'; el.style.transform = 'none'; });
+    this.fallback = setTimeout(() => { if (document.visibilityState === 'hidden') showAll(); }, 2500);
+    addEventListener('beforeprint', showAll);
+    els.forEach(el => {
+      const i = [...el.parentElement.children].indexOf(el);
+      Object.assign(el.style, { opacity: '0', transform: 'translateY(40px)', transition: `opacity 700ms cubic-bezier(.2,.7,.2,1) ${i*90}ms, transform 800ms cubic-bezier(.34,1.3,.5,1) ${i*90}ms` });
+    });
+    this.io = new IntersectionObserver(entries => entries.forEach(e => {
+      if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'none'; this.io.unobserve(e.target); }
+    }), { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    els.forEach(el => this.io.observe(el));
+  }
+  componentWillUnmount() { this.io && this.io.disconnect(); clearTimeout(this.fallback); }
+  opts(list, key) {
+    return list.map(label => {
+      const on = this.state[key] === label;
+      return {
+        label,
+        bg: on ? 'color-mix(in oklch, var(--gs-blue) 14%, white)' : '#fff',
+        border: on ? 'var(--gs-blue)' : 'var(--ink-300)',
+        onClick: () => this.setState({ [key]: label })
+      };
+    });
+  }
+  renderVals() {
+    const v = this.vals();
+    return Object.assign(v, { logosTop: v.logos.slice(0, 4), logosBottom: v.logos.slice(4) });
+  }
+  vals() {
+    const img = id => `https://framerusercontent.com/images/${id}`;
+    const wash = c => `color-mix(in oklch, var(${c}) 13%, white)`;
+    return {
+      rootRef: this.rootRef,
+      logos: [
+        ['e3xbpjHcefNjpdbD98kBl9255yM.png', 40], ['yqI2DC2yXynOEvMe7TAKislzqn0.png', 36], ['3QJbl3gWjjEOAeSmXoGCXP1blfU.png', 36],
+        ['Qf3v7jGIG92WispGomkDeTMMwjE.png', 56], ['ge1OpAjqHFsHePRmyc5KaKDgrjg.png', 34], ['6RCXL4O2RbBgGiMAgUnEASmN65s.png', 40],
+        ['VrbpIoV8ll20jh4ltYXNsCOCVz4.png', 56], ['KzQgDFS2n4ZtosPdWoqs09jOms.png', 60], ['RSkTjK6yx6e319lB6UxNoRhgE4.png', 34]
+      ].map(([id, h]) => ({ src: img(id), h: Math.round(h * 1.4) })),
+      stats: [
+        { n: '+350', label: 'centros educativos', bg: wash('--gs-blue') },
+        { n: '+20', label: 'instituciones públicas', bg: wash('--gs-pink') },
+        { n: '+25.000', label: 'estudiantes', bg: wash('--gs-orange') },
+        { n: '4', label: 'premios nacionales', bg: 'color-mix(in oklch, var(--gs-yellow) 26%, white)' },
+        { n: '+60', label: 'menciones en medios de comunicación.', bg: wash('--gs-rose') }
+      ],
+      steps: [
+        { n: '01.', title: 'Activación', color: 'var(--gs-blue)', text: 'Despierta el interés y motiva a los estudiantes conectando con sus conocimientos previos, activando el aprendizaje mediante actividades breves que generan curiosidad y preparan el terreno para la exploración, construyendo sobre lo que ya saben para un inicio sólido y engaging.' },
+        { n: '02.', title: 'Exploración', color: 'var(--gs-pink)', text: 'Los alumnos indagan, experimentan y descubren por sí mismos, resolviendo dudas y construyendo nuevos conceptos a partir de sus ideas iniciales, en un proceso de práctica activa que fomenta la autonomía y el aprendizaje significativo.' },
+        { n: '03.', title: 'Reflexión', color: 'var(--gs-orange)', text: 'Analizan las experiencias y datos de la exploración para extraer conclusiones, interpretar lo aprendido, identificar aciertos y errores, y reajustar el enfoque, conectando teoría con práctica mediante preguntas sobre el "por qué" para validar y fortalecer conocimientos futuros.' },
+        { n: '04.', title: 'Aplicación', color: 'var(--gs-rose)', text: 'Ponen en práctica lo aprendido, conectando conceptos teóricos con la vida cotidiana, resolviendo problemas reales y demostrando pensamiento crítico y autonomía a través de actividades prácticas, proyectos o desafíos que generan soluciones concretas e impactantes.' }
+      ],
+      testimonials: [
+        { quote: 'La educación, emprendimiento es importante en Zaragoza y en toda España. Si no la conocen desde pequeños, es muy difícil que luego la puedan tener en su mente a la hora de elegirlo.', name: 'Natalia Chueca', role: 'Alcaldesa de Zaragoza', img: img('UViiY4Zaov7CC6Spu2DWVjG78rk.png?width=400'), bg: wash('--gs-blue') },
+        { quote: 'Para el Ayuntamiento de Majadahonda es muy importante el emprendimiento, porque ya hay emprendedores, ya hay niños con ideas, niños con proyectos y Genyus School potencia esto.', name: 'María Dolores Moreno Molino', role: 'Alcaldesa de Majadahonda', img: img('yf1KBg9j7D8iYyiORp9YPeTdtw.jpeg?width=400'), bg: wash('--gs-pink') },
+        { quote: 'Una experiencia muy recomendable para otros centros educativos porque la dinámica es maravillosa, es muy, muy intensa. Los he visto muy participativos, muy ilusionados y han colaborado mucho el trabajo en equipo', name: 'Francho Lafuente', role: 'CEIP Don Pedro Oros', img: img('uHsfaac831ZIjFtNlRMqvB5n4Rs.png'), bg: 'color-mix(in oklch, var(--gs-yellow) 24%, white)' },
+        { quote: 'Hace más de dos años que tenemos aplicamos la metodología Genyus en nuestro colegio como una asignatura más, los alumnos, los padres y nosotros estamos muy contentos con los resultados.', name: 'Colegio Peñacorada', role: 'Grupo Arenales', img: img('VDtV24aGYSrMKd9QXQNbfLhJ68.png'), bg: wash('--gs-orange') },
+        { quote: 'Se ha podido observar y se ha podido desarrollar muy bien esta actividad, a loa niños les ha encantado y creo que le aporta mucho para su futuro.', name: 'Vanesa Motilva', role: 'Docente Colegio Alemán', img: img('xelxCALKIoWQrUT0mdmdyuDDo.jpeg'), bg: wash('--gs-rose') }
+      ],
+      prefOpts: this.opts(['Correo', 'Llamada'], 'pref'),
+      whoOpts: this.opts(['Institución', 'Colegio', 'Padre'], 'who'),
+      prodOpts: this.opts(['SEM Instituciones', 'SEM Colegio', 'Genyus Go Colegios', 'Genyus Academy/LAB'], 'prod'),
+      sent: this.state.sent,
+      submit: e => { e.preventDefault(); this.setState({ sent: true }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

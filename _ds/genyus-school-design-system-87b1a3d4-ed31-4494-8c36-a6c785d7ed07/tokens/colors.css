@@ -1,0 +1,79 @@
+/* Genyus School — Color System
+   Source: BrandBook_Genyus (Manual de Marca).
+   Genyus is one brand with three verticals — School, Business, University —
+   each with its own primary palette. School is the master brand palette.
+   Colors are saturated, playful and combined via gradients (Jester + Creator
+   archetypes). Neutrals are near-black ink on white/paper. */
+
+:root {
+  /* ---------- Brand — Genyus School (master) ---------- */
+  --gs-blue:        #1AACFF;   /* primary brand blue — the "G" mark   */
+  --gs-pink:        #FF35A5;   /* hero magenta                        */
+  --gs-yellow:      #FFEA50;   /* accent yellow                       */
+  --gs-orange:      #FF962A;   /* accent orange                       */
+  --gs-coral:       #FF8D5B;   /* gradient midtone                    */
+  --gs-rose:        #FF5E7C;   /* gradient midtone                    */
+
+  /* ---------- Genyus Business ---------- */
+  --gb-green:       #00FF34;
+  --gb-cyan:        #00BBFF;
+  --gb-blue:        #155CFF;
+  --gb-purple:      #CF5EFF;
+  --gb-mint:        #00FFA4;
+
+  /* ---------- Genyus University ---------- */
+  --gu-pink:        #FF35B7;
+  --gu-purple:      #965EFF;
+  --gu-pale:        #FFFAAB;
+  --gu-magenta:     #FF5EFF;
+  --gu-indigo:      #4435FF;
+
+  /* ---------- Neutrals / ink ---------- */
+  --ink-900: #0E1116;   /* near-black — primary text            */
+  --ink-800: #1B2028;
+  --ink-700: #333A45;
+  --ink-600: #566072;
+  --ink-500: #7A8394;   /* muted text                           */
+  --ink-400: #A7AEBC;
+  --ink-300: #CDD3DD;   /* borders                              */
+  --ink-200: #E6E9F0;   /* hairlines / dividers                 */
+  --ink-100: #F1F3F8;   /* subtle surface tint                  */
+  --ink-050: #F8F9FC;   /* app background                       */
+  --white:   #FFFFFF;
+  --black:   #000000;
+
+  /* ---------- Semantic ---------- */
+  --color-primary:        var(--gs-blue);
+  --color-primary-ink:    #0B84D6;   /* darker blue for text-on-white / hover */
+  --color-accent:         var(--gs-pink);
+  --color-highlight:      var(--gs-yellow);
+
+  --text-strong:   var(--ink-900);
+  --text-body:     var(--ink-800);
+  --text-muted:    var(--ink-500);
+  --text-inverse:  var(--white);
+  --text-link:     var(--color-primary-ink);
+
+  --surface-page:  var(--ink-050);
+  --surface-card:  var(--white);
+  --surface-sunken:var(--ink-100);
+  --surface-inverse: var(--ink-900);
+
+  --border-subtle: var(--ink-200);
+  --border-default:var(--ink-300);
+  --border-strong: var(--ink-600);
+
+  --state-success: #16B364;
+  --state-warning: var(--gs-orange);
+  --state-danger:  #F5385B;
+  --state-info:    var(--gs-blue);
+
+  /* ---------- Signature gradients ---------- */
+  /* The brand's core device: pink → coral → orange sunset (School logo bg) */
+  --grad-school:   linear-gradient(150deg, var(--gs-pink) 0%, var(--gs-rose) 42%, var(--gs-orange) 100%);
+  --grad-school-v: linear-gradient(180deg, var(--gs-pink) 0%, var(--gs-orange) 100%);
+  --grad-business: linear-gradient(150deg, var(--gb-purple) 0%, var(--gb-blue) 55%, var(--gb-cyan) 100%);
+  --grad-university: linear-gradient(150deg, var(--gu-indigo) 0%, var(--gu-purple) 50%, var(--gu-pink) 100%);
+  --grad-sky:      linear-gradient(150deg, var(--gs-blue) 0%, var(--gb-cyan) 100%);
+  --grad-sunny:    linear-gradient(120deg, var(--gs-yellow) 0%, var(--gs-orange) 100%);
+}

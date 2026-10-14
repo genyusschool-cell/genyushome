@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Genyus School</title>
+<link rel="icon" href="/assets/genyus-school-logo.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="/_ds/genyus-school-design-system-87b1a3d4-ed31-4494-8c36-a6c785d7ed07/tokens/fonts.css">
+<link rel="stylesheet" href="/_ds/genyus-school-design-system-87b1a3d4-ed31-4494-8c36-a6c785d7ed07/tokens/colors.css">
+<link rel="stylesheet" href="/_ds/genyus-school-design-system-87b1a3d4-ed31-4494-8c36-a6c785d7ed07/tokens/typography.css">
+<link rel="stylesheet" href="/_ds/genyus-school-design-system-87b1a3d4-ed31-4494-8c36-a6c785d7ed07/tokens/spacing.css">
+<link rel="stylesheet" href="/_ds/genyus-school-design-system-87b1a3d4-ed31-4494-8c36-a6c785d7ed07/styles.css">
+<script src="/_ds/genyus-school-design-system-87b1a3d4-ed31-4494-8c36-a6c785d7ed07/_ds_bundle.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:var(--ink-900);font-family:var(--font-body);-webkit-font-smoothing:antialiased}
+a{color:var(--ink-900);text-decoration:none}
+a:hover{color:var(--color-primary-ink)}
+*{box-sizing:border-box}
+input,textarea,select{font-family:var(--font-body)}
+
+@media (max-width:900px){[data-nav-links],[data-nav-cta]{display:none !important}[data-nav-menu]{display:block !important}}
+[data-nav-menu] summary{list-style:none}[data-nav-menu] summary::-webkit-details-marker{display:none}
+</style>
+</helmet>
+
+<div ref="{{ rootRef }}" style="position:relative;overflow-x:hidden;background:#fff">
+
+<!-- NAV -->
+<div style="position:fixed;top:16px;left:0;right:0;z-index:50;display:flex;justify-content:center;padding:0 16px">
+  <nav style="width:100%;max-width:1200px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:#fff;border-radius:28px;padding:10px 12px 10px clamp(14px,3vw,24px);box-shadow:0 0 0 1px rgba(14,17,22,0.06),0 16px 16px -8px rgba(0,0,0,0.03),0 10px 10px -5px rgba(0,0,0,0.03),0 5px 5px -2.5px rgba(0,0,0,0.03),0 3px 3px -1.5px rgba(0,0,0,0.03),0 1px 1px -0.5px rgba(0,0,0,0.03)">
+    <a href="/" style="display:flex;align-items:center"><img src="/assets/genyus-school-logo.png" alt="Genyus School" style="height:40px;width:auto;display:block"></a>
+    <div data-nav-links style="display:flex;align-items:center;gap:4px;flex-wrap:wrap">
+      <a href="/" style="padding:8px 14px;border-radius:999px;font-size:15px;font-weight:500">Home</a>
+      <a href="/nosotros" style="padding:8px 14px;border-radius:999px;font-size:15px;font-weight:500">Nosotros</a>
+      <a href="/programas" style="padding:8px 14px;border-radius:999px;font-size:15px;font-weight:500">Programas</a>
+      <a href="#top" style="padding:8px 14px;border-radius:999px;font-size:15px;font-weight:600;background:color-mix(in oklch, var(--gs-blue) 12%, white)">Eventos</a>
+      <a href="/academy-lab" style="padding:8px 14px;border-radius:999px;font-size:15px;font-weight:500">Academy + Lab</a>
+    </div>
+    <details data-nav-menu style="display:none;position:relative">
+      <summary style="cursor:pointer;display:flex;align-items:center;gap:8px;padding:11px 18px;border-radius:28px;font-size:15px;font-weight:700;box-shadow:0 0 0 1.5px var(--ink-200)"><span aria-hidden="true" style="display:flex;flex-direction:column;gap:4px"><span style="width:16px;height:2px;border-radius:2px;background:var(--ink-900)"></span><span style="width:16px;height:2px;border-radius:2px;background:var(--ink-900)"></span><span style="width:16px;height:2px;border-radius:2px;background:var(--ink-900)"></span></span>Menú</summary>
+      <div style="position:absolute;right:0;top:calc(100% + 12px);width:min(280px,calc(100vw - 32px));display:flex;flex-direction:column;gap:2px;padding:10px;border-radius:22px;background:#fff;box-shadow:0 0 0 1px rgba(14,17,22,0.06),0 18px 48px rgba(14,17,22,0.14)">
+      <a href="/" style="padding:12px 16px;border-radius:14px;font-size:16px;font-weight:500">Home</a>
+      <a href="/nosotros" style="padding:12px 16px;border-radius:14px;font-size:16px;font-weight:500">Nosotros</a>
+      <a href="/programas" style="padding:12px 16px;border-radius:14px;font-size:16px;font-weight:500">Programas</a>
+      <a href="#top" style="padding:12px 16px;border-radius:14px;font-size:16px;font-weight:600;background:color-mix(in oklch, var(--gs-blue) 12%, white)">Eventos</a>
+      <a href="/academy-lab" style="padding:12px 16px;border-radius:14px;font-size:16px;font-weight:500">Academy + Lab</a>
+    <a data-m href="/nosotros#contacto" style="margin-top:6px;text-align:center;padding:12px 20px;border-radius:28px;font-size:15px;font-weight:700;border:1.5px solid transparent;background:linear-gradient(#fff,#fff) padding-box, linear-gradient(90deg,var(--gs-pink),var(--gs-rose) 42%,var(--gs-orange)) border-box">Contáctanos</a>
+      </div>
+    </details>
+    <a data-nav-cta href="/nosotros#contacto" style="padding:11px 20px;border-radius:28px;font-size:15px;font-weight:700;border:1.5px solid transparent;background:linear-gradient(#fff,#fff) padding-box, linear-gradient(90deg,var(--gs-pink),var(--gs-rose) 42%,var(--gs-orange)) border-box">Contáctanos</a>
+  </nav>
+</div>
+
+<!-- HERO -->
+<section id="top" data-screen-label="Hero" style="position:relative;min-height:min(80vh,700px);display:flex;align-items:flex-end;overflow:hidden;background:var(--ink-900)">
+  <img src="/assets/hero-eventos.jpg" alt="Comunidad Genyus en el stand de South Summit" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%">
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,17,22,0.3) 0%,rgba(14,17,22,0.1) 40%,rgba(14,17,22,0.78) 100%)"></div>
+  <div style="position:relative;width:100%;max-width:1200px;margin:0 auto;padding:140px 24px 72px;color:#fff">
+    <h1 style="margin:0;font-family:var(--font-poster);font-weight:400;font-size:clamp(56px,9vw,136px);line-height:0.95;text-transform:uppercase;text-shadow:0 2px 24px rgba(0,0,0,0.3)">Eventos <span style="background:linear-gradient(90deg,var(--gs-pink),var(--gs-rose) 42%,var(--gs-orange));-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none">Genyus</span></h1>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section data-screen-label="Intro" style="max-width:1200px;margin:0 auto;padding:96px 24px 80px">
+  <div style="display:flex;flex-direction:column;gap:12px;max-width:820px">
+    <span style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-primary-ink)">Eventos Genyus</span>
+    <h2 style="margin:0;font-family:var(--font-body);font-weight:800;font-size:clamp(36px,4.4vw,56px);line-height:1.05;letter-spacing:-0.025em">Nuestra comunidad, como motor.</h2>
+    <p style="margin:12px 0 0;font-size:clamp(18px,1.7vw,21px);line-height:1.55;color:var(--ink-700);text-wrap:pretty">En Genyus School sabemos que transformar el futuro de los jóvenes no es un trabajo de uno solo. Para lograrlo, necesitamos la energía de toda nuestra comunidad: de cada sueño, de cada idea y de cada esfuerzo compartido.</p>
+    <p style="margin:0;font-size:clamp(18px,1.7vw,21px);line-height:1.55;font-weight:700;text-wrap:pretty">Revivamos juntos estos momentos que construyen el mañana.</p>
+  </div>
+</section>
+
+<!-- SEM INSTITUCIONES -->
+<section id="sem-instituciones" data-screen-label="SEM Instituciones" style="max-width:1200px;margin:0 auto;padding:80px 24px;border-top:1px solid var(--ink-200);display:flex;flex-direction:column;gap:40px">
+  <div style="display:flex;flex-direction:column;gap:16px;max-width:760px">
+    <span style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#B0126A">Semana del emprendimiento instituciones publicas</span>
+    <h2 style="margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(30px,3.4vw,44px);line-height:1.08;letter-spacing:-0.03em;text-wrap:balance">Revive la Semana del Emprendimiento en instituciones públicas</h2>
+    <p style="margin:0;font-size:17px;line-height:1.6;color:var(--ink-700);text-wrap:pretty">Ayuntamientos, entidades y agentes públicos que impulsan la cultura emprendedora.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:20px">
+    <div style="grid-column:1/-1"><a href="https://www.youtube.com/watch?v=CrVb5opxnvY" target="_blank" rel="noopener" style="display:flex;flex-direction:column;gap:12px;color:var(--ink-900)" style-active="transform:scale(0.98)">
+      <div style="position:relative;border-radius:22px;overflow:hidden;aspect-ratio:16/9;background:var(--ink-900)">
+        <img src="https://i.ytimg.com/vi_webp/CrVb5opxnvY/maxresdefault.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+        <span style="position:absolute;left:50%;top:50%;width:72px;height:72px;margin:-36px 0 0 -36px;border-radius:999px;background:rgba(255,255,255,0.92);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,0.25)"><span style="width:0;height:0;border-left:20px solid var(--ink-900);border-top:12px solid transparent;border-bottom:12px solid transparent;margin-left:5px"></span></span>
+      </div>
+      
+    </a></div>
+    <a href="https://www.youtube.com/watch?v=s4k_BgzV8pQ" target="_blank" rel="noopener" style="display:flex;flex-direction:column;gap:12px;color:var(--ink-900)" style-active="transform:scale(0.98)">
+      <div style="position:relative;border-radius:22px;overflow:hidden;aspect-ratio:16/9;background:var(--ink-900)">
+        <img src="https://i.ytimg.com/vi_webp/s4k_BgzV8pQ/maxresdefault.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+        <span style="position:absolute;left:50%;top:50%;width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:999px;background:rgba(255,255,255,0.92);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,0.25)"><span style="width:0;height:0;border-left:16px solid var(--ink-900);border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:5px"></span></span>
+      </div>
+      
+    </a>
+    <a href="https://www.youtube.com/watch?v=7Byk-FY1DXw" target="_blank" rel="noopener" style="display:flex;flex-direction:column;gap:12px;color:var(--ink-900)" style-active="transform:scale(0.98)">
+      <div style="position:relative;border-radius:22px;overflow:hidden;aspect-ratio:16/9;background:var(--ink-900)">
+        <img src="https://i.ytimg.com/vi_webp/7Byk-FY1DXw/maxresdefault.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+        <span style="position:absolute;left:50%;top:50%;width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:999px;background:rgba(255,255,255,0.92);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,0.25)"><span style="width:0;height:0;border-left:16px solid var(--ink-900);border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:5px"></span></span>
+      </div>
+      
+    </a>
+    <a href="https://www.youtube.com/watch?v=BpfqTq8PCEE" target="_blank" rel="noopener" style="display:flex;flex-direction:column;gap:12px;color:var(--ink-900)" style-active="transform:scale(0.98)">
+      <div style="position:relative;border-radius:22px;overflow:hidden;aspect-ratio:16/9;background:var(--ink-900)">
+        <img src="https://i.ytimg.com/vi_webp/BpfqTq8PCEE/maxresdefault.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+        <span style="position:absolute;left:50%;top:50%;width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:999px;background:rgba(255,255,255,0.92);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,0.25)"><span style="width:0;height:0;border-left:16px solid var(--ink-900);border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:5px"></span></span>
+      </div>
+      
+    </a>
+  </div>
+  <h3 style="margin:24px 0 0;font-family:var(--font-display);font-weight:400;font-size:clamp(26px,2.6vw,34px);line-height:1.1;letter-spacing:-0.02em">Voces institucionales del emprendimiento</h3>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:32px 20px">
+    <a href="https://www.youtube.com/watch?v=Jl4gR_6IOyM" target="_blank" rel="noopener" style="display:flex;flex-direction:column;gap:12px;color:var(--ink-900)" style-active="transform:scale(0.98)">
+      <div style="position:relative;border-radius:22px;overflow:hidden;aspect-ratio:16/9;background:var(--ink-900)">
+        <img src="https://i.ytimg.com/vi_webp/Jl4gR_6IOyM/maxresdefault.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+        <span style="position:absolute;left:50%;top:50%;width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:999px;background:rgba(255,255,255,0.92);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,0.25)"><span style="width:0;height:0;border-left:16px solid var(--ink-900);border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:5px"></span></span>
+      </div>
+      <span style="font-size:15px;font-weight:600;line-height:1.4;text-wrap:pretty">Natalia Chueca - Alcaldesa del Ayuntamiento de Zaragoza</span>
+    </a>
+    <a href="https://www.youtube.com/watch?v=dDDtSuxs0y8" target="_blank" rel="noopener" style="display:flex;flex-direction:column;gap:12px;color:var(--ink-900)" style-active="transform:scale(0.98)">
+      <div style="position:relative;border-radius:22px;overflow:hidden;aspect-ratio:16/9;background:var(--ink-900)">
+        <img src="https://i.ytimg.com/vi_webp/dDDtSuxs0y8/maxresdefault.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+        <span style="position:absolute;left:50%;top:50%;width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:999px;background:rgba(255,255,255,0.92);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,0.25)"><span style="width:0;height:0;border-left:16px solid var(--ink-900);border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:5px"></span></span>
+      </div>
+      <span style="font-size:15px;font-weight:600;line-height:1.4;text-wrap:pretty">Carlos Gimenos - Consejero de Economía del Ayuntamiento de Zaragoza</span>
+    </a>
+    <a href="https://www.youtube.com/watch?v=bFfZ9XQMIFY" target="_blank" rel="noopener" style="display:flex;flex-direction:column;gap:12px;color:var(--ink-900)" style-active="transform:scale(0.98)">
+      <div style="position:relative;border-radius:22px;overflow:hidden;aspect-ratio:16/9;background:var(--ink-900)">
+        <img src="https://i.ytimg.com/vi_webp/bFfZ9XQMIFY/maxresdefault.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+        <span style="position:absolute;left:50%;top:50%;width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:999px;background:rgba(255,255,255,0.92);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,0.25)"><span style="width:0;height:0;border-left:16px solid var(--ink-900);border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:5px"></span></span>
+      </div>
+      <span style="font-size:15px;font-weight:600;line-height:1.4;text-wrap:pretty">Yoann Blanc - Presidente AJE Balears</span>
+    </a>
+    <a href="https://www.youtube.com/watch?v=z20N_TLtK6c" target="_blank" rel="noopener" style="display:flex;flex-direction:column;gap:12px;color:var(--ink-900)" style-active="transform:scale(0.98)">
+      <div style="position:relative;border-radius:22px;overflow:hidden;aspect-ratio:16/9;background:var(--ink-900)">
+        <img src="https://i.ytimg.com/vi_webp/z20N_TLtK6c/maxresdefault.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+        <span style="position:absolute;left:50%;top:50%;width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:999px;background:rgba(255,255,255,0.92);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,0.25)"><span style="width:0;height:0;border-left:16px solid var(--ink-900);border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:5px"></span></span>
+      </div>
+      <span style="font-size:15px;font-weight:600;line-height:1.4;text-wrap:pretty">José Antonio Caldés - Director General de Empresas, Autónomos y Comercio del Gobierno de Baleares</span>
+    </a>
+    <a href="https://www.youtube.com/watch?v=HpHachp4G5k" target="_blank" rel="noopener" style="display:flex;flex-direction:column;gap:12px;color:var(--ink-900)" style-active="transform:scale(0.98)">
+      <div style="position:relative;border-radius:22px;overflow:hidden;aspect-ratio:16/9;background:var(--ink-900)">
+        <img src="https://i.ytimg.com/vi_webp/HpHachp4G5k/maxresdefault.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+        <span style="position:absolute;left:50%;top:50%;width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:999px;background:rgba(255,255,255,0.92);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,0.25)"><span style="width:0;height:0;border-left:16px solid var(--ink-900);border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:5px"></span></span>
+      </div>
+      <span style="font-size:15px;font-weight:600;line-height:1.4;text-wrap:pretty">Lola Moreno - Alcaldesa del Ayuntamiento de Majadahonda</span>
+    </a>
+    <a href="https://www.youtube.com/watch?v=4YUUw9JfzXg" target="_blank" rel="noopener" style="display:flex;flex-direction:column;gap:12px;color:var(--ink-900)" style-active="transform:scale(0.98)">
+      <div style="position:relative;border-radius:22px;overflow:hidden;aspect-ratio:16/9;background:var(--ink-900)">
+        <img src="https://i.ytimg.com/vi_webp/4YUUw9JfzXg/maxresdefault.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+        <span style="position:absolute;left:50%;top:50%;width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:999px;background:rgba(255,255,255,0.92);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,0.25)"><span style="width:0;height:0;border-left:16px solid var(--ink-900);border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:5px"></span></span>
+      </div>
+      <span style="font-size:15px;font-weight:600;line-height:1.4;text-wrap:pretty">Ana Camíns - Concejala de Desarrollo Económico, Empleo y Comercio del Ayuntamiento de Majadahonda</span>
+    </a>
+  </div>
+</section>
+
+<!-- SEM COLEGIOS -->
+<section id="sem-colegios" data-screen-label="SEM Colegios" style="max-width:1200px;margin:0 auto;padding:80px 24px;border-top:1px solid var(--ink-200);display:flex;flex-direction:column;gap:40px">
+  <div style="display:flex;flex-direction:column;gap:16px;max-width:760px">
+    <span style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#A9520A">Semana del emprendimiento colegios</span>
+    <h2 style="margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(30px,3.4vw,44px);line-height:1.08;letter-spacing:-0.03em;text-wrap:balance">Revive la Semana del Emprendimiento en colegios</h2>
+    <p style="margin:0;font-size:17px;line-height:1.6;color:var(--ink-700);text-wrap:pretty">Una selección de momentos, charlas e historias para compartir con la comunidad educativa.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:32px 20px">
+    <a href="https://www.youtube.com/watch?v=-Fq7fdN1TtM" target="_blank" rel="noopener" style="display:flex;flex-direction:column;gap:12px;color:var(--ink-900)" style-active="transform:scale(0.98)">
+      <div style="position:relative;border-radius:22px;overflow:hidden;aspect-ratio:16/9;background:var(--ink-900)">
+        <img src="https://i.ytimg.com/vi_webp/-Fq7fdN1TtM/maxresdefault.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+        <span style="position:absolute;left:50%;top:50%;width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:999px;background:rgba(255,255,255,0.92);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,0.25)"><span style="width:0;height:0;border-left:16px solid var(--ink-900);border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:5px"></span></span>
+      </div>
+      <span style="font-size:15px;font-weight:600;line-height:1.4;text-wrap:pretty">Bea - Directora de Primaria Colegio Antonio Machado</span>
+    </a>
+    <a href="https://www.youtube.com/watch?v=XkhD9OO5IUc" target="_blank" rel="noopener" style="display:flex;flex-direction:column;gap:12px;color:var(--ink-900)" style-active="transform:scale(0.98)">
+      <div style="position:relative;border-radius:22px;overflow:hidden;aspect-ratio:16/9;background:var(--ink-900)">
+        <img src="https://i.ytimg.com/vi_webp/XkhD9OO5IUc/maxresdefault.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+        <span style="position:absolute;left:50%;top:50%;width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:999px;background:rgba(255,255,255,0.92);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,0.25)"><span style="width:0;height:0;border-left:16px solid var(--ink-900);border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:5px"></span></span>
+      </div>
+      <span style="font-size:15px;font-weight:600;line-height:1.4;text-wrap:pretty">Esperanza Díez - Directora Colegio Río Ebro</span>
+    </a>
+    <a href="https://www.youtube.com/watch?v=AWYULu7DNdM" target="_blank" rel="noopener" style="display:flex;flex-direction:column;gap:12px;color:var(--ink-900)" style-active="transform:scale(0.98)">
+      <div style="position:relative;border-radius:22px;overflow:hidden;aspect-ratio:16/9;background:var(--ink-900)">
+        <img src="https://i.ytimg.com/vi_webp/AWYULu7DNdM/maxresdefault.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+        <span style="position:absolute;left:50%;top:50%;width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:999px;background:rgba(255,255,255,0.92);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,0.25)"><span style="width:0;height:0;border-left:16px solid var(--ink-900);border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:5px"></span></span>
+      </div>
+      <span style="font-size:15px;font-weight:600;line-height:1.4;text-wrap:pretty">Francho Lafuente - Docente CEIP Maestro Don Pedro Oros</span>
+    </a>
+    <a href="https://www.youtube.com/watch?v=3u43PJUSd9Q" target="_blank" rel="noopener" style="display:flex;flex-direction:column;gap:12px;color:var(--ink-900)" style-active="transform:scale(0.98)">
+      <div style="position:relative;border-radius:22px;overflow:hidden;aspect-ratio:16/9;background:var(--ink-900)">
+        <img src="https://i.ytimg.com/vi_webp/3u43PJUSd9Q/maxresdefault.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+        <span style="position:absolute;left:50%;top:50%;width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:999px;background:rgba(255,255,255,0.92);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,0.25)"><span style="width:0;height:0;border-left:16px solid var(--ink-900);border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:5px"></span></span>
+      </div>
+      <span style="font-size:15px;font-weight:600;line-height:1.4;text-wrap:pretty">Vanesa Motiva - Docente Colego Alemán</span>
+    </a>
+    <a href="https://www.youtube.com/watch?v=gVNtkh3zFFE" target="_blank" rel="noopener" style="display:flex;flex-direction:column;gap:12px;color:var(--ink-900)" style-active="transform:scale(0.98)">
+      <div style="position:relative;border-radius:22px;overflow:hidden;aspect-ratio:16/9;background:var(--ink-900)">
+        <img src="https://i.ytimg.com/vi_webp/gVNtkh3zFFE/maxresdefault.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+        <span style="position:absolute;left:50%;top:50%;width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:999px;background:rgba(255,255,255,0.92);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,0.25)"><span style="width:0;height:0;border-left:16px solid var(--ink-900);border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:5px"></span></span>
+      </div>
+      <span style="font-size:15px;font-weight:600;line-height:1.4;text-wrap:pretty">Joan Enseñat - Docente del Colegio San Cayetano</span>
+    </a>
+    <a href="https://www.youtube.com/watch?v=mFRpRPD6U1E" target="_blank" rel="noopener" style="display:flex;flex-direction:column;gap:12px;color:var(--ink-900)" style-active="transform:scale(0.98)">
+      <div style="position:relative;border-radius:22px;overflow:hidden;aspect-ratio:16/9;background:var(--ink-900)">
+        <img src="https://i.ytimg.com/vi_webp/mFRpRPD6U1E/maxresdefault.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+        <span style="position:absolute;left:50%;top:50%;width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:999px;background:rgba(255,255,255,0.92);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,0.25)"><span style="width:0;height:0;border-left:16px solid var(--ink-900);border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:5px"></span></span>
+      </div>
+      <span style="font-size:15px;font-weight:600;line-height:1.4;text-wrap:pretty">Luis Argilés - Docente Colegio Sacrat Cor</span>
+    </a>
+    <a href="https://www.youtube.com/watch?v=_7J6yXfPOG8" target="_blank" rel="noopener" style="display:flex;flex-direction:column;gap:12px;color:var(--ink-900)" style-active="transform:scale(0.98)">
+      <div style="position:relative;border-radius:22px;overflow:hidden;aspect-ratio:16/9;background:var(--ink-900)">
+        <img src="https://i.ytimg.com/vi_webp/_7J6yXfPOG8/maxresdefault.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+        <span style="position:absolute;left:50%;top:50%;width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:999px;background:rgba(255,255,255,0.92);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,0.25)"><span style="width:0;height:0;border-left:16px solid var(--ink-900);border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:5px"></span></span>
+      </div>
+      <span style="font-size:15px;font-weight:600;line-height:1.4;text-wrap:pretty">Profesora - Colegio San Pío X</span>
+    </a>
+    <a href="https://www.youtube.com/watch?v=4vvLK0rajXo" target="_blank" rel="noopener" style="display:flex;flex-direction:column;gap:12px;color:var(--ink-900)" style-active="transform:scale(0.98)">
+      <div style="position:relative;border-radius:22px;overflow:hidden;aspect-ratio:16/9;background:var(--ink-900)">
+        <img src="https://i.ytimg.com/vi_webp/4vvLK0rajXo/maxresdefault.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+        <span style="position:absolute;left:50%;top:50%;width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:999px;background:rgba(255,255,255,0.92);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,0.25)"><span style="width:0;height:0;border-left:16px solid var(--ink-900);border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:5px"></span></span>
+      </div>
+      <span style="font-size:15px;font-weight:600;line-height:1.4;text-wrap:pretty">Profesor - Colegio San Federico García Lorca</span>
+    </a>
+  </div>
+</section>
+
+<!-- EVENTOS PRIVADOS -->
+<section id="privados" data-screen-label="Eventos privados" style="max-width:1200px;margin:0 auto;padding:80px 24px;border-top:1px solid var(--ink-200);display:flex;flex-direction:column;gap:40px">
+  <div style="display:flex;flex-direction:column;gap:16px;max-width:760px">
+    <span style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-primary-ink)">Eventos Genyus</span>
+    <h2 style="margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(30px,3.4vw,44px);line-height:1.08;letter-spacing:-0.03em;text-wrap:balance">Nuestros eventos privados</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:32px 20px">
+    <div style="grid-column:1/-1"><a href="https://www.youtube.com/watch?v=yUDqHFiRjA4" target="_blank" rel="noopener" style="display:flex;flex-direction:column;gap:12px;color:var(--ink-900)" style-active="transform:scale(0.98)">
+      <div style="position:relative;border-radius:22px;overflow:hidden;aspect-ratio:16/9;background:var(--ink-900)">
+        <img src="https://i.ytimg.com/vi_webp/yUDqHFiRjA4/maxresdefault.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+        <span style="position:absolute;left:50%;top:50%;width:72px;height:72px;margin:-36px 0 0 -36px;border-radius:999px;background:rgba(255,255,255,0.92);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,0.25)"><span style="width:0;height:0;border-left:20px solid var(--ink-900);border-top:12px solid transparent;border-bottom:12px solid transparent;margin-left:5px"></span></span>
+      </div>
+      <span style="font-size:18px;font-weight:700;line-height:1.4;text-wrap:pretty">II Encuentro anual Genyus Angels - 2026</span>
+    </a></div>
+    <a href="https://www.youtube.com/watch?v=oS9gv0uAo2A&amp;t=33s" target="_blank" rel="noopener" style="display:flex;flex-direction:column;gap:12px;color:var(--ink-900)" style-active="transform:scale(0.98)">
+      <div style="position:relative;border-radius:22px;overflow:hidden;aspect-ratio:16/9;background:var(--ink-900)">
+        <img src="https://i.ytimg.com/vi_webp/oS9gv0uAo2A/maxresdefault.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+        <span style="position:absolute;left:50%;top:50%;width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:999px;background:rgba(255,255,255,0.92);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,0.25)"><span style="width:0;height:0;border-left:16px solid var(--ink-900);border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:5px"></span></span>
+      </div>
+      <span style="font-size:15px;font-weight:600;line-height:1.4;text-wrap:pretty">FUTURE MINDS 2025</span>
+    </a>
+    <a href="https://www.youtube.com/watch?v=r-DIt6l6BEA" target="_blank" rel="noopener" style="display:flex;flex-direction:column;gap:12px;color:var(--ink-900)" style-active="transform:scale(0.98)">
+      <div style="position:relative;border-radius:22px;overflow:hidden;aspect-ratio:16/9;background:var(--ink-900)">
+        <img src="https://i.ytimg.com/vi_webp/r-DIt6l6BEA/maxresdefault.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+        <span style="position:absolute;left:50%;top:50%;width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:999px;background:rgba(255,255,255,0.92);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,0.25)"><span style="width:0;height:0;border-left:16px solid var(--ink-900);border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:5px"></span></span>
+      </div>
+      <span style="font-size:15px;font-weight:600;line-height:1.4;text-wrap:pretty">Asturias AfterWork 2025</span>
+    </a>
+    <a href="https://www.youtube.com/watch?v=kPZlGGOoBJM&amp;t=6s" target="_blank" rel="noopener" style="display:flex;flex-direction:column;gap:12px;color:var(--ink-900)" style-active="transform:scale(0.98)">
+      <div style="position:relative;border-radius:22px;overflow:hidden;aspect-ratio:16/9;background:var(--ink-900)">
+        <img src="https://i.ytimg.com/vi_webp/kPZlGGOoBJM/maxresdefault.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+        <span style="position:absolute;left:50%;top:50%;width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:999px;background:rgba(255,255,255,0.92);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,0.25)"><span style="width:0;height:0;border-left:16px solid var(--ink-900);border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:5px"></span></span>
+      </div>
+      <span style="font-size:15px;font-weight:600;line-height:1.4;text-wrap:pretty">FUTURE MINDS FEST 2024</span>
+    </a>
+    <a href="https://www.youtube.com/watch?v=M1cuHABmuTM" target="_blank" rel="noopener" style="display:flex;flex-direction:column;gap:12px;color:var(--ink-900)" style-active="transform:scale(0.98)">
+      <div style="position:relative;border-radius:22px;overflow:hidden;aspect-ratio:16/9;background:var(--ink-900)">
+        <img src="https://i.ytimg.com/vi_webp/M1cuHABmuTM/maxresdefault.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+        <span style="position:absolute;left:50%;top:50%;width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:999px;background:rgba(255,255,255,0.92);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,0.25)"><span style="width:0;height:0;border-left:16px solid var(--ink-900);border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:5px"></span></span>
+      </div>
+      <span style="font-size:15px;font-weight:600;line-height:1.4;text-wrap:pretty">I Encuentro anual Genyus Angels - 2025</span>
+    </a>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto" data-screen-label="Contacto" style="max-width:1200px;margin:0 auto;padding:80px 24px;border-top:1px solid var(--ink-200)">
+  <div style="border-radius:24px;padding:clamp(28px,5vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:48px;box-shadow:0 0 0 1px rgba(14,17,22,0.06),0 20px 20px -10px rgba(0,0,0,0.07),0 10px 10px -5px rgba(0,0,0,0.04),0 3px 3px -1.5px rgba(0,0,0,0.03)">
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <h2 style="margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(44px,5.4vw,76px);line-height:1.15;letter-spacing:-0.035em">¿<em style="font-style:normal;display:inline-block;padding:0.06em 0.08em 0.14em;margin:0 -0.04em;background:linear-gradient(90deg,var(--gs-pink),var(--gs-rose) 42%,var(--gs-orange));-webkit-background-clip:text;background-clip:text;color:transparent">Hablamos</em>?</h2>
+      <p style="margin:0;font-size:18px;line-height:1.45;color:var(--ink-700);max-width:420px">Cuéntanos en qué centro estás y qué programa te interesa. Te contactamos en menos de 24 horas.</p>
+    </div>
+    <form onSubmit="{{ submit }}" style="display:flex;flex-direction:column;gap:22px">
+      <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+        <div style="border-radius:16px;padding:16px 20px;background:color-mix(in oklch, var(--state-success) 14%, white);font-size:15px;font-weight:600">Gracias. Te contactamos en menos de 24 horas.</div>
+      </sc-if>
+      <label style="display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:600">Nombre y apellido
+        <input type="text" style="padding:14px 16px;font-size:16px;border:1.5px solid var(--ink-300);border-radius:16px;outline:none;color:var(--ink-900)">
+      </label>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <span style="font-size:14px;font-weight:600">¿Prefieres que te escribamos o que te llamemos?</span>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <sc-for list="{{ prefOpts }}" as="o" hint-placeholder-count="2">
+            <button type="button" onClick="{{ o.onClick }}" style="padding:10px 18px;border-radius:999px;font-size:15px;font-weight:600;cursor:pointer;font-family:var(--font-body);border:1.5px solid {{ o.border }};background:{{ o.bg }};color:var(--ink-900)">{{ o.label }}</button>
+          </sc-for>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <span style="font-size:14px;font-weight:600">¿Eres una institución, colegio o padre?</span>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <sc-for list="{{ whoOpts }}" as="o" hint-placeholder-count="3">
+            <button type="button" onClick="{{ o.onClick }}" style="padding:10px 18px;border-radius:999px;font-size:15px;font-weight:600;cursor:pointer;font-family:var(--font-body);border:1.5px solid {{ o.border }};background:{{ o.bg }};color:var(--ink-900)">{{ o.label }}</button>
+          </sc-for>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <span style="font-size:14px;font-weight:600">Producto que te interesa</span>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <sc-for list="{{ prodOpts }}" as="o" hint-placeholder-count="4">
+            <button type="button" onClick="{{ o.onClick }}" style="padding:10px 18px;border-radius:999px;font-size:15px;font-weight:600;cursor:pointer;font-family:var(--font-body);border:1.5px solid {{ o.border }};background:{{ o.bg }};color:var(--ink-900)">{{ o.label }}</button>
+          </sc-for>
+        </div>
+      </div>
+      <label style="display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:600">Déjanos tu comentario para que podamos asesorarte mejor
+        <textarea rows="4" style="padding:14px 16px;font-size:16px;border:1.5px solid var(--ink-300);border-radius:16px;outline:none;resize:vertical;color:var(--ink-900)"></textarea>
+      </label>
+      <button type="submit" style="align-self:flex-start;padding:16px 36px;border-radius:28px;border:none;cursor:pointer;font-family:var(--font-body);font-size:17px;font-weight:700;color:#fff;background:var(--grad-school);box-shadow:var(--shadow-brand)" style-active="transform:scale(0.96)">Enviar</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer data-screen-label="Footer" style="background:var(--ink-900);color:#fff">
+  <div style="max-width:1200px;margin:0 auto;padding:64px 24px 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:40px">
+    <div style="display:flex;flex-direction:column;gap:20px;grid-column:span 2;min-width:0">
+      <img src="/assets/genyus-blanco.png" alt="Genyus School" style="height:30px;width:auto;align-self:flex-start">
+      <p style="margin:0;font-size:16px;line-height:1.5;color:var(--ink-300);max-width:380px">Educar en emprendimiento a nuestros niños/as hoy, es el mayor motor de desarrollo socioeconómico, mañana.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a href="https://www.facebook.com/GenyusSchool/" style="padding:8px 14px;border-radius:999px;border:1px solid var(--ink-600);color:#fff;font-size:13px">Facebook</a>
+        <a href="https://www.linkedin.com/company/genyusschool/" style="padding:8px 14px;border-radius:999px;border:1px solid var(--ink-600);color:#fff;font-size:13px">LinkedIn</a>
+        <a href="https://www.instagram.com/genyusschool/" style="padding:8px 14px;border-radius:999px;border:1px solid var(--ink-600);color:#fff;font-size:13px">Instagram</a>
+        <a href="https://www.youtube.com/genyusschool" style="padding:8px 14px;border-radius:999px;border:1px solid var(--ink-600);color:#fff;font-size:13px">YouTube</a>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <h4 style="margin:0 0 4px;font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gs-blue)">Genyus School</h4>
+      <a href="/nosotros" style="color:#fff;font-size:15px">Nosotros</a>
+      <a href="/programas" style="color:#fff;font-size:15px">Programas</a>
+      <a href="/eventos" style="color:#fff;font-size:15px">Eventos (proximamente)</a>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <h4 style="margin:0 0 4px;font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gs-pink)">Programas</h4>
+      <a href="/programas/genyusgo" style="color:#fff;font-size:15px">Genyus Go</a>
+      <a href="/programas/sem-insti" style="color:#fff;font-size:15px">SEM Instituciones</a>
+      <a href="/programas/sem-colegios" style="color:#fff;font-size:15px">SEM Colegios</a>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <h4 style="margin:0 0 4px;font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gs-orange)">Políticas generales</h4>
+      <a href="/politicasgenyus#aviso-legal" style="color:#fff;font-size:15px">Aviso legal</a>
+      <a href="/politicasgenyus#privacidad" style="color:#fff;font-size:15px">Política de privacidad</a>
+      <a href="/politicasgenyus#cookies" style="color:#fff;font-size:15px">Política de cookies</a>
+    </div>
+  </div>
+  <div style="max-width:1200px;margin:0 auto;padding:0 24px 32px">
+    <img src="https://framerusercontent.com/images/hLXNBPbhbG1sD3nvQJ1FVBjqA.jpeg?width=768&amp;height=76" alt="" style="width:100%;max-width:640px;height:auto;display:block;border-radius:8px">
+  </div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;scrollReveal&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { pref: 'Correo', who: null, prod: null, sent: false };
+  rootRef = React.createRef();
+  componentDidMount() {
+    const root = this.rootRef.current;
+    if (!root || this.props.scrollReveal === false || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const els = [...root.querySelectorAll('section > *, footer > *')].filter(el => el.getBoundingClientRect().top > innerHeight);
+    const showAll = () => els.forEach(el => { el.style.opacity = '1'; el.style.transform = 'none'; });
+    this.fallback = setTimeout(() => { if (document.visibilityState === 'hidden') showAll(); }, 2500);
+    addEventListener('beforeprint', showAll);
+    els.forEach(el => {
+      const i = [...el.parentElement.children].indexOf(el);
+      Object.assign(el.style, { opacity: '0', transform: 'translateY(40px)', transition: `opacity 700ms cubic-bezier(.2,.7,.2,1) ${i*90}ms, transform 800ms cubic-bezier(.34,1.3,.5,1) ${i*90}ms` });
+    });
+    this.io = new IntersectionObserver(entries => entries.forEach(e => {
+      if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'none'; this.io.unobserve(e.target); }
+    }), { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    els.forEach(el => this.io.observe(el));
+  }
+  componentWillUnmount() { this.io && this.io.disconnect(); clearTimeout(this.fallback); }
+  opts(list, key) {
+    return list.map(label => {
+      const on = this.state[key] === label;
+      return {
+        label,
+        bg: on ? 'color-mix(in oklch, var(--gs-blue) 14%, white)' : '#fff',
+        border: on ? 'var(--gs-blue)' : 'var(--ink-300)',
+        onClick: () => this.setState({ [key]: label })
+      };
+    });
+  }
+  renderVals() {
+    const v = this.vals();
+    return Object.assign(v, { logosTop: v.logos.slice(0, 4), logosBottom: v.logos.slice(4) });
+  }
+  vals() {
+    const img = id => `https://framerusercontent.com/images/${id}`;
+    const wash = c => `color-mix(in oklch, var(${c}) 13%, white)`;
+    return {
+      rootRef: this.rootRef,
+      logos: [
+        ['e3xbpjHcefNjpdbD98kBl9255yM.png', 40], ['yqI2DC2yXynOEvMe7TAKislzqn0.png', 36], ['3QJbl3gWjjEOAeSmXoGCXP1blfU.png', 36],
+        ['Qf3v7jGIG92WispGomkDeTMMwjE.png', 56], ['ge1OpAjqHFsHePRmyc5KaKDgrjg.png', 34], ['6RCXL4O2RbBgGiMAgUnEASmN65s.png', 40],
+        ['VrbpIoV8ll20jh4ltYXNsCOCVz4.png', 56], ['KzQgDFS2n4ZtosPdWoqs09jOms.png', 60], ['RSkTjK6yx6e319lB6UxNoRhgE4.png', 34]
+      ].map(([id, h]) => ({ src: img(id), h: Math.round(h * 1.4) })),
+      stats: [
+        { n: '+350', label: 'centros educativos', bg: wash('--gs-blue') },
+        { n: '+20', label: 'instituciones públicas', bg: wash('--gs-pink') },
+        { n: '+25.000', label: 'estudiantes', bg: wash('--gs-orange') },
+        { n: '4', label: 'premios nacionales', bg: 'color-mix(in oklch, var(--gs-yellow) 26%, white)' },
+        { n: '+60', label: 'menciones en medios de comunicación.', bg: wash('--gs-rose') }
+      ],
+      steps: [
+        { n: '01.', title: 'Activación', color: 'var(--gs-blue)', text: 'Despierta el interés y motiva a los estudiantes conectando con sus conocimientos previos, activando el aprendizaje mediante actividades breves que generan curiosidad y preparan el terreno para la exploración, construyendo sobre lo que ya saben para un inicio sólido y engaging.' },
+        { n: '02.', title: 'Exploración', color: 'var(--gs-pink)', text: 'Los alumnos indagan, experimentan y descubren por sí mismos, resolviendo dudas y construyendo nuevos conceptos a partir de sus ideas iniciales, en un proceso de práctica activa que fomenta la autonomía y el aprendizaje significativo.' },
+        { n: '03.', title: 'Reflexión', color: 'var(--gs-orange)', text: 'Analizan las experiencias y datos de la exploración para extraer conclusiones, interpretar lo aprendido, identificar aciertos y errores, y reajustar el enfoque, conectando teoría con práctica mediante preguntas sobre el "por qué" para validar y fortalecer conocimientos futuros.' },
+        { n: '04.', title: 'Aplicación', color: 'var(--gs-rose)', text: 'Ponen en práctica lo aprendido, conectando conceptos teóricos con la vida cotidiana, resolviendo problemas reales y demostrando pensamiento crítico y autonomía a través de actividades prácticas, proyectos o desafíos que generan soluciones concretas e impactantes.' }
+      ],
+      testimonials: [
+        { quote: 'La educación, emprendimiento es importante en Zaragoza y en toda España. Si no la conocen desde pequeños, es muy difícil que luego la puedan tener en su mente a la hora de elegirlo.', name: 'Natalia Chueca', role: 'Alcaldesa de Zaragoza', img: img('UViiY4Zaov7CC6Spu2DWVjG78rk.png?width=400'), bg: wash('--gs-blue') },
+        { quote: 'Para el Ayuntamiento de Majadahonda es muy importante el emprendimiento, porque ya hay emprendedores, ya hay niños con ideas, niños con proyectos y Genyus School potencia esto.', name: 'María Dolores Moreno Molino', role: 'Alcaldesa de Majadahonda', img: img('yf1KBg9j7D8iYyiORp9YPeTdtw.jpeg?width=400'), bg: wash('--gs-pink') },
+        { quote: 'Una experiencia muy recomendable para otros centros educativos porque la dinámica es maravillosa, es muy, muy intensa. Los he visto muy participativos, muy ilusionados y han colaborado mucho el trabajo en equipo', name: 'Francho Lafuente', role: 'CEIP Don Pedro Oros', img: img('uHsfaac831ZIjFtNlRMqvB5n4Rs.png'), bg: 'color-mix(in oklch, var(--gs-yellow) 24%, white)' },
+        { quote: 'Hace más de dos años que tenemos aplicamos la metodología Genyus en nuestro colegio como una asignatura más, los alumnos, los padres y nosotros estamos muy contentos con los resultados.', name: 'Colegio Peñacorada', role: 'Grupo Arenales', img: img('VDtV24aGYSrMKd9QXQNbfLhJ68.png'), bg: wash('--gs-orange') },
+        { quote: 'Se ha podido observar y se ha podido desarrollar muy bien esta actividad, a loa niños les ha encantado y creo que le aporta mucho para su futuro.', name: 'Vanesa Motilva', role: 'Docente Colegio Alemán', img: img('xelxCALKIoWQrUT0mdmdyuDDo.jpeg'), bg: wash('--gs-rose') }
+      ],
+      prefOpts: this.opts(['Correo', 'Llamada'], 'pref'),
+      whoOpts: this.opts(['Institución', 'Colegio', 'Padre'], 'who'),
+      prodOpts: this.opts(['SEM Instituciones', 'SEM Colegio', 'Genyus Go Colegios', 'Genyus Academy/LAB'], 'prod'),
+      sent: this.state.sent,
+      submit: e => { e.preventDefault(); this.setState({ sent: true }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

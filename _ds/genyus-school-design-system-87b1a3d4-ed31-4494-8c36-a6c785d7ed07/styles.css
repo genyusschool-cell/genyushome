@@ -1,0 +1,28 @@
+/* ============================================================
+   Genyus School — Design System
+   Global stylesheet entry point. Consumers link THIS file only.
+   Keep this file as @import lines (plus minimal base resets).
+   ============================================================ */
+
+@import "tokens/fonts.css";
+@import "tokens/colors.css";
+@import "tokens/typography.css";
+@import "tokens/spacing.css";
+
+/* ---- Minimal base so specimens & kits render consistently ---- */
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: var(--fw-regular);
+  color: var(--text-body);
+  background: var(--surface-page);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: var(--text-link);
+  text-decoration: none;
+  transition: color var(--dur-fast) var(--ease-standard);
+}
+a:hover { color: var(--gs-pink); }

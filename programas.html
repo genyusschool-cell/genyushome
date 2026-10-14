@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Genyus School</title>
+<link rel="icon" href="/assets/genyus-school-logo.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="/_ds/genyus-school-design-system-87b1a3d4-ed31-4494-8c36-a6c785d7ed07/tokens/fonts.css">
+<link rel="stylesheet" href="/_ds/genyus-school-design-system-87b1a3d4-ed31-4494-8c36-a6c785d7ed07/tokens/colors.css">
+<link rel="stylesheet" href="/_ds/genyus-school-design-system-87b1a3d4-ed31-4494-8c36-a6c785d7ed07/tokens/typography.css">
+<link rel="stylesheet" href="/_ds/genyus-school-design-system-87b1a3d4-ed31-4494-8c36-a6c785d7ed07/tokens/spacing.css">
+<link rel="stylesheet" href="/_ds/genyus-school-design-system-87b1a3d4-ed31-4494-8c36-a6c785d7ed07/styles.css">
+<script src="/_ds/genyus-school-design-system-87b1a3d4-ed31-4494-8c36-a6c785d7ed07/_ds_bundle.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:var(--ink-900);font-family:var(--font-body);-webkit-font-smoothing:antialiased}
+a{color:var(--ink-900);text-decoration:none}
+a:hover{color:var(--color-primary-ink)}
+*{box-sizing:border-box}
+input,textarea,select{font-family:var(--font-body)}
+
+@media (max-width:900px){[data-nav-links],[data-nav-cta]{display:none !important}[data-nav-menu]{display:block !important}}
+[data-nav-menu] summary{list-style:none}[data-nav-menu] summary::-webkit-details-marker{display:none}
+</style>
+</helmet>
+
+<div ref="{{ rootRef }}" style="position:relative;overflow-x:hidden;background:#fff">
+
+<!-- NAV -->
+<div style="position:fixed;top:16px;left:0;right:0;z-index:50;display:flex;justify-content:center;padding:0 16px">
+  <nav style="width:100%;max-width:1200px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:#fff;border-radius:28px;padding:10px 12px 10px clamp(14px,3vw,24px);box-shadow:0 0 0 1px rgba(14,17,22,0.06),0 16px 16px -8px rgba(0,0,0,0.03),0 10px 10px -5px rgba(0,0,0,0.03),0 5px 5px -2.5px rgba(0,0,0,0.03),0 3px 3px -1.5px rgba(0,0,0,0.03),0 1px 1px -0.5px rgba(0,0,0,0.03)">
+    <a href="/" style="display:flex;align-items:center"><img src="/assets/genyus-school-logo.png" alt="Genyus School" style="height:40px;width:auto;display:block"></a>
+    <div data-nav-links style="display:flex;align-items:center;gap:4px;flex-wrap:wrap">
+      <a href="/" style="padding:8px 14px;border-radius:999px;font-size:15px;font-weight:500">Home</a>
+      <a href="/nosotros" style="padding:8px 14px;border-radius:999px;font-size:15px;font-weight:500">Nosotros</a>
+      <a href="#top" style="padding:8px 14px;border-radius:999px;font-size:15px;font-weight:600;background:color-mix(in oklch, var(--gs-blue) 12%, white)">Programas</a>
+      <a href="/eventos" style="padding:8px 14px;border-radius:999px;font-size:15px;font-weight:500">Eventos</a>
+      <a href="/academy-lab" style="padding:8px 14px;border-radius:999px;font-size:15px;font-weight:500">Academy + Lab</a>
+    </div>
+    <details data-nav-menu style="display:none;position:relative">
+      <summary style="cursor:pointer;display:flex;align-items:center;gap:8px;padding:11px 18px;border-radius:28px;font-size:15px;font-weight:700;box-shadow:0 0 0 1.5px var(--ink-200)"><span aria-hidden="true" style="display:flex;flex-direction:column;gap:4px"><span style="width:16px;height:2px;border-radius:2px;background:var(--ink-900)"></span><span style="width:16px;height:2px;border-radius:2px;background:var(--ink-900)"></span><span style="width:16px;height:2px;border-radius:2px;background:var(--ink-900)"></span></span>Menú</summary>
+      <div style="position:absolute;right:0;top:calc(100% + 12px);width:min(280px,calc(100vw - 32px));display:flex;flex-direction:column;gap:2px;padding:10px;border-radius:22px;background:#fff;box-shadow:0 0 0 1px rgba(14,17,22,0.06),0 18px 48px rgba(14,17,22,0.14)">
+      <a href="/" style="padding:12px 16px;border-radius:14px;font-size:16px;font-weight:500">Home</a>
+      <a href="/nosotros" style="padding:12px 16px;border-radius:14px;font-size:16px;font-weight:500">Nosotros</a>
+      <a href="#top" style="padding:12px 16px;border-radius:14px;font-size:16px;font-weight:600;background:color-mix(in oklch, var(--gs-blue) 12%, white)">Programas</a>
+      <a href="/eventos" style="padding:12px 16px;border-radius:14px;font-size:16px;font-weight:500">Eventos</a>
+      <a href="/academy-lab" style="padding:12px 16px;border-radius:14px;font-size:16px;font-weight:500">Academy + Lab</a>
+    <a data-m href="/nosotros#contacto" style="margin-top:6px;text-align:center;padding:12px 20px;border-radius:28px;font-size:15px;font-weight:700;border:1.5px solid transparent;background:linear-gradient(#fff,#fff) padding-box, linear-gradient(90deg,var(--gs-pink),var(--gs-rose) 42%,var(--gs-orange)) border-box">Contáctanos</a>
+      </div>
+    </details>
+    <a data-nav-cta href="/nosotros#contacto" style="padding:11px 20px;border-radius:28px;font-size:15px;font-weight:700;border:1.5px solid transparent;background:linear-gradient(#fff,#fff) padding-box, linear-gradient(90deg,var(--gs-pink),var(--gs-rose) 42%,var(--gs-orange)) border-box">Contáctanos</a>
+  </nav>
+</div>
+
+<!-- HERO -->
+<section id="top" data-screen-label="Hero" style="position:relative;min-height:min(70vh,620px);display:flex;align-items:flex-end;overflow:hidden;background:var(--ink-900)">
+  <img src="https://framerusercontent.com/images/ZmyFxGEF9hbJjpKmsSzkMv9CSIM.jpg?width=2400&amp;height=1600" alt="Personas sentadas frente a ordenadores portátiles" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,17,22,0.35) 0%,rgba(14,17,22,0.15) 35%,rgba(14,17,22,0.75) 100%)"></div>
+  <div style="position:relative;width:100%;max-width:1200px;margin:0 auto;padding:140px 24px 72px;color:#fff">
+    <h1 style="margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(56px,8vw,112px);line-height:1;letter-spacing:-0.035em;text-shadow:0 2px 24px rgba(0,0,0,0.25)">Programas</h1>
+  </div>
+</section>
+
+<!-- IMPLEMENTACIONES -->
+<section id="programas" data-screen-label="Implementaciones" style="max-width:1200px;margin:0 auto;padding:80px 24px;display:flex;flex-direction:column;gap:48px">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:24px 64px;align-items:end">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <span style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-primary-ink);line-height:1.5">Aplicaciones del modelo pedagógico en centros educativos y administraciones públicas</span>
+      <h2 style="margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(34px,4vw,49px);line-height:1.04;letter-spacing:-0.03em;text-wrap:balance">Implementaciones de la Metodología Genyus</h2>
+    </div>
+    <p style="margin:0;font-size:18px;line-height:1.55;color:var(--ink-700);text-wrap:pretty">La Metodología Genyus se implementa en distintos contextos educativos según la estructura y necesidades de cada centro educativo o institución pública. Cada implementación impulsa la competencia emprendedora integrando metodología, programación, recursos, acompañamiento docente y evaluación competencial. Educación en emprendimiento que prepara a tu alumnado para su futuro y diferencia y posiciona a tu centro educativo o institución.</p>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:16px">
+    <div style="flex:1.4 1 420px;display:flex;min-width:0">
+    <a href="/programas/genyusgo" style="position:relative;overflow:hidden;border-radius:24px;display:flex;flex-direction:column;justify-content:flex-end;flex:1 1 auto;min-height:560px;color:#fff;background:#07060b" style-hover="transform:translateY(-4px)" style-active="transform:scale(0.98)">
+      <img src="/assets/prog-genyus-go.jpg" alt="GENYUS GO" style="position:absolute;top:0;left:0;width:100%;height:auto;aspect-ratio:1360/768;object-fit:cover;display:block;transform:scale(1.25);transform-origin:50% 0;-webkit-mask-image:linear-gradient(180deg,#000 55%,transparent 100%);mask-image:linear-gradient(180deg,#000 55%,transparent 100%)">
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,color-mix(in oklch, var(--gs-blue) 45%, transparent) 0%,color-mix(in oklch, var(--gs-blue) 88%, black 8%) 100%)"></div>
+      <div style="position:relative;padding:clamp(28px,4vw,44px);display:flex;flex-direction:column;gap:12px;max-width:560px">
+        <span style="align-self:flex-start;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,0.92);color:var(--ink-900);font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase">Plataforma</span>
+        <h3 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);margin:0">GENYUS GO</h3>
+        <p style="margin:0;font-size:17px;line-height:1.5;text-wrap:pretty">Plataforma y experiencias para integrar la competencia emprendedora en el aprendizaje del curso. Incluye evidencias educativas y evaluación competencial.</p>
+        <span style="font-size:14px;font-weight:700;letter-spacing:0.04em">Ver más &gt;</span>
+      </div>
+    </a>
+    </div>
+    <div style="flex:1 1 320px;display:flex;flex-direction:column;gap:16px;min-width:0">
+    <a href="/programas/sem-insti" style="position:relative;overflow:hidden;border-radius:24px;display:flex;flex-direction:column;justify-content:flex-end;flex:1 1 auto;min-height:272px;color:#fff;background:var(--ink-900)" style-hover="transform:translateY(-4px)" style-active="transform:scale(0.98)">
+      <img src="/assets/prog-sem-instituciones.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,color-mix(in oklch, var(--gs-pink) 45%, transparent) 0%,color-mix(in oklch, var(--gs-pink) 88%, black 8%) 100%)"></div>
+      <div style="position:relative;padding:28px;display:flex;flex-direction:column;gap:12px;max-width:480px">
+        <span style="align-self:flex-start;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,0.92);color:var(--ink-900);font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase">Instituciones</span>
+        <h3 style="margin:0;font-family:var(--font-display);font-weight:400;font-size:28px;line-height:1.08;letter-spacing:-0.02em;text-wrap:balance">Semana del emprendimiento Instituciones</h3>
+        <p style="margin:0;font-size:15px;line-height:1.5;text-wrap:pretty">Implementación municipal en los centros de tu territorio. Impacto medible y visibilidad institucional.</p>
+        <span style="font-size:14px;font-weight:700;letter-spacing:0.04em">Ver más &gt;</span>
+      </div>
+    </a>
+    <a href="/programas/sem-colegios" style="position:relative;overflow:hidden;border-radius:24px;display:flex;flex-direction:column;justify-content:flex-end;flex:1 1 auto;min-height:272px;color:#fff;background:var(--ink-900)" style-hover="transform:translateY(-4px)" style-active="transform:scale(0.98)">
+      <img src="/assets/prog-sem-colegios.jpeg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,color-mix(in oklch, var(--gs-orange) 45%, transparent) 0%,color-mix(in oklch, var(--gs-orange) 88%, black 8%) 100%)"></div>
+      <div style="position:relative;padding:28px;display:flex;flex-direction:column;gap:12px;max-width:480px">
+        <span style="align-self:flex-start;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,0.92);color:var(--ink-900);font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase">Colegios</span>
+        <h3 style="margin:0;font-family:var(--font-display);font-weight:400;font-size:28px;line-height:1.08;letter-spacing:-0.02em;text-wrap:balance">Semana del emprendimiento Colegios</h3>
+        <p style="margin:0;font-size:15px;line-height:1.5;text-wrap:pretty">Implementación en colegios y grupos educativos. Despliegue coordinado por etapas/ centros. Información, acompañamiento, Hackathon y evidencias de aprendizaje.</p>
+        <span style="font-size:14px;font-weight:700;letter-spacing:0.04em">Ver más &gt;</span>
+      </div>
+    </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section data-screen-label="CTA" style="max-width:1200px;margin:0 auto;padding:80px 24px;border-top:1px solid var(--ink-200);padding-bottom:96px">
+  <div style="border-radius:24px;overflow:hidden;background:var(--grad-school);color:#fff;padding:clamp(40px,6vw,80px) clamp(28px,5vw,64px);display:flex;flex-direction:column;align-items:flex-start;gap:32px">
+    <h2 style="margin:0;font-family:var(--font-poster);font-weight:400;font-size:clamp(44px,6.4vw,96px);line-height:0.98;text-transform:uppercase;display:flex;flex-direction:column">
+      <span>El futuro del emprendimiento joven</span><span>comienza aquí</span>
+    </h2>
+    <a href="/nosotros#contacto" style="padding:14px 28px;border-radius:28px;font-size:15px;font-weight:700;letter-spacing:0.04em;background:#fff;color:var(--ink-900)" style-active="transform:scale(0.96)">VER CÓMO FUNCIONA</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer data-screen-label="Footer" style="background:var(--ink-900);color:#fff">
+  <div style="max-width:1200px;margin:0 auto;padding:64px 24px 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:40px">
+    <div style="display:flex;flex-direction:column;gap:20px;grid-column:span 2;min-width:0">
+      <img src="/assets/genyus-blanco.png" alt="Genyus School" style="height:30px;width:auto;align-self:flex-start">
+      <p style="margin:0;font-size:16px;line-height:1.5;color:var(--ink-300);max-width:380px">Educar en emprendimiento a nuestros niños/as hoy, es el mayor motor de desarrollo socioeconómico, mañana.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a href="https://www.facebook.com/GenyusSchool/" style="padding:8px 14px;border-radius:999px;border:1px solid var(--ink-600);color:#fff;font-size:13px">Facebook</a>
+        <a href="https://www.linkedin.com/company/genyusschool/" style="padding:8px 14px;border-radius:999px;border:1px solid var(--ink-600);color:#fff;font-size:13px">LinkedIn</a>
+        <a href="https://www.instagram.com/genyusschool/" style="padding:8px 14px;border-radius:999px;border:1px solid var(--ink-600);color:#fff;font-size:13px">Instagram</a>
+        <a href="https://www.youtube.com/genyusschool" style="padding:8px 14px;border-radius:999px;border:1px solid var(--ink-600);color:#fff;font-size:13px">YouTube</a>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <h4 style="margin:0 0 4px;font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gs-blue)">Genyus School</h4>
+      <a href="/nosotros" style="color:#fff;font-size:15px">Nosotros</a>
+      <a href="/programas" style="color:#fff;font-size:15px">Programas</a>
+      <a href="/eventos" style="color:#fff;font-size:15px">Eventos (proximamente)</a>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <h4 style="margin:0 0 4px;font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gs-pink)">Programas</h4>
+      <a href="/programas/genyusgo" style="color:#fff;font-size:15px">Genyus Go</a>
+      <a href="/programas/sem-insti" style="color:#fff;font-size:15px">SEM Instituciones</a>
+      <a href="/programas/sem-colegios" style="color:#fff;font-size:15px">SEM Colegios</a>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <h4 style="margin:0 0 4px;font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gs-orange)">Políticas generales</h4>
+      <a href="/politicasgenyus#aviso-legal" style="color:#fff;font-size:15px">Aviso legal</a>
+      <a href="/politicasgenyus#privacidad" style="color:#fff;font-size:15px">Política de privacidad</a>
+      <a href="/politicasgenyus#cookies" style="color:#fff;font-size:15px">Política de cookies</a>
+    </div>
+  </div>
+  <div style="max-width:1200px;margin:0 auto;padding:0 24px 32px">
+    <img src="https://framerusercontent.com/images/hLXNBPbhbG1sD3nvQJ1FVBjqA.jpeg?width=768&amp;height=76" alt="" style="width:100%;max-width:640px;height:auto;display:block;border-radius:8px">
+  </div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;scrollReveal&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { pref: 'Correo', who: null, prod: null, sent: false };
+  rootRef = React.createRef();
+  componentDidMount() {
+    const root = this.rootRef.current;
+    if (!root || this.props.scrollReveal === false || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const els = [...root.querySelectorAll('section > *, footer > *')].filter(el => el.getBoundingClientRect().top > innerHeight);
+    const showAll = () => els.forEach(el => { el.style.opacity = '1'; el.style.transform = 'none'; });
+    this.fallback = setTimeout(() => { if (document.visibilityState === 'hidden') showAll(); }, 2500);
+    addEventListener('beforeprint', showAll);
+    els.forEach(el => {
+      const i = [...el.parentElement.children].indexOf(el);
+      Object.assign(el.style, { opacity: '0', transform: 'translateY(40px)', transition: `opacity 700ms cubic-bezier(.2,.7,.2,1) ${i*90}ms, transform 800ms cubic-bezier(.34,1.3,.5,1) ${i*90}ms` });
+    });
+    this.io = new IntersectionObserver(entries => entries.forEach(e => {
+      if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'none'; this.io.unobserve(e.target); }
+    }), { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    els.forEach(el => this.io.observe(el));
+  }
+  componentWillUnmount() { this.io && this.io.disconnect(); clearTimeout(this.fallback); }
+  opts(list, key) {
+    return list.map(label => {
+      const on = this.state[key] === label;
+      return {
+        label,
+        bg: on ? 'color-mix(in oklch, var(--gs-blue) 14%, white)' : '#fff',
+        border: on ? 'var(--gs-blue)' : 'var(--ink-300)',
+        onClick: () => this.setState({ [key]: label })
+      };
+    });
+  }
+  renderVals() {
+    const v = this.vals();
+    return Object.assign(v, { logosTop: v.logos.slice(0, 4), logosBottom: v.logos.slice(4) });
+  }
+  vals() {
+    const img = id => `https://framerusercontent.com/images/${id}`;
+    const wash = c => `color-mix(in oklch, var(${c}) 13%, white)`;
+    return {
+      rootRef: this.rootRef,
+      logos: [
+        ['e3xbpjHcefNjpdbD98kBl9255yM.png', 40], ['yqI2DC2yXynOEvMe7TAKislzqn0.png', 36], ['3QJbl3gWjjEOAeSmXoGCXP1blfU.png', 36],
+        ['Qf3v7jGIG92WispGomkDeTMMwjE.png', 56], ['ge1OpAjqHFsHePRmyc5KaKDgrjg.png', 34], ['6RCXL4O2RbBgGiMAgUnEASmN65s.png', 40],
+        ['VrbpIoV8ll20jh4ltYXNsCOCVz4.png', 56], ['KzQgDFS2n4ZtosPdWoqs09jOms.png', 60], ['RSkTjK6yx6e319lB6UxNoRhgE4.png', 34]
+      ].map(([id, h]) => ({ src: img(id), h: Math.round(h * 1.4) })),
+      stats: [
+        { n: '+350', label: 'centros educativos', bg: wash('--gs-blue') },
+        { n: '+20', label: 'instituciones públicas', bg: wash('--gs-pink') },
+        { n: '+25.000', label: 'estudiantes', bg: wash('--gs-orange') },
+        { n: '4', label: 'premios nacionales', bg: 'color-mix(in oklch, var(--gs-yellow) 26%, white)' },
+        { n: '+60', label: 'menciones en medios de comunicación.', bg: wash('--gs-rose') }
+      ],
+      steps: [
+        { n: '01.', title: 'Activación', color: 'var(--gs-blue)', text: 'Despierta el interés y motiva a los estudiantes conectando con sus conocimientos previos, activando el aprendizaje mediante actividades breves que generan curiosidad y preparan el terreno para la exploración, construyendo sobre lo que ya saben para un inicio sólido y engaging.' },
+        { n: '02.', title: 'Exploración', color: 'var(--gs-pink)', text: 'Los alumnos indagan, experimentan y descubren por sí mismos, resolviendo dudas y construyendo nuevos conceptos a partir de sus ideas iniciales, en un proceso de práctica activa que fomenta la autonomía y el aprendizaje significativo.' },
+        { n: '03.', title: 'Reflexión', color: 'var(--gs-orange)', text: 'Analizan las experiencias y datos de la exploración para extraer conclusiones, interpretar lo aprendido, identificar aciertos y errores, y reajustar el enfoque, conectando teoría con práctica mediante preguntas sobre el "por qué" para validar y fortalecer conocimientos futuros.' },
+        { n: '04.', title: 'Aplicación', color: 'var(--gs-rose)', text: 'Ponen en práctica lo aprendido, conectando conceptos teóricos con la vida cotidiana, resolviendo problemas reales y demostrando pensamiento crítico y autonomía a través de actividades prácticas, proyectos o desafíos que generan soluciones concretas e impactantes.' }
+      ],
+      testimonials: [
+        { quote: 'La educación, emprendimiento es importante en Zaragoza y en toda España. Si no la conocen desde pequeños, es muy difícil que luego la puedan tener en su mente a la hora de elegirlo.', name: 'Natalia Chueca', role: 'Alcaldesa de Zaragoza', img: img('UViiY4Zaov7CC6Spu2DWVjG78rk.png?width=400'), bg: wash('--gs-blue') },
+        { quote: 'Para el Ayuntamiento de Majadahonda es muy importante el emprendimiento, porque ya hay emprendedores, ya hay niños con ideas, niños con proyectos y Genyus School potencia esto.', name: 'María Dolores Moreno Molino', role: 'Alcaldesa de Majadahonda', img: img('yf1KBg9j7D8iYyiORp9YPeTdtw.jpeg?width=400'), bg: wash('--gs-pink') },
+        { quote: 'Una experiencia muy recomendable para otros centros educativos porque la dinámica es maravillosa, es muy, muy intensa. Los he visto muy participativos, muy ilusionados y han colaborado mucho el trabajo en equipo', name: 'Francho Lafuente', role: 'CEIP Don Pedro Oros', img: img('uHsfaac831ZIjFtNlRMqvB5n4Rs.png'), bg: 'color-mix(in oklch, var(--gs-yellow) 24%, white)' },
+        { quote: 'Hace más de dos años que tenemos aplicamos la metodología Genyus en nuestro colegio como una asignatura más, los alumnos, los padres y nosotros estamos muy contentos con los resultados.', name: 'Colegio Peñacorada', role: 'Grupo Arenales', img: img('VDtV24aGYSrMKd9QXQNbfLhJ68.png'), bg: wash('--gs-orange') },
+        { quote: 'Se ha podido observar y se ha podido desarrollar muy bien esta actividad, a loa niños les ha encantado y creo que le aporta mucho para su futuro.', name: 'Vanesa Motilva', role: 'Docente Colegio Alemán', img: img('xelxCALKIoWQrUT0mdmdyuDDo.jpeg'), bg: wash('--gs-rose') }
+      ],
+      prefOpts: this.opts(['Correo', 'Llamada'], 'pref'),
+      whoOpts: this.opts(['Institución', 'Colegio', 'Padre'], 'who'),
+      prodOpts: this.opts(['SEM Instituciones', 'SEM Colegio', 'Genyus Go Colegios', 'Genyus Academy/LAB'], 'prod'),
+      sent: this.state.sent,
+      submit: e => { e.preventDefault(); this.setState({ sent: true }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

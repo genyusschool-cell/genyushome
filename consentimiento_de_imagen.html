@@ -123,7 +123,7 @@
             <sc-if value="{{ showTutor }}" hint-placeholder-val="{{ true }}">
               <x-import component-from-global-scope="GenyusSchoolDesignSystem_87b1a3.Input" label="Nombre del padre, madre o tutor *" value="{{ tutor.value }}" error="{{ tutor.error }}" sc-camel-on-change="{{ tutor.onChange }}" hint-size="100%,72px"></x-import>
             </sc-if>
-            <x-import component-from-global-scope="GenyusSchoolDesignSystem_87b1a3.Input" label="Correo electrónico *" type="email" value="{{ email.value }}" error="{{ email.error }}" sc-camel-on-change="{{ email.onChange }}" hint-size="100%,72px"></x-import>
+            <x-import component-from-global-scope="GenyusSchoolDesignSystem_87b1a3.Input" label="Correo de quien presta el consentimiento (padre/madre/tutor si el participante es menor de 14) *" type="email" value="{{ email.value }}" error="{{ email.error }}" sc-camel-on-change="{{ email.onChange }}" hint-size="100%,72px"></x-import>
           </div>
         </div>
 
@@ -147,6 +147,15 @@
         <div style="padding-top:24px;border-top:1px solid var(--ink-200);display:flex;flex-direction:column;gap:6px">
           <x-import component-from-global-scope="GenyusSchoolDesignSystem_87b1a3.Checkbox" id="cb-lectura" checked="{{ lectura }}" sc-camel-on-change="{{ toggleLectura }}" label="He leído la información sobre protección de datos y entiendo que el consentimiento es voluntario y que puedo retirarlo en cualquier momento escribiendo a info@genyusschool.com. *" dc-props="{{ cbProps }}" hint-size="100%,48px"></x-import>
           <sc-if value="{{ lecturaErr }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;color:var(--state-danger);padding-left:32px">Esta casilla es obligatoria.</span></sc-if>
+        </div>
+
+        <div data-screen-label="Novedades marketing" style="padding:24px;border-radius:18px;background:var(--ink-050);border:1px solid var(--ink-200);display:flex;flex-direction:column;gap:14px">
+          <h3 style="margin:0;font-size:18px;color:var(--ink-900)">5. Novedades de Genyus (opcional)</h3>
+          <p style="margin:0;font-size:15px;line-height:1.6;color:var(--ink-700);text-wrap:pretty">Genyus Minds, S.L. como responsable, y de forma independiente a las autorizaciones de imagen, me informará por correo de novedades educativas, actividades y programas de Genyus (como Genyus Academy). Es voluntario y puedo darme de baja en cualquier momento escribiendo a <a href="mailto:info@genyusschool.com">info@genyusschool.com</a>.</p>
+          <div role="radiogroup" aria-label="Novedades de Genyus" style="display:flex;gap:10px;flex-wrap:wrap">
+            <button type="button" role="radio" sc-camel-on-click="{{ mkt.yes }}" aria-checked="{{ mkt.isYes }}" style="font-family:var(--font-body);font-size:15px;font-weight:600;min-height:44px;padding:10px 20px;border-radius:999px;cursor:pointer;border:1.5px solid {{ mkt.yBorder }};background:{{ mkt.yBg }};color:{{ mkt.yFg }}">Sí, quiero recibir novedades de Genyus</button>
+            <button type="button" role="radio" sc-camel-on-click="{{ mkt.no }}" aria-checked="{{ mkt.isNo }}" style="font-family:var(--font-body);font-size:15px;font-weight:600;min-height:44px;padding:10px 20px;border-radius:999px;cursor:pointer;border:1.5px solid {{ mkt.nBorder }};background:{{ mkt.nBg }};color:{{ mkt.nFg }}">No</button>
+          </div>
         </div>
 
         <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap">
@@ -187,7 +196,7 @@ function ic(name, size, sw) {
 }
 
 class Component extends DCLogic {
-  state = { v: {}, quien: null, auts: {}, lectura: false, tried: false, sent: false };
+  state = { v: {}, quien: null, auts: {}, mkt: null, lectura: false, tried: false, sent: false };
 
   componentDidMount() {
     const q = new URLSearchParams(location.search);
@@ -237,6 +246,10 @@ class Component extends DCLogic {
         yBg: val === 'SÍ' ? PINK : '#fff', yFg: val === 'SÍ' ? '#fff' : 'var(--ink-800)', yBorder: val === 'SÍ' ? PINK : 'var(--ink-300)',
         nBg: val === 'NO' ? 'var(--ink-900)' : '#fff', nFg: val === 'NO' ? '#fff' : 'var(--ink-800)', nBorder: val === 'NO' ? 'var(--ink-900)' : 'var(--ink-300)' };
     });
+    const m = s.mkt, pickM = x => () => this.setState(st => ({ mkt: st.mkt === x ? null : x }));
+    const mkt = { yes: pickM('SÍ'), no: pickM('NO'), isYes: m === 'SÍ', isNo: m === 'NO',
+      yBg: m === 'SÍ' ? PINK : '#fff', yFg: m === 'SÍ' ? '#fff' : 'var(--ink-800)', yBorder: m === 'SÍ' ? PINK : 'var(--ink-300)',
+      nBg: m === 'NO' ? 'var(--ink-900)' : '#fff', nFg: m === 'NO' ? '#fff' : 'var(--ink-800)', nBorder: m === 'NO' ? 'var(--ink-900)' : 'var(--ink-300)' };
     const fields = ['colegio', 'clase', 'participante', 'tutor', 'email'].map(k => [k, this.field(k)]);
     const hasErrors = s.tried && (!this.isValid());
     return {
@@ -245,7 +258,7 @@ class Component extends DCLogic {
       cursoBorder: cursoErr ? 'var(--state-danger)' : 'var(--ink-300)',
       onCurso: e => { const x = e.target.value; this.setState(st => ({ v: { ...st.v, curso: x } })); },
       quienOpts: QUIEN.map(l => ({ label: l, on: s.quien === l, pick: () => this.setState({ quien: l }), ...chipStyle(s.quien === l) })),
-      quienErr, showTutor: this.needsTutor(), auts,
+      quienErr, showTutor: this.needsTutor(), auts, mkt,
       lectura: s.lectura, lecturaErr, toggleLectura: () => this.setState(st => ({ lectura: !st.lectura })),
       cbProps: { style: { alignItems: 'flex-start', lineHeight: 1.5 } },
       hasErrors, sent: s.sent, notSent: !s.sent,
@@ -273,6 +286,8 @@ class Component extends DCLogic {
       aut_uso_interno: s.auts.aut_uso_interno, aut_web_newsletter: s.auts.aut_web_newsletter, aut_redes: s.auts.aut_redes,
       acepta_informacion: 'Sí', version_texto: 'Consentimiento imágenes familias · v1 · 22/10/2026',
       origen: location.href,
+      acepta_marketing: s.mkt === 'SÍ' ? 'SÍ' : 'NO',
+      version_marketing: 'Novedades Genyus · v1 · 22/10/2026',
     };
     const url = this.props.sheetEndpoint || DEFAULT_SHEET;
     if (url) {

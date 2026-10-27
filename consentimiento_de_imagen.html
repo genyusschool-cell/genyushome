@@ -37,14 +37,14 @@
     <div style="padding:0 8px;display:flex;flex-direction:column;gap:12px">
       <span style="font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#C93A84">Familias · Genyus School</span>
       <h1 style="margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(34px,5vw,52px);line-height:1.08;text-wrap:balance">Consentimiento de imágenes</h1>
-      <p style="margin:0;font-size:18px;line-height:1.6;color:var(--ink-700);text-wrap:pretty">Durante las actividades de Genyus School en el centro podemos tomar fotografías y vídeos. Antes de decidir, lee la información sobre protección de datos. Cada autorización es independiente y puedes retirarla en cualquier momento.</p>
+      <p style="margin:0;font-size:18px;line-height:1.6;color:var(--ink-700);text-wrap:pretty">Durante las actividades de Genyus School podemos tomar fotografías y vídeos. Antes de decidir, lee la información sobre protección de datos. Cada autorización es independiente y puedes retirarla en cualquier momento.</p>
     </div>
 
     <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
       <div style="background:#fff;border-radius:22px;box-shadow:var(--shadow-sm);border:1px solid var(--ink-200);padding:clamp(28px,5vw,48px);display:flex;flex-direction:column;gap:18px;align-items:flex-start">
         <div style="width:64px;height:64px;border-radius:999px;background:#E04C97;color:#fff;display:grid;place-items:center">{{ checkIcon }}</div>
         <h2 style="margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(28px,4vw,40px);line-height:1.1">Respuesta registrada</h2>
-        <p style="margin:0;font-size:17px;line-height:1.6;color:var(--ink-700);max-width:620px">Gracias. Hemos guardado tus preferencias. Si quieres modificarlas o retirar el consentimiento, escribe a <a href="mailto:info@genyusschool.com">info@genyusschool.com</a> indicando el nombre de la persona participante y su colegio.</p>
+        <p style="margin:0;font-size:17px;line-height:1.6;color:var(--ink-700);max-width:620px">Gracias. Hemos guardado tus preferencias. Si quieres modificarlas o retirar el consentimiento, escribe a <a href="mailto:info@genyusschool.com">info@genyusschool.com</a> indicando el nombre de la persona participante y su centro o entidad.</p>
       </div>
     </sc-if>
 
@@ -58,11 +58,11 @@
           </div>
           <div style="display:flex;flex-direction:column;gap:4px">
             <strong style="font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-900)">Finalidades</strong>
-            <span>Captar imágenes y vídeos de las actividades y usarlos según las autorizaciones que marques: uso interno, web y newsletters, y redes sociales y otros soportes.</span>
+            <span>Captar imágenes y vídeos de las actividades y usarlos según las autorizaciones que marques: uso interno, web y newsletters, y redes sociales y otros soportes, y, cuando lo autorices, el uso comercial, publicitario, promocional y de marca de las imágenes, incluida su difusión en soportes de Genyus y de entidades colaboradoras.</span>
           </div>
           <div style="display:flex;flex-direction:column;gap:4px">
             <strong style="font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-900)">Legitimación</strong>
-            <span>Tu consentimiento (art. 6.1.a RGPD), otorgado por separado para cada finalidad. Si la persona participante es menor de 14 años, lo presta su padre, madre o tutor legal (art. 7 LOPDGDD).</span>
+            <span>Tu consentimiento (art. 6.1.a RGPD y Ley Orgánica 1/1982), otorgado por separado para cada finalidad. En menores de 14 años, el de su padre, madre o tutor legal.</span>
           </div>
           <div style="display:flex;flex-direction:column;gap:4px">
             <strong style="font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-900)">Conservación</strong>
@@ -88,9 +88,9 @@
         </sc-if>
 
         <div style="display:flex;flex-direction:column;gap:18px">
-          <h3 style="margin:0;font-size:18px;color:var(--ink-900)">1. Centro y grupo</h3>
+          <h3 style="margin:0;font-size:18px;color:var(--ink-900)">1. Centro o entidad y grupo</h3>
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:20px">
-            <x-import component-from-global-scope="GenyusSchoolDesignSystem_87b1a3.Input" label="Colegio *" placeholder="Nombre del colegio" value="{{ colegio.value }}" error="{{ colegio.error }}" sc-camel-on-change="{{ colegio.onChange }}" hint-size="100%,72px"></x-import>
+            <x-import component-from-global-scope="GenyusSchoolDesignSystem_87b1a3.Input" label="Centro educativo o entidad *" placeholder="Nombre del centro o entidad" value="{{ colegio.value }}" error="{{ colegio.error }}" sc-camel-on-change="{{ colegio.onChange }}" hint-size="100%,72px"></x-import>
             <label style="display:flex;flex-direction:column;gap:6px">
               <span style="font-size:14px;font-weight:600;color:var(--ink-800)">Curso *</span>
               <select value="{{ curso }}" sc-camel-on-change="{{ onCurso }}" style="font-family:var(--font-body);font-size:16px;height:48px;padding:0 14px;border-radius:12px;border:1.5px solid {{ cursoBorder }};background:#fff;color:var(--ink-900)">
@@ -182,6 +182,7 @@ const AUTS = [
   { key: 'aut_uso_interno', title: 'a) Captación y uso interno', text: 'Fotografías y vídeos durante las actividades para documentación, evaluación y memoria interna del programa.' },
   { key: 'aut_web_newsletter', title: 'b) Web y newsletters', text: 'Publicación en la web de Genyus School y en sus newsletters.' },
   { key: 'aut_redes', title: 'c) Redes sociales y otros soportes', text: 'Publicación en redes sociales de Genyus School y en otros soportes de difusión (presentaciones, materiales impresos).' },
+  { key: 'aut_comercial', optional: true, title: 'd) Uso comercial y de marca (opcional)', text: 'Publicación y uso de fotografías y vídeos en acciones publicitarias, promocionales, campañas de marketing, material comercial, presentaciones y soportes de Genyus School y, en su caso, de entidades colaboradoras o partners, incluida su difusión en medios y redes.' },
 ];
 const DEFAULT_SHEET = 'https://script.google.com/macros/s/AKfycbyK-lQeHjP_AihDtta5E87pg3PT4Bp8u5LaoZytj1pCcnw9J03UoBz36hGrl4jGHjaH/exec';
 const CURSOS = ['1º EP','2º EP','3º EP','4º EP','5º EP','6º EP','1º ESO','2º ESO','3º ESO','4º ESO','1º BACH','2º BACH'];
@@ -230,7 +231,7 @@ class Component extends DCLogic {
     const s = this.state, req = ['colegio', 'curso', 'clase', 'participante', 'email'];
     if (this.needsTutor()) req.push('tutor');
     return req.every(k => (s.v[k] || '').trim()) && EMAIL_RE.test((s.v.email || '').trim())
-      && s.quien && AUTS.every(a => s.auts[a.key]) && s.lectura;
+      && s.quien && AUTS.every(a => a.optional || s.auts[a.key]) && s.lectura;
   }
 
   renderVals() {
@@ -242,7 +243,7 @@ class Component extends DCLogic {
     const auts = AUTS.map(a => {
       const val = s.auts[a.key];
       const set = x => () => this.setState(st => ({ auts: { ...st.auts, [a.key]: x } }));
-      return { ...a, err: s.tried && !val, yes: set('SÍ'), no: set('NO'), isYes: val === 'SÍ', isNo: val === 'NO',
+      return { ...a, err: s.tried && !a.optional && !val, yes: set('SÍ'), no: set('NO'), isYes: val === 'SÍ', isNo: val === 'NO',
         yBg: val === 'SÍ' ? PINK : '#fff', yFg: val === 'SÍ' ? '#fff' : 'var(--ink-800)', yBorder: val === 'SÍ' ? PINK : 'var(--ink-300)',
         nBg: val === 'NO' ? 'var(--ink-900)' : '#fff', nFg: val === 'NO' ? '#fff' : 'var(--ink-800)', nBorder: val === 'NO' ? 'var(--ink-900)' : 'var(--ink-300)' };
     });
@@ -283,8 +284,8 @@ class Component extends DCLogic {
       nombre_participante: v.participante.trim(),
       nombre_tutor: this.needsTutor() ? (v.tutor || '').trim() : '',
       email: v.email.trim().toLowerCase(),
-      aut_uso_interno: s.auts.aut_uso_interno, aut_web_newsletter: s.auts.aut_web_newsletter, aut_redes: s.auts.aut_redes,
-      acepta_informacion: 'Sí', version_texto: 'Consentimiento imágenes familias · v1 · 22/10/2026',
+      aut_uso_interno: s.auts.aut_uso_interno, aut_web_newsletter: s.auts.aut_web_newsletter, aut_redes: s.auts.aut_redes, aut_comercial: s.auts.aut_comercial === 'SÍ' ? 'SÍ' : 'NO',
+      acepta_informacion: 'Sí', version_texto: 'Consentimiento imágenes familias · v2 · 27/10/2026',
       origen: location.href,
       acepta_marketing: s.mkt === 'SÍ' ? 'SÍ' : 'NO',
       version_marketing: 'Novedades Genyus · v1 · 22/10/2026',

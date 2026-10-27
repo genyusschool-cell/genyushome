@@ -16,6 +16,7 @@
 <link rel="stylesheet" href="/_ds/genyus-school-design-system-87b1a3d4-ed31-4494-8c36-a6c785d7ed07/tokens/spacing.css">
 <link rel="stylesheet" href="/_ds/genyus-school-design-system-87b1a3d4-ed31-4494-8c36-a6c785d7ed07/styles.css">
 <script src="/_ds/genyus-school-design-system-87b1a3d4-ed31-4494-8c36-a6c785d7ed07/_ds_bundle.js"></script>
+<script src="/yusi-bot.js" defer></script>
 <style>
 html{scroll-behavior:smooth}
 body{margin:0;background:#fff;color:var(--ink-900);font-family:var(--font-body);-webkit-font-smoothing:antialiased}
@@ -436,7 +437,7 @@ i[data-lucide] svg,svg[data-lucide]{width:100%;height:100%}
       </sc-if>
     </div>
     <sc-if value="{{ isReservar }}" hint-placeholder-val="{{ true }}">
-    <div style="position:relative;max-width:640px;margin:36px auto 0;padding:0 24px">
+    <div id="reserva-form" style="position:relative;max-width:640px;margin:36px auto 0;padding:0 24px;scroll-margin-top:24px">
       <div style="position:relative;background:#fff;border:1px solid var(--border-subtle);border-radius:22px;box-shadow:var(--shadow-lg);padding:40px 36px;overflow:hidden">
         <div style="position:absolute;top:0;left:0;right:0;height:6px;background:var(--grad-school)"></div>
         <form onSubmit="{{ submitReservar }}" style="text-align:left">
@@ -592,7 +593,7 @@ i[data-lucide] svg,svg[data-lucide]{width:100%;height:100%}
     </sc-if>
 
     <sc-if value="{{ isInfo }}" hint-placeholder-val="{{ false }}">
-    <div style="position:relative;max-width:640px;margin:36px auto 0;padding:0 24px">
+    <div id="reserva-form" style="position:relative;max-width:640px;margin:36px auto 0;padding:0 24px;scroll-margin-top:24px">
       <div style="position:relative;background:#fff;border:1px solid var(--border-subtle);border-radius:22px;box-shadow:var(--shadow-lg);padding:40px 36px;overflow:hidden">
         <div style="position:absolute;top:0;left:0;right:0;height:6px;background:var(--grad-school)"></div>
         <form onSubmit="{{ submitInfo }}" style="display:flex;flex-direction:column;gap:20px;text-align:left">
@@ -866,7 +867,7 @@ class Component extends DCLogic {
     const pillOff = { background: "transparent", color: "var(--ink-500)" };
     return {
       rootRef: this.rootRef,
-      goForm: (e) => this.anchorTo("inscripcion", e, { tab: "reservar" }),
+      goForm: (e) => this.anchorTo("reserva-form", e, { tab: "reservar" }),
       goProgramas: (e) => this.anchorTo("programas", e),
       isReservar: tab === "reservar",
       isInfo: tab === "info",
@@ -927,7 +928,7 @@ class Component extends DCLogic {
       let node = el.parentElement, box = null;
       while (node && node !== document.body) {
         const cs = window.getComputedStyle(node);
-        if (/(auto|scroll|overlay)/.test(cs.overflowY) && node.scrollHeight > node.clientHeight + 4) { box = node; break; }
+        if (/(auto|scroll|overlay)/.test(cs.overflowY) && node.scrollHeight > node.clientHeight + 4 && node.clientHeight <= window.innerHeight + 2) { box = node; break; }
         node = node.parentElement;
       }
       const top = el.getBoundingClientRect().top;
@@ -948,6 +949,7 @@ class Component extends DCLogic {
     }
   }
   componentDidMount() {
+    if (/^#(reserva-form|inscripcion)$/.test(location.hash)) setTimeout(() => this.anchorTo('reserva-form', null, { tab: 'reservar' }), 700);
     this.reveal();
     this.drawIcons();
     [200, 700, 1600].forEach((t) => setTimeout(() => this.drawIcons(), t));

@@ -16,6 +16,7 @@
 <link rel="stylesheet" href="/_ds/genyus-school-design-system-87b1a3d4-ed31-4494-8c36-a6c785d7ed07/tokens/spacing.css">
 <link rel="stylesheet" href="/_ds/genyus-school-design-system-87b1a3d4-ed31-4494-8c36-a6c785d7ed07/styles.css">
 <script src="/_ds/genyus-school-design-system-87b1a3d4-ed31-4494-8c36-a6c785d7ed07/_ds_bundle.js"></script>
+<script src="/genyus-forms.js"></script>
 <script src="/yusi-bot.js" defer></script>
 <style>
 html{scroll-behavior:smooth}
@@ -285,8 +286,16 @@ input,textarea,select{font-family:var(--font-body)}
         <div style="border-radius:16px;padding:16px 20px;background:color-mix(in oklch, var(--state-success) 14%, white);font-size:15px;font-weight:600">Gracias. Te contactamos en menos de 24 horas.</div>
       </sc-if>
       <label style="display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:600">Nombre y apellido
-        <input type="text" style="padding:14px 16px;font-size:16px;border:1.5px solid var(--ink-300);border-radius:16px;outline:none;color:var(--ink-900)">
+        <input type="text" name="nombre" required style="padding:14px 16px;font-size:16px;border:1.5px solid var(--ink-300);border-radius:16px;outline:none;color:var(--ink-900)">
       </label>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:16px">
+        <label style="display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:600">Email
+          <input type="email" name="email" required style="padding:14px 16px;font-size:16px;border:1.5px solid var(--ink-300);border-radius:16px;outline:none;color:var(--ink-900)">
+        </label>
+        <label style="display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:600">Teléfono
+          <input type="tel" name="telefono" style="padding:14px 16px;font-size:16px;border:1.5px solid var(--ink-300);border-radius:16px;outline:none;color:var(--ink-900)">
+        </label>
+      </div>
       <div style="display:flex;flex-direction:column;gap:10px">
         <span style="font-size:14px;font-weight:600">¿Prefieres que te escribamos o que te llamemos?</span>
         <div style="display:flex;gap:8px;flex-wrap:wrap">
@@ -312,8 +321,13 @@ input,textarea,select{font-family:var(--font-body)}
         </div>
       </div>
       <label style="display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:600">Déjanos tu comentario para que podamos asesorarte mejor
-        <textarea rows="4" style="padding:14px 16px;font-size:16px;border:1.5px solid var(--ink-300);border-radius:16px;outline:none;resize:vertical;color:var(--ink-900)"></textarea>
+        <textarea name="comentario" rows="4" style="padding:14px 16px;font-size:16px;border:1.5px solid var(--ink-300);border-radius:16px;outline:none;resize:vertical;color:var(--ink-900)"></textarea>
       </label>
+      <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+      <div data-ts ref="{{ tsRef }}" style="min-height:65px"></div>
+      <sc-if value="{{ sendErr }}" hint-placeholder-val="{{ false }}">
+        <div style="border-radius:16px;padding:14px 18px;background:color-mix(in oklch, var(--state-danger) 12%, white);font-size:15px;font-weight:600;color:var(--ink-900)">{{ sendErr }}</div>
+      </sc-if>
       <button type="submit" style="align-self:flex-start;padding:16px 36px;border-radius:28px;border:none;cursor:pointer;font-family:var(--font-body);font-size:17px;font-weight:700;color:#fff;background:var(--grad-school);box-shadow:var(--shadow-brand)" style-active="transform:scale(0.96)">Enviar</button>
     </form>
   </div>
@@ -428,7 +442,20 @@ class Component extends DCLogic {
       whoOpts: this.opts(['Institución', 'Colegio', 'Padre'], 'who'),
       prodOpts: this.opts(['SEM Instituciones', 'SEM Colegio', 'Genyus Go Colegios', 'Genyus Academy/LAB'], 'prod'),
       sent: this.state.sent,
-      submit: e => { e.preventDefault(); this.setState({ sent: true }); }
+      sendErr: this.state.sendErr,
+      tsRef: this.tsRef || (this.tsRef = el => { const go = () => window.GenyusForms ? GenyusForms.widget(el) : setTimeout(go, 150); if (el) go(); }),
+      submit: e => {
+        e.preventDefault();
+        if (this.state.sending) return;
+        const f = e.target, fd = new FormData(f), g = k => (fd.get(k) || '').toString().trim() || '—';
+        const data = { 'Nombre': g('nombre'), 'Email': g('email'), 'Teléfono': g('telefono'), 'Prefiere': this.state.pref || '—', 'Perfil': this.state.who || '—', 'Producto': this.state.prod || '—', 'Comentario': g('comentario'), 'Página': location.pathname };
+        this.setState({ sending: true, sendErr: null });
+        GenyusForms.send('contacto', data, f).then(r => {
+          if (r === 'ok') { f.reset(); this.setState({ sending: false, sent: true, pref: 'Correo', who: null, prod: null }); }
+          else this.setState({ sending: false, sendErr: GenyusForms.msg(r) });
+          GenyusForms.reset(f);
+        });
+      }
     };
   }
 }

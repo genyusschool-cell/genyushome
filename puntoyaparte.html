@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="/_ds/genyus-school-design-system-87b1a3d4-ed31-4494-8c36-a6c785d7ed07/styles.css">
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <script src="/_ds/genyus-school-design-system-87b1a3d4-ed31-4494-8c36-a6c785d7ed07/_ds_bundle.js"></script>
+<script src="/genyus-forms.js"></script>
   <script src="/image-slot.js"></script>
   <style>
     html { scroll-behavior: smooth; scroll-padding-top: 110px; }
@@ -232,6 +233,13 @@
             </sc-if>
           </div>
           <x-import component-from-global-scope="GenyusSchoolDesignSystem_87b1a3.Checkbox" id="cb-news" checked="{{ news }}" sc-camel-on-change="{{ toggleNews }}" label="Acepto recibir de Grupo Anaya, S.A.U., Genyus Minds, S.L. y TeamLabs, S.L. comunicaciones sobre futuros encuentros, iniciativas, actividades, productos y servicios relacionados con educación, innovación, liderazgo y talento, por medios electrónicos." dc-props="{{ cbProps }}" hint-size="100%,48px"></x-import>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px;margin-top:32px">
+          <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+          <div data-ts ref="{{ tsRef }}" style="min-height:65px"></div>
+          <sc-if value="{{ sendErr }}" hint-placeholder-val="{{ false }}">
+            <div style="border-radius:16px;padding:14px 18px;background:color-mix(in oklch, var(--state-danger) 12%, white);font-size:15px;font-weight:600;color:var(--ink-900)">{{ sendErr }}</div>
+          </sc-if>
         </div>
         <div style="margin-top:32px;display:flex;align-items:center;gap:20px;flex-wrap:wrap">
           <x-import component-from-global-scope="GenyusSchoolDesignSystem_87b1a3.Button" size="lg" sc-camel-on-click="{{ submit }}" dc-props="{{ submitProps }}" hint-size="140px,54px">{{ submitLabel }}</x-import>
@@ -531,7 +539,9 @@ class Component extends DCLogic {
       togglePrivacy: () => this.setState(st => ({ privacy: !st.privacy })),
       toggleNews: () => this.setState(st => ({ news: !st.news })),
       hasErrors: fieldErrors || privacyErr,
-      sent: s.sent, notSent: !s.sent, submitLabel: s.sending ? 'Enviando…' : 'Enviar',
+      sent: s.sent, notSent: !s.sent, sendErr: s.sendErr,
+      tsRef: this.tsRef || (this.tsRef = el => { const go = () => window.GenyusForms ? GenyusForms.widget(el) : setTimeout(go, 150); if (el) go(); }),
+      submitLabel: s.sending ? 'Enviando…' : 'Enviar',
       submit: () => {
         const ok = FIELDS.every(f => {
           const v = (s.values[f.key] || '').trim();
@@ -554,23 +564,10 @@ class Component extends DCLogic {
       acepta_privacidad: 'Sí', version_privacidad: 'Política de Privacidad · 6 de octubre de 2026',
       acepta_comunicaciones: s.news ? 'Sí' : 'No', origen: location.href,
     };
-    const jobs = [];
-    const slack = this.props.slackWebhook ?? 'https://hooks.slack.com/services/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';
-    if (slack) {
-      const text = ':tada: *Nueva inscripción · Punto y aparte*\n' +
-        '*' + data.nombre + ' ' + data.apellidos + '* · ' + data.cargo + '\n' +
-        data.centro + ' (' + data.localidad + ')\n' +
-        'Email: ' + data.email + ' · Tel: ' + data.telefono + '\n' +
-        'Etapas: ' + data.etapas + (data.ciclos ? ' · Ciclos: ' + data.ciclos : '') + '\n' +
-        (data.dimensiones ? 'Dimensiones: ' + data.dimensiones + '\n' : '') +
-        (data.titularidad ? 'Titularidad: ' + data.titularidad + '\n' : '') +
-        'Comunicaciones: ' + data.acepta_comunicaciones;
-      jobs.push(fetch(slack, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: 'payload=' + encodeURIComponent(JSON.stringify({ text })) }));
-    }
-    const sheet = this.props.sheetEndpoint || 'https://script.google.com/macros/s/AKfycbz-gAOcw3eHukAQBTB1Kv0c1K8ug941p-tkkaELy8_0EO37fnBUfz5DVSq6Evd74Rp-/exec';
-    if (sheet) jobs.push(fetch(sheet, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(data) }));
-    await Promise.allSettled(jobs);
-    this.setState({ sending: false, sent: true });
+    const r = await GenyusForms.send('puntoyaparte', data, null);
+    GenyusForms.reset();
+    if (r !== 'ok') { this.setState({ sending: false, sendErr: GenyusForms.msg(r) }); return; }
+    this.setState({ sending: false, sent: true, sendErr: null });
   }
 
   withIcons(size, list) { return list.map(x => ({ ...x, iconEl: ic(x.icon, size) })); }

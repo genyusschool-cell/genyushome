@@ -16,6 +16,7 @@
 <link rel="stylesheet" href="/_ds/genyus-school-design-system-87b1a3d4-ed31-4494-8c36-a6c785d7ed07/tokens/spacing.css">
 <link rel="stylesheet" href="/_ds/genyus-school-design-system-87b1a3d4-ed31-4494-8c36-a6c785d7ed07/styles.css">
 <script src="/_ds/genyus-school-design-system-87b1a3d4-ed31-4494-8c36-a6c785d7ed07/_ds_bundle.js"></script>
+<script src="/genyus-forms.js"></script>
 <script src="/yusi-bot.js" defer></script>
 <style>
 html{scroll-behavior:smooth}
@@ -281,7 +282,7 @@ i[data-lucide] svg,svg[data-lucide]{width:100%;height:100%}
           <div style="display:flex;justify-content:space-between;align-items:center;color:var(--ink-400)"><span style="font-weight:700;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-500)">Ciclo secundaria inicial</span><i data-lucide="calendar" style="width:16px;height:16px"></i></div>
           <div style="font-family:var(--font-display);font-weight:400;font-size:20px;color:var(--ink-900);margin:10px 0 16px">1º / 2º ESO</div>
           <div style="display:flex;align-items:center;gap:9px;color:var(--ink-700);font-size:14.5px;margin-bottom:9px"><i data-lucide="calendar-days" style="width:17px;height:17px;color:var(--gs-orange)"></i>Martes</div>
-          <div style="display:flex;align-items:center;gap:9px;color:var(--ink-700);font-size:14.5px"><i data-lucide="clock" style="width:17px;height:17px;color:var(--gs-orange)"></i>17:30 – 19:00</div>
+          <div style="display:flex;flex-direction:column;gap:9px"><div style="display:flex;align-items:center;gap:9px;color:var(--ink-700);font-size:14.5px"><i data-lucide="clock" style="width:17px;height:17px;color:var(--gs-orange)"></i>17:30 – 19:00</div><div style="display:flex;align-items:center;gap:9px;color:var(--ink-700);font-size:14.5px"><i data-lucide="clock" style="width:17px;height:17px;color:var(--gs-orange)"></i>17:45 – 19:15</div></div>
         </div>
         <div style="position:relative;background:#fff;border:1px solid var(--border-subtle);border-radius:18px;box-shadow:var(--shadow-sm);padding:24px;overflow:hidden">
           <div style="position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--gs-pink),var(--gs-orange))"></div>
@@ -512,6 +513,17 @@ i[data-lucide] svg,svg[data-lucide]{width:100%;height:100%}
                   </div>
                 </div>
                 </sc-if>
+                <sc-if value="{{ showHorarios }}" hint-placeholder-val="{{ false }}">
+                <div>
+                  <span style="display:block;font-weight:600;font-size:14px;color:var(--ink-800);margin-bottom:10px">Horario (martes) <span style="color:var(--gs-pink)">*</span></span>
+                  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px">
+                    <sc-for list="{{ horarios }}" as="hz" hint-placeholder-count="2">
+                      <button type="button" onClick="{{ hz.onClick }}" style="{{ hz.style }}">{{ hz.label }}</button>
+                    </sc-for>
+                  </div>
+                  <sc-if value="{{ horarioErr }}" hint-placeholder-val="{{ false }}"><span style="display:block;margin-top:8px;font-size:13px;font-weight:600;color:var(--state-danger)">Elige un horario para continuar</span></sc-if>
+                </div>
+                </sc-if>
                 <sc-if value="{{ showSched }}" hint-placeholder-val="{{ false }}">
                   <div style="display:flex;gap:14px;align-items:flex-start;padding:18px 20px;border-radius:14px;background:linear-gradient(135deg,rgba(26,172,255,.10),rgba(255,53,165,.12));border:1.5px solid rgba(255,53,165,.30);box-shadow:0 6px 22px rgba(255,53,165,.12)">
                     <span style="width:40px;height:40px;border-radius:11px;background:#fff;box-shadow:var(--shadow-sm);color:var(--gs-pink);display:flex;align-items:center;justify-content:center;flex:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:22px;height:22px"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path><path d="M12 14v3l2 1"></path></svg></span>
@@ -583,7 +595,15 @@ i[data-lucide] svg,svg[data-lucide]{width:100%;height:100%}
             </div>
 
             <sc-if value="{{ sentReservar }}" hint-placeholder-val="{{ false }}">
-              <div style="display:flex;align-items:center;gap:10px;padding:14px 16px;border-radius:12px;background:rgba(22,179,100,.08);border:1px solid rgba(22,179,100,.32);margin-top:22px"><i data-lucide="check-circle-2" style="width:20px;height:20px;color:var(--state-success);flex:none"></i><span style="font-weight:700;color:#0f7a44;font-size:14.5px">¡Inscripción enviada! Te contactaremos muy pronto.</span></div>
+              <div style="display:flex;flex-direction:column;gap:12px;margin-top:22px">
+                <div style="display:flex;align-items:flex-start;gap:12px;padding:18px 20px;border-radius:14px;background:rgba(22,179,100,.08);border:1px solid rgba(22,179,100,.32)"><i data-lucide="check-circle-2" style="width:22px;height:22px;color:var(--state-success);flex:none;margin-top:1px"></i><div><div style="font-weight:700;color:#0f7a44;font-size:16px;margin-bottom:4px">¡Inscripción recibida!</div><div style="font-size:14.5px;line-height:1.5;color:var(--ink-700);text-wrap:pretty">{{ sentMsg }}</div></div></div>
+                <div style="padding:18px 20px;border-radius:14px;background:color-mix(in oklch, var(--gs-pink) 8%, white);border:1px solid color-mix(in oklch, var(--gs-pink) 30%, white)"><div style="font-weight:700;font-size:15px;color:var(--ink-900);margin-bottom:4px">¿Inscribes también a un hermano o hermana?</div><div style="font-size:14.5px;line-height:1.5;color:var(--ink-700);text-wrap:pretty">El segundo inscrito tiene un 10% de descuento. Haz la nueva inscripción con un email diferente.</div></div>
+              </div>
+            </sc-if>
+            <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+            <div data-ts ref="{{ tsRef }}" style="min-height:65px"></div>
+            <sc-if value="{{ errReservar }}" hint-placeholder-val="{{ false }}">
+              <div style="border-radius:16px;padding:14px 18px;background:color-mix(in oklch, var(--state-danger) 12%, white);font-size:15px;font-weight:600;color:var(--ink-900);margin-top:16px">{{ errReservar }}</div>
             </sc-if>
             <button type="submit" style="width:100%;border:0;border-radius:12px;background:var(--gs-blue);color:#fff;font-family:var(--font-body);font-weight:700;font-size:16px;padding:16px;cursor:pointer;box-shadow:var(--shadow-blue);margin-top:28px">Inscribir a mi hijo/a</button>
           </div>
@@ -608,25 +628,25 @@ i[data-lucide] svg,svg[data-lucide]{width:100%;height:100%}
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
             <label style="display:block">
               <span style="display:block;font-weight:600;font-size:14px;color:var(--ink-800);margin-bottom:8px">Nombre <span style="color:var(--gs-pink)">*</span></span>
-              <input type="text" style="width:100%;box-sizing:border-box;font-family:var(--font-body);font-size:15px;color:var(--ink-800);padding:12px 14px;border:1.5px solid var(--border-default);border-radius:10px;background:#fff">
+              <input type="text" required style="width:100%;box-sizing:border-box;font-family:var(--font-body);font-size:15px;color:var(--ink-800);padding:12px 14px;border:1.5px solid var(--border-default);border-radius:10px;background:#fff">
             </label>
             <label style="display:block">
               <span style="display:block;font-weight:600;font-size:14px;color:var(--ink-800);margin-bottom:8px">Apellido <span style="color:var(--gs-pink)">*</span></span>
-              <input type="text" style="width:100%;box-sizing:border-box;font-family:var(--font-body);font-size:15px;color:var(--ink-800);padding:12px 14px;border:1.5px solid var(--border-default);border-radius:10px;background:#fff">
+              <input type="text" required style="width:100%;box-sizing:border-box;font-family:var(--font-body);font-size:15px;color:var(--ink-800);padding:12px 14px;border:1.5px solid var(--border-default);border-radius:10px;background:#fff">
             </label>
           </div>
           <label style="display:block">
             <span style="display:block;font-weight:600;font-size:14px;color:var(--ink-800);margin-bottom:8px">Email <span style="color:var(--gs-pink)">*</span></span>
             <div style="position:relative">
               <i data-lucide="mail" style="width:18px;height:18px;color:var(--ink-400);position:absolute;left:13px;top:50%;transform:translateY(-50%)"></i>
-              <input type="email" style="width:100%;box-sizing:border-box;font-family:var(--font-body);font-size:15px;color:var(--ink-800);padding:12px 14px 12px 40px;border:1.5px solid var(--border-default);border-radius:10px;background:#fff">
+              <input type="email" required style="width:100%;box-sizing:border-box;font-family:var(--font-body);font-size:15px;color:var(--ink-800);padding:12px 14px 12px 40px;border:1.5px solid var(--border-default);border-radius:10px;background:#fff">
             </div>
           </label>
           <label style="display:block">
             <span style="display:block;font-weight:600;font-size:14px;color:var(--ink-800);margin-bottom:8px">Teléfono <span style="color:var(--gs-pink)">*</span></span>
             <div style="display:flex;gap:8px">
               <span style="display:flex;align-items:center;padding:0 12px;border:1.5px solid var(--border-default);border-radius:10px;font-size:14px;font-weight:600;color:var(--ink-600);background:var(--ink-050);flex:none">+34</span>
-              <input type="tel" style="flex:1;min-width:0;box-sizing:border-box;font-family:var(--font-body);font-size:15px;color:var(--ink-800);padding:12px 14px;border:1.5px solid var(--border-default);border-radius:10px;background:#fff">
+              <input type="tel" required style="flex:1;min-width:0;box-sizing:border-box;font-family:var(--font-body);font-size:15px;color:var(--ink-800);padding:12px 14px;border:1.5px solid var(--border-default);border-radius:10px;background:#fff">
             </div>
           </label>
           <div>
@@ -639,6 +659,11 @@ i[data-lucide] svg,svg[data-lucide]{width:100%;height:100%}
           </div>
           <sc-if value="{{ sentInfo }}" hint-placeholder-val="{{ false }}">
             <div style="display:flex;align-items:center;gap:10px;padding:14px 16px;border-radius:12px;background:rgba(22,179,100,.08);border:1px solid rgba(22,179,100,.32)"><i data-lucide="check-circle-2" style="width:20px;height:20px;color:var(--state-success);flex:none"></i><span style="font-weight:700;color:#0f7a44;font-size:14.5px">¡Mensaje enviado! Te responderemos a la brevedad.</span></div>
+          </sc-if>
+          <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+          <div data-ts ref="{{ tsRef }}" style="min-height:65px"></div>
+          <sc-if value="{{ errInfo }}" hint-placeholder-val="{{ false }}">
+            <div style="border-radius:16px;padding:14px 18px;background:color-mix(in oklch, var(--state-danger) 12%, white);font-size:15px;font-weight:600;color:var(--ink-900)">{{ errInfo }}</div>
           </sc-if>
           <button type="submit" style="width:100%;border:0;border-radius:12px;background:var(--gs-blue);color:#fff;font-family:var(--font-body);font-weight:700;font-size:16px;padding:16px;cursor:pointer;box-shadow:var(--shadow-blue);margin-top:8px">Enviar</button>
         </form>
@@ -719,13 +744,14 @@ class Component extends DCLogic {
     els.forEach(el => this.io.observe(el));
   }
   componentWillUnmount() { this.io && this.io.disconnect(); clearTimeout(this.fallback); }
-  state = { program: null, phase: "idle", tab: "reservar", sentReservar: false, sentInfo: false, cursoSel: null, infoProg: null, infoQue: null, openCur: null };
+  state = { program: null, phase: "idle", tab: "reservar", sentReservar: false, sentInfo: false, cursoSel: null, horarioSel: null, horarioErr: false, infoProg: null, infoQue: null, openCur: null };
   pick(key) {
     if (this.state.program === key && this.state.phase !== "idle") return;
     clearTimeout(this._t);
-    this.setState({ program: key, phase: "checking", cursoSel: null });
+    this.setState({ program: key, phase: "checking", cursoSel: null, horarioSel: null, horarioErr: false });
     this._t = setTimeout(() => this.setState({ phase: "available" }), 2000);
   }
+  needsHorario() { return this.state.program === "academy" && (this.state.cursoSel === "1º ESO" || this.state.cursoSel === "2º ESO"); }
   readForm(form) {
     const rows = [];
     form.querySelectorAll("label").forEach((lab) => {
@@ -742,39 +768,33 @@ class Component extends DCLogic {
     });
     return rows;
   }
-  hook(parts) {
-    return ["https://hooks.slack.com/services", ...parts].join("/");
-  }
-  slackSend(url, title, rows) {
-    const text = "*" + title + "*\n" + rows.map((r) => "• *" + r[0] + ":* " + r[1]).join("\n");
-    try {
-      fetch(url, { method: "POST", mode: "no-cors", body: JSON.stringify({ text }) });
-    } catch (e) {}
-  }
-  sheetSend(url, rows) {
-    const payload = {};
-    rows.forEach((r) => { payload[r[0]] = r[1]; });
-    try {
-      fetch(url, { method: "POST", mode: "no-cors", body: JSON.stringify(payload) });
-    } catch (e) {}
+  toObj(rows) { const o = {}; rows.forEach(r => { o[r[0]] = r[1]; }); return o; }
+  dispatch(form, rows, el, sentKey, errKey) {
+    if (this.state['sending_' + form]) return;
+    this.setState({ ['sending_' + form]: true, [errKey]: null });
+    GenyusForms.send(form, this.toObj(rows), el).then(r => {
+      if (r === 'ok') this.setState({ ['sending_' + form]: false, [sentKey]: true });
+      else this.setState({ ['sending_' + form]: false, [errKey]: GenyusForms.msg(r) });
+      GenyusForms.reset(el);
+    });
   }
   submitReservar(e) {
     e.preventDefault();
+    if (this.needsHorario() && !this.state.horarioSel) { this.setState({ horarioErr: true }); return; }
     const rows = this.readForm(e.target);
     rows.push(["Curso escolar actual (26/27)", this.state.cursoSel || "—"]);
+    rows.push(["Horario elegido", this.needsHorario() ? "Martes " + this.state.horarioSel : "—"]);
     const prog = this.state.program === "academy" ? "Genyus Academy" : this.state.program === "lab" ? "Genyus Lab" : "—";
     rows.unshift(["Programa elegido", prog]);
-    this.slackSend(this.hook(["T0B9P10C1C7", "B0BP5KD5WUE", "rN60BNDz82uJLi2" + "xRbTnPOVk"]), "Nueva inscripción — Academy + Lab", rows);
-    this.sheetSend("https://script.google.com/macros/s/AKfycbzmwiuyvYLlA9mp21-L9jdiyVhw95s8MUjjwFqsSjIiS20J3NsNk3avdGyTzcvsx_yRxw/exec", rows);
-    this.setState({ sentReservar: true });
+    this.dispatch("academy_reserva", rows, e.target, "sentReservar", "errReservar");
   }
   submitInfo(e) {
     e.preventDefault();
+    if (!this.state.infoProg || !this.state.infoQue) { this.setState({ errInfo: "Elige el programa y qué te gustaría saber." }); return; }
     const rows = this.readForm(e.target);
     rows.unshift(["Programa", this.state.infoProg || "—"]);
     rows.push(["¿Qué te gustaría saber?", this.state.infoQue || "—"]);
-    this.slackSend(this.hook(["T0B9P10C1C7", "B0BP5KTTY94", "JZFQFfNmgtqHr" + "FwlCpXHc1WU"]), "Nueva consulta — Contáctanos", rows);
-    this.setState({ sentInfo: true });
+    this.dispatch("academy_info", rows, e.target, "sentInfo", "errInfo");
   }
   curriculaData() {
     return [
@@ -847,6 +867,9 @@ class Component extends DCLogic {
       schedShow = true;
       schedText = "Genyus Lab se dará los días Lunes de 19:00 a 20:30hs.";
       schedSub = "Sesiones quincenales: los grupos de semana A y semana B alternan los lunes.";
+    } else if (program === "academy" && this.needsHorario()) {
+      schedShow = !!this.state.horarioSel;
+      schedText = "Genyus Academy para " + this.state.cursoSel + " se dará los días Martes de " + (this.state.horarioSel || "").replace(" – ", " a ") + "hs.";
     } else if (program === "academy" && this.state.cursoSel && acadSched[this.state.cursoSel]) {
       schedShow = true;
       schedText = "Genyus Academy para " + this.state.cursoSel + " se dará los días " + acadSched[this.state.cursoSel] + "hs.";
@@ -877,9 +900,15 @@ class Component extends DCLogic {
       tabInfoStyle: { ...pillBase, ...(tab === "info" ? pillOn : pillOff) },
       sentReservar: this.state.sentReservar,
       sentInfo: this.state.sentInfo,
+      errReservar: this.state.errReservar, errInfo: this.state.errInfo,
+      sentMsg: this.state.program === "lab" ? "Te contactaremos muy pronto para confirmar los detalles." : "Te hemos enviado un email con el enlace de clase y los datos de acceso a la plataforma. Si no lo ves en unos minutos, revisa la carpeta de spam.",
+      tsRef: this.tsRef || (this.tsRef = el => { const go = () => window.GenyusForms ? GenyusForms.widget(el) : setTimeout(go, 150); if (el) go(); }),
       submitReservar: (e) => this.submitReservar(e),
       submitInfo: (e) => this.submitInfo(e),
-      cursos: mkChips(["5º EP", "6º EP", "1º ESO", "2º ESO", "3º ESO", "4º ESO"], this.state.cursoSel, "cursoSel"),
+      cursos: mkChips(["5º EP", "6º EP", "1º ESO", "2º ESO", "3º ESO", "4º ESO"], this.state.cursoSel, "cursoSel").map((c) => ({ ...c, onClick: () => this.setState({ cursoSel: c.label, horarioSel: null, horarioErr: false }) })),
+      horarios: mkChips(["17:30 – 19:00", "17:45 – 19:15"], this.state.horarioSel, "horarioSel").map((c) => ({ ...c, onClick: () => this.setState({ horarioSel: c.label, horarioErr: false }) })),
+      showHorarios: this.needsHorario(),
+      horarioErr: this.state.horarioErr,
       infoProgramas: mkChips(["Genyus Academy", "Genyus Lab"], this.state.infoProg, "infoProg"),
       infoQues: mkChips(["Quiero más información", "Dudas sobre los temarios"], this.state.infoQue, "infoQue"),
       curricula: this.curriculaData().map((c) => {

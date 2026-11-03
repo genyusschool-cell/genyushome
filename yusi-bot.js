@@ -27,7 +27,7 @@
     { id: 'lab', aud: 'fam', q: '¿Qué es Genyus Lab?', k: ['lab', 'mentoria', 'mentorias', 'proyecto propio', 'candidatura'],
       a: 'Son mentorías grupales quincenales de alto rendimiento para alumnos de 13 a 17 años con un proyecto propio en marcha. Grupos de 4 a 6 alumnos y acceso por candidatura. Precio: 100 € / mes.', link: ['Ver Academy + Lab', 'academy'] },
     { id: 'horario', aud: 'fam', q: '¿Qué horarios tenéis?', k: ['horario', 'horarios', 'dia', 'dias', 'hora', 'lunes', 'martes', 'franja'],
-      a: 'Curso 26-27, Genyus Academy: 5.º y 6.º EP los lunes de 17:30 a 19:00; 1.º y 2.º ESO los martes de 17:30 a 19:00; 3.º y 4.º ESO los martes de 19:00 a 20:30. Genyus Lab: lunes de 19:00 a 20:30, en semanas alternas (grupo A y grupo B).', link: ['Reservar plaza', 'academy'] },
+      a: 'Curso 26-27, Genyus Academy: 5.º y 6.º EP los lunes de 17:30 a 19:00; 1.º y 2.º ESO los martes de 17:30 a 19:00 o de 17:45 a 19:15 (a elegir); 3.º y 4.º ESO los martes de 19:00 a 20:30. Genyus Lab: lunes de 19:00 a 20:30, en semanas alternas (grupo A y grupo B).', link: ['Reservar plaza', 'academy'] },
     { id: 'online', aud: 'fam', q: '¿Las clases son online?', k: ['online', 'presencial', 'meet', 'google', 'virtual', 'casa', 'directo'],
       a: 'Sí. Todas las sesiones son en directo por Google Meet: semanales en Academy y quincenales en Lab, con explicación, dinámicas y trabajo aplicado sobre retos reales.' },
     { id: 'edad', aud: 'fam', q: '¿Desde qué edad pueden apuntarse?', k: ['edad', 'años', 'anos', 'curso', 'primaria', 'eso', 'pequeño', 'mayor'],

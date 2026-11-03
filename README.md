@@ -22,6 +22,9 @@ Web estática, sin paso de build.
 4. Deploy. `vercel.json` activa las URLs limpias (sin .html).
 
 ## Integraciones
-- Academy + Lab: inscripción y contacto → Slack + Google Sheets.
-- Punto y aparte: inscripción → Google Sheets + email (Apps Script) + Slack.
-- Formulario de /contacto (y Home/Eventos): solo muestra confirmación (sin envío conectado).
+Cada formulario envía a su Apps Script (URLs en `genyus-forms.js`), que verifica Cloudflare Turnstile, guarda en su hoja y avisa a Slack.
+- Leads web (contacto): hoja + Slack general
+- Academy confirmación (inscripción): hoja + Slack Academy
+- Academy Info: solo Slack Academy
+- Punto y aparte y Consentimiento: scripts anteriores (sin verificación en servidor todavía)
+Protección: Turnstile + campo trampa oculto + rechazo de envíos en menos de 3 s.

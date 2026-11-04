@@ -277,7 +277,58 @@ input,textarea,select{font-family:var(--font-body)}
           <input type="email" name="email" required style="padding:14px 16px;font-size:16px;border:1.5px solid var(--ink-300);border-radius:16px;outline:none;color:var(--ink-900)">
         </label>
         <label style="display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:600">Teléfono
-          <input type="tel" name="telefono" style="padding:14px 16px;font-size:16px;border:1.5px solid var(--ink-300);border-radius:16px;outline:none;color:var(--ink-900)">
+          <div style="display:flex;gap:8px">
+            <select name="prefijo" aria-label="Prefijo del país" style="flex:none;width:112px;padding:14px 10px;font-size:16px;border:1.5px solid var(--ink-300);border-radius:16px;outline:none;color:var(--ink-900);background:#fff">
+              <option value="+34">+34 España</option>
+              <option value="+351">+351 Portugal</option>
+              <option value="+33">+33 Francia</option>
+              <option value="+376">+376 Andorra</option>
+              <option value="+39">+39 Italia</option>
+              <option value="+49">+49 Alemania</option>
+              <option value="+44">+44 Reino Unido</option>
+              <option value="+353">+353 Irlanda</option>
+              <option value="+32">+32 Bélgica</option>
+              <option value="+31">+31 Países Bajos</option>
+              <option value="+41">+41 Suiza</option>
+              <option value="+43">+43 Austria</option>
+              <option value="+46">+46 Suecia</option>
+              <option value="+47">+47 Noruega</option>
+              <option value="+45">+45 Dinamarca</option>
+              <option value="+48">+48 Polonia</option>
+              <option value="+40">+40 Rumanía</option>
+              <option value="+380">+380 Ucrania</option>
+              <option value="+30">+30 Grecia</option>
+              <option value="+1">+1 Estados Unidos / Canadá</option>
+              <option value="+52">+52 México</option>
+              <option value="+54">+54 Argentina</option>
+              <option value="+57">+57 Colombia</option>
+              <option value="+56">+56 Chile</option>
+              <option value="+51">+51 Perú</option>
+              <option value="+58">+58 Venezuela</option>
+              <option value="+593">+593 Ecuador</option>
+              <option value="+598">+598 Uruguay</option>
+              <option value="+595">+595 Paraguay</option>
+              <option value="+591">+591 Bolivia</option>
+              <option value="+55">+55 Brasil</option>
+              <option value="+53">+53 Cuba</option>
+              <option value="+1 809">+1 809 República Dominicana</option>
+              <option value="+1 787">+1 787 Puerto Rico</option>
+              <option value="+506">+506 Costa Rica</option>
+              <option value="+507">+507 Panamá</option>
+              <option value="+502">+502 Guatemala</option>
+              <option value="+504">+504 Honduras</option>
+              <option value="+503">+503 El Salvador</option>
+              <option value="+505">+505 Nicaragua</option>
+              <option value="+212">+212 Marruecos</option>
+              <option value="+971">+971 Emiratos Árabes Unidos</option>
+              <option value="+86">+86 China</option>
+              <option value="+91">+91 India</option>
+              <option value="+81">+81 Japón</option>
+              <option value="+61">+61 Australia</option>
+              <option value="">Otro (escríbelo con el número)</option>
+            </select>
+            <input type="tel" name="telefono" inputmode="tel" autocomplete="tel-national" style="flex:1;min-width:0;padding:14px 16px;font-size:16px;border:1.5px solid var(--ink-300);border-radius:16px;outline:none;color:var(--ink-900)">
+          </div>
         </label>
       </div>
       <div style="display:flex;flex-direction:column;gap:10px">
@@ -432,7 +483,7 @@ class Component extends DCLogic {
         e.preventDefault();
         if (this.state.sending) return;
         const f = e.target, fd = new FormData(f), g = k => (fd.get(k) || '').toString().trim() || '—';
-        const data = { 'Nombre': g('nombre'), 'Email': g('email'), 'Teléfono': g('telefono'), 'Prefiere': this.state.pref || '—', 'Perfil': this.state.who || '—', 'Producto': this.state.prod || '—', 'Comentario': g('comentario'), 'Página': location.pathname };
+        const data = { 'Nombre': g('nombre'), 'Email': g('email'), 'Teléfono': g('telefono') === '—' ? '—' : ((fd.get('prefijo') || '') + ' ' + g('telefono')).trim(), 'Prefiere': this.state.pref || '—', 'Perfil': this.state.who || '—', 'Producto': this.state.prod || '—', 'Comentario': g('comentario'), 'Página': location.pathname };
         this.setState({ sending: true, sendErr: null });
         GenyusForms.send('contacto', data, f).then(r => {
           if (r === 'ok') { f.reset(); this.setState({ sending: false, sent: true, pref: 'Correo', who: null, prod: null }); }

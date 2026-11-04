@@ -203,7 +203,61 @@
           </div>
         </sc-if>
         <div style="margin-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px">
-          <sc-for list="{{ fields }}" as="fd" hint-placeholder-count="9">
+          <sc-for list="{{ fieldsA }}" as="fd" hint-placeholder-count="3">
+            <x-import component-from-global-scope="GenyusSchoolDesignSystem_87b1a3.Input" label="{{ fd.label }}" type="{{ fd.type }}" value="{{ fd.value }}" error="{{ fd.error }}" sc-camel-on-change="{{ fd.onChange }}" placeholder="{{ fd.placeholder }}" hint-size="100%,72px"></x-import>
+          </sc-for>
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600;color:var(--ink-800)">Prefijo del teléfono *
+            <select value="{{ cc }}" onChange="{{ setCc }}" style="height:48px;padding:0 12px;font-family:var(--font-body);font-size:16px;border:1.5px solid var(--ink-300);border-radius:14px;outline:none;color:var(--ink-900);background:#fff">
+              <option value="+34">+34 España</option>
+              <option value="+351">+351 Portugal</option>
+              <option value="+33">+33 Francia</option>
+              <option value="+376">+376 Andorra</option>
+              <option value="+39">+39 Italia</option>
+              <option value="+49">+49 Alemania</option>
+              <option value="+44">+44 Reino Unido</option>
+              <option value="+353">+353 Irlanda</option>
+              <option value="+32">+32 Bélgica</option>
+              <option value="+31">+31 Países Bajos</option>
+              <option value="+41">+41 Suiza</option>
+              <option value="+43">+43 Austria</option>
+              <option value="+46">+46 Suecia</option>
+              <option value="+47">+47 Noruega</option>
+              <option value="+45">+45 Dinamarca</option>
+              <option value="+48">+48 Polonia</option>
+              <option value="+40">+40 Rumanía</option>
+              <option value="+380">+380 Ucrania</option>
+              <option value="+30">+30 Grecia</option>
+              <option value="+1">+1 Estados Unidos / Canadá</option>
+              <option value="+52">+52 México</option>
+              <option value="+54">+54 Argentina</option>
+              <option value="+57">+57 Colombia</option>
+              <option value="+56">+56 Chile</option>
+              <option value="+51">+51 Perú</option>
+              <option value="+58">+58 Venezuela</option>
+              <option value="+593">+593 Ecuador</option>
+              <option value="+598">+598 Uruguay</option>
+              <option value="+595">+595 Paraguay</option>
+              <option value="+591">+591 Bolivia</option>
+              <option value="+55">+55 Brasil</option>
+              <option value="+53">+53 Cuba</option>
+              <option value="+1 809">+1 809 República Dominicana</option>
+              <option value="+1 787">+1 787 Puerto Rico</option>
+              <option value="+506">+506 Costa Rica</option>
+              <option value="+507">+507 Panamá</option>
+              <option value="+502">+502 Guatemala</option>
+              <option value="+504">+504 Honduras</option>
+              <option value="+503">+503 El Salvador</option>
+              <option value="+505">+505 Nicaragua</option>
+              <option value="+212">+212 Marruecos</option>
+              <option value="+971">+971 Emiratos Árabes Unidos</option>
+              <option value="+86">+86 China</option>
+              <option value="+91">+91 India</option>
+              <option value="+81">+81 Japón</option>
+              <option value="+61">+61 Australia</option>
+              <option value="">Otro (escríbelo con el número)</option>
+            </select>
+          </label>
+          <sc-for list="{{ fieldsB }}" as="fd" hint-placeholder-count="6">
             <x-import component-from-global-scope="GenyusSchoolDesignSystem_87b1a3.Input" label="{{ fd.label }}" type="{{ fd.type }}" value="{{ fd.value }}" error="{{ fd.error }}" sc-camel-on-change="{{ fd.onChange }}" placeholder="{{ fd.placeholder }}" hint-size="100%,72px"></x-import>
           </sc-for>
         </div>
@@ -503,6 +557,7 @@ class Component extends DCLogic {
       onChange: e => { const v = e.target.value; this.setState(st => ({ values: { ...st.values, [f.key]: v } })); },
     }));
     const fieldErrors = fields.some(f => f.error);
+    const telIdx = FIELDS.findIndex(f => f.key === 'telefono');
     const privacyErr = s.tried && !s.privacy;
     const toForm = () => {
       const el = document.getElementById('inscripcion');
@@ -540,6 +595,8 @@ class Component extends DCLogic {
       toggleNews: () => this.setState(st => ({ news: !st.news })),
       hasErrors: fieldErrors || privacyErr,
       sent: s.sent, notSent: !s.sent, sendErr: s.sendErr,
+      fieldsA: fields.slice(0, telIdx), fieldsB: fields.slice(telIdx),
+      cc: s.cc ?? '+34', setCc: e => this.setState({ cc: e.target.value }),
       tsRef: this.tsRef || (this.tsRef = el => { const go = () => window.GenyusForms ? GenyusForms.widget(el) : setTimeout(go, 150); if (el) go(); }),
       submitLabel: s.sending ? 'Enviando…' : 'Enviar',
       submit: () => {
@@ -558,7 +615,7 @@ class Component extends DCLogic {
     this.setState({ sending: true });
     const data = {
       fecha_registro: new Date().toISOString(),
-      nombre: v.nombre, apellidos: v.apellidos, email: v.email, telefono: v.telefono,
+      nombre: v.nombre, apellidos: v.apellidos, email: v.email, telefono: ((s.cc ?? '+34') + ' ' + v.telefono).trim(),
       centro: v.centro, localidad: v.localidad, etapas: v.etapas, ciclos: v.ciclos, cargo: v.cargo,
       dimensiones: s.dims.join(', '), titularidad: s.tit || '',
       acepta_privacidad: 'Sí', version_privacidad: 'Política de Privacidad · 6 de octubre de 2026',

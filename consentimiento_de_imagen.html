@@ -190,7 +190,7 @@ const AUTS = [
   { key: 'aut_uso_interno', title: 'a) Captación y uso interno', text: 'Fotografías y vídeos durante las actividades para documentación, evaluación y memoria interna del programa.' },
   { key: 'aut_web_newsletter', title: 'b) Web y newsletters', text: 'Publicación en la web de Genyus School y en sus newsletters.' },
   { key: 'aut_redes', title: 'c) Redes sociales y otros soportes', text: 'Publicación en redes sociales de Genyus School y en otros soportes de difusión (presentaciones, materiales impresos).' },
-  { key: 'aut_comercial', optional: true, title: 'd) Uso comercial y de marca (opcional)', text: 'Publicación y uso de fotografías y vídeos en acciones publicitarias, promocionales, campañas de marketing, material comercial, presentaciones y soportes de Genyus School y, en su caso, de entidades colaboradoras o partners, incluida su difusión en medios y redes.' },
+  { key: 'aut_comercial', title: 'd) Uso comercial y de marca', text: 'Publicación y uso de fotografías y vídeos en acciones publicitarias, promocionales, campañas de marketing, material comercial, presentaciones y soportes de Genyus School y, en su caso, de entidades colaboradoras o partners, incluida su difusión en medios y redes.' },
 ];
 const DEFAULT_SHEET = 'https://script.google.com/macros/s/AKfycbyK-lQeHjP_AihDtta5E87pg3PT4Bp8u5LaoZytj1pCcnw9J03UoBz36hGrl4jGHjaH/exec';
 const CURSOS = ['1º EP','2º EP','3º EP','4º EP','5º EP','6º EP','1º ESO','2º ESO','3º ESO','4º ESO','1º BACH','2º BACH'];
@@ -294,7 +294,7 @@ class Component extends DCLogic {
       nombre_participante: v.participante.trim(),
       nombre_tutor: this.needsTutor() ? (v.tutor || '').trim() : '',
       email: v.email.trim().toLowerCase(),
-      aut_uso_interno: s.auts.aut_uso_interno, aut_web_newsletter: s.auts.aut_web_newsletter, aut_redes: s.auts.aut_redes, aut_comercial: s.auts.aut_comercial === 'SÍ' ? 'SÍ' : 'NO',
+      aut_uso_interno: s.auts.aut_uso_interno, aut_web_newsletter: s.auts.aut_web_newsletter, aut_redes: s.auts.aut_redes, aut_comercial: s.auts.aut_comercial,
       acepta_informacion: 'Sí', version_texto: 'Consentimiento imágenes familias · v2 · 27/10/2026',
       origen: location.href,
       acepta_marketing: s.mkt === 'SÍ' ? 'SÍ' : 'NO',

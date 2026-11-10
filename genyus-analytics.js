@@ -15,7 +15,7 @@
   'use strict';
   if (window.__genyusAnalytics) return; window.__genyusAnalytics = true;
 
-  var GA4_ID = '';
+  var GA4_ID = 'G-L6R55PTXTL';
   var CLARITY_ID = '';
 
   var CONSENT_KEY = 'genyus-consent';

@@ -1,4 +1,101 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/genyusgo",
+      "destination": "/programas/genyusgo",
+      "permanent": true
+    },
+    {
+      "source": "/sem-ayto",
+      "destination": "/programas/sem-insti",
+      "permanent": true
+    },
+    {
+      "source": "/sem-instituciones",
+      "destination": "/programas/sem-insti",
+      "permanent": true
+    },
+    {
+      "source": "/sem-colegios",
+      "destination": "/programas/sem-colegios",
+      "permanent": true
+    },
+    {
+      "source": "/academy-lab-inscripcion",
+      "destination": "/academy-lab#reserva-form",
+      "permanent": true
+    },
+    {
+      "source": "/academy",
+      "destination": "/academy-lab",
+      "permanent": true
+    },
+    {
+      "source": "/lab",
+      "destination": "/academy-lab",
+      "permanent": true
+    },
+    {
+      "source": "/contact",
+      "destination": "/contacto",
+      "permanent": true
+    },
+    {
+      "source": "/about",
+      "destination": "/nosotros",
+      "permanent": true
+    },
+    {
+      "source": "/quienes-somos",
+      "destination": "/nosotros",
+      "permanent": true
+    },
+    {
+      "source": "/aviso-legal",
+      "destination": "/politicasgenyus#aviso-legal",
+      "permanent": true
+    },
+    {
+      "source": "/index",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/home",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/pol(.*)tica-de-privacidad",
+      "destination": "/politicasgenyus#privacidad",
+      "permanent": true
+    },
+    {
+      "source": "/pol(.*)tica-de-cookies",
+      "destination": "/politicasgenyus#cookies",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/emails/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/consentimiento_de_imagen",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
+        }
+      ]
+    }
+  ]
 }

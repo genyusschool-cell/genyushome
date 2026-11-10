@@ -11,6 +11,7 @@
     semi: 'programas/sem-insti', contacto: 'contacto', nosotros: 'nosotros', programas: 'programas'
   };
   function page(k) { return BASE + PAGES[k]; }
+  function T(n, p) { try { if (window.gtrack) window.gtrack(n, p || {}); } catch (e) {} }
   var WA = 'https://wa.me/34649347471?text=' + encodeURIComponent('Hola Genyus, os escribo desde la web.');
   var IG = 'https://www.instagram.com/genyusschool/';
   var LI = 'https://www.linkedin.com/company/genyusschool/';
@@ -139,7 +140,8 @@ input:focus{border-color:#1AACFF;box-shadow:0 0 0 4px rgba(26,172,255,.16)}\
     var input = root.querySelector('input'), launch = root.querySelector('.launch');
     var st = { open: false, started: false, aud: null, asked: [], count: 0, ctaShown: false };
 
-    function setOpen(v) {
+    function setOpen(v, how) {
+      if (v !== st.open) T(v ? 'chatbot_open' : 'chatbot_close', { trigger: how || 'click', questions_asked: st.count });
       st.open = v;
       wrap.classList.toggle('open', v);
       launch.setAttribute('aria-label', v ? 'Cerrar chat con Yusi' : 'Abrir chat con Yusi');
@@ -185,10 +187,13 @@ input:focus{border-color:#1AACFF;box-shadow:0 0 0 4px rgba(26,172,255,.16)}\
     }
     function pickAud(a) {
       st.aud = a.id; me(a.label);
+      T('chatbot_profile', { profile: a.id, profile_label: a.label });
+      if (window.GenyusTrack) window.GenyusTrack.setProfile(a.id);
       say('Estas son las dudas más habituales. Elige una o escríbeme tu pregunta.');
       faqChips();
     }
-    function answer(f) {
+    function answer(f, typed) {
+      T('chatbot_question', { question_id: f.id, question: String(f.q || '').slice(0, 100), source: typed ? 'escrita' : 'boton', profile: st.aud || '' });
       if (st.asked.indexOf(f.id) < 0) st.asked.push(f.id);
       st.count++;
       var html = f.a;
@@ -213,8 +218,10 @@ input:focus{border-color:#1AACFF;box-shadow:0 0 0 4px rgba(26,172,255,.16)}\
         if (st.aud && (f.aud === st.aud)) s += 0.5 * (s > 0);
         if (s > score) { score = s; best = f; }
       });
-      if (best) answer(best);
+      var asked = window.GenyusTrack ? window.GenyusTrack.scrub(t) : '';
+      if (best) { T('chatbot_typed', { matched: 'si', question_id: best.id, text: asked }); answer(best, true); }
       else {
+        T('chatbot_no_answer', { text: asked, profile: st.aud || '' });
         st.count++; st.ctaShown = true;
         say('No tengo esa respuesta, pero el equipo de Genyus sí. Escríbenos por WhatsApp o déjanos tus datos y te contactamos en menos de 24 horas.' + ctaHtml());
       }
@@ -229,7 +236,7 @@ input:focus{border-color:#1AACFF;box-shadow:0 0 0 4px rgba(26,172,255,.16)}\
         last = now;
         if (gestures >= 2) {
           document.removeEventListener('scroll', onScroll, true);
-          if (!st.open) setOpen(true);
+          if (!st.open) setOpen(true, 'auto_scroll');
         }
       };
       document.addEventListener('scroll', onScroll, { capture: true, passive: true });

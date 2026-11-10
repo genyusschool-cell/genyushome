@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Panel de la web · Genyus School</title>
+<link rel="icon" href="/assets/genyus-school-logo.png">
+<style>
+:root{
+  color-scheme:light;
+  --page:#f9f9f7;--surface:#fcfcfb;--card:#ffffff;
+  --ink:#0b0b0b;--ink-2:#52514e;--muted:#898781;
+  --grid:#e1e0d9;--axis:#c3c2b7;--ring:rgba(11,11,11,.10);
+  --s1:#2a78d6;--s1-wash:rgba(42,120,214,.10);--s2:#eb6834;
+  --good:#006300;--bad:#d03b3b;--good-mark:#0ca30c;--warn-mark:#fab219;
+  --accent:#C4127A;
+  --font:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --page:#0d0d0d;--surface:#1a1a19;--card:#1a1a19;
+    --ink:#f0efec;--ink-2:#c3c2b7;--muted:#898781;
+    --grid:#2c2c2a;--axis:#383835;--ring:rgba(255,255,255,.10);
+    --s1:#3987e5;--s1-wash:rgba(57,135,229,.14);--s2:#d95926;
+    --good:#0ca30c;--bad:#e66767;--accent:#FF5EB5;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --page:#0d0d0d;--surface:#1a1a19;--card:#1a1a19;
+  --ink:#f0efec;--ink-2:#c3c2b7;--muted:#898781;
+  --grid:#2c2c2a;--axis:#383835;--ring:rgba(255,255,255,.10);
+  --s1:#3987e5;--s1-wash:rgba(57,135,229,.14);--s2:#d95926;
+  --good:#0ca30c;--bad:#e66767;--accent:#FF5EB5;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--page);color:var(--ink);font-family:var(--font);-webkit-font-smoothing:antialiased}
+a{color:var(--s1)}
+button,input,select{font:inherit;color:inherit}
+.wrap{max-width:1240px;margin:0 auto;padding:20px 16px 64px}
+header.top{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:14px}
+header.top img{height:34px;width:auto}
+header.top h1{font-size:18px;font-weight:650;margin:0;flex:1;min-width:180px}
+.btn{border:0;border-radius:999px;padding:9px 16px;font-size:14px;font-weight:600;cursor:pointer;background:transparent;box-shadow:inset 0 0 0 1px var(--axis)}
+.btn:hover{box-shadow:inset 0 0 0 1px var(--ink)}
+.btn.primary{background:var(--ink);color:var(--page);box-shadow:none}
+.filters{position:sticky;top:0;z-index:20;background:var(--page);display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:10px 0 12px;border-bottom:1px solid var(--grid);margin-bottom:18px}
+.seg{display:flex;flex-wrap:wrap;background:var(--card);border-radius:999px;box-shadow:inset 0 0 0 1px var(--ring);padding:3px}
+.seg button{border:0;background:transparent;border-radius:999px;padding:7px 13px;font-size:13.5px;font-weight:600;cursor:pointer;color:var(--ink-2)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--page)}
+.seg button:hover:not([aria-pressed="true"]){background:var(--s1-wash)}
+.range-text{font-size:13px;color:var(--muted)}
+.spacer{flex:1}
+nav.tabs{display:flex;gap:4px;flex-wrap:wrap;margin:0 0 18px}
+nav.tabs a{font-size:13.5px;font-weight:600;color:var(--ink-2);text-decoration:none;padding:6px 11px;border-radius:999px}
+nav.tabs a:hover{background:var(--s1-wash);color:var(--ink)}
+section.block{margin:0 0 34px;scroll-margin-top:70px}
+section.block>h2{font-size:20px;font-weight:650;margin:0 0 4px}
+section.block>p.lead{margin:0 0 14px;color:var(--ink-2);font-size:14px;line-height:1.5;max-width:780px}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr))}
+.kpis{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));margin-bottom:14px}
+.card{background:var(--card);border-radius:16px;box-shadow:0 0 0 1px var(--ring);padding:16px 18px;min-width:0}
+.card h3{font-size:14.5px;font-weight:650;margin:0 0 2px}
+.card .sub{font-size:12.5px;color:var(--muted);margin:0 0 10px}
+.tile .label{font-size:13px;color:var(--ink-2);margin-bottom:6px}
+.tile .value{font-size:30px;font-weight:650;line-height:1.1;letter-spacing:-.01em}
+.tile .delta{font-size:12.5px;margin-top:6px;color:var(--muted)}
+.tile .delta b{font-weight:650}
+.tile .delta .up{color:var(--good)}.tile .delta .down{color:var(--bad)}
+.tile.lead .value{font-size:40px}
+.chart{position:relative;width:100%;height:220px}
+.chart svg{display:block;width:100%;height:100%;overflow:visible}
+.chart text{font-family:var(--font);font-size:11px;fill:var(--muted)}
+.tip{position:absolute;pointer-events:none;background:var(--card);box-shadow:0 0 0 1px var(--ring),0 8px 20px -8px rgba(0,0,0,.3);border-radius:10px;padding:8px 10px;font-size:12.5px;min-width:130px;opacity:0;transition:opacity .08s;z-index:5}
+.tip .t{color:var(--muted);margin-bottom:4px}
+.tip .r{display:flex;align-items:center;gap:8px;justify-content:space-between}
+.tip .r span:first-child{display:flex;align-items:center;gap:6px;color:var(--ink-2)}
+.tip .k{width:12px;height:2px;border-radius:2px;display:inline-block}
+.tip b{font-weight:650;font-variant-numeric:tabular-nums}
+.hbars{display:flex;flex-direction:column;gap:7px}
+.hbar{display:grid;grid-template-columns:minmax(90px,38%) 1fr;gap:10px;align-items:center;font-size:13px}
+.hbar .n{color:var(--ink-2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hbar .track{display:flex;align-items:center;gap:8px;min-width:0}
+.hbar .bar{height:14px;background:var(--s1);border-radius:0 4px 4px 0;min-width:2px}
+.hbar .v{font-variant-numeric:tabular-nums;color:var(--ink);font-weight:600;white-space:nowrap}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--grid);vertical-align:top}
+th{font-size:12px;color:var(--muted);font-weight:600;cursor:pointer;user-select:none;white-space:nowrap;position:sticky;top:0;background:var(--card)}
+th.num,td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+th[aria-sort="descending"]::after{content:" ↓"}th[aria-sort="ascending"]::after{content:" ↑"}
+td.wrap-any{word-break:break-word}
+.tablebox{max-height:460px;overflow:auto;border-radius:10px}
+.tools{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 10px}
+.tools input,.tools select{background:var(--surface);border:1px solid var(--axis);border-radius:10px;padding:8px 10px;font-size:13.5px;min-width:0;max-width:100%}
+.tools input{flex:1 1 220px}
+.empty{color:var(--muted);font-size:13.5px;padding:14px 0}
+.meter{height:8px;border-radius:999px;background:var(--s1-wash);overflow:hidden;min-width:60px}
+.meter i{display:block;height:100%;background:var(--s1);border-radius:999px}
+.status{display:inline-flex;align-items:center;gap:6px;font-weight:600;white-space:nowrap}
+.status svg{width:14px;height:14px;flex:none}
+.notice{border-radius:16px;padding:16px 18px;margin:0 0 18px;background:var(--card);box-shadow:0 0 0 1px var(--ring)}
+.notice.warn{box-shadow:inset 4px 0 0 var(--warn-mark),0 0 0 1px var(--ring)}
+.notice h3{margin:0 0 6px;font-size:15px}
+.notice p,.notice li{font-size:13.5px;line-height:1.55;color:var(--ink-2);margin:0 0 6px}
+.notice code{font-size:12.5px;background:var(--s1-wash);padding:1px 5px;border-radius:5px;word-break:break-all}
+.demo-flag{background:var(--warn-mark);color:#0b0b0b;font-weight:700;font-size:13px;border-radius:999px;padding:6px 12px}
+details.tbl summary{cursor:pointer;font-size:12.5px;color:var(--muted);margin-top:8px}
+details.tbl table{margin-top:6px}
+#login{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px 16px}
+#login form{width:100%;max-width:360px;background:var(--card);border-radius:20px;box-shadow:0 0 0 1px var(--ring),0 20px 40px -20px rgba(0,0,0,.25);padding:28px 24px;display:flex;flex-direction:column;gap:14px}
+#login img{height:38px;width:auto;align-self:flex-start}
+#login h1{font-size:20px;margin:4px 0 0}
+#login p{margin:0;color:var(--ink-2);font-size:14px}
+#login input{border:1px solid var(--axis);background:var(--surface);border-radius:12px;padding:12px 14px;font-size:15px}
+#login .err{color:var(--bad);font-size:13.5px;min-height:18px}
+.loading{opacity:.55;transition:opacity .15s}
+.hidden{display:none !important}
+@media (max-width:620px){.filters{position:static}.tile .value{font-size:26px}.tile.lead .value{font-size:32px}.chart{height:190px}}
+</style>
+</head>
+<body>
+
+<div id="login" class="hidden">
+  <form autocomplete="on">
+    <img src="/assets/genyus-school-logo.png" alt="Genyus School">
+    <h1>Panel de la web</h1>
+    <p>Acceso privado del equipo de Genyus.</p>
+    <input type="password" name="password" autocomplete="current-password" placeholder="Contraseña" aria-label="Contraseña" required>
+    <div class="err" role="alert"></div>
+    <button class="btn primary" type="submit">Entrar</button>
+  </form>
+</div>
+
+<div id="app" class="hidden">
+<div class="wrap">
+  <header class="top">
+    <img src="/assets/genyus-school-logo.png" alt="Genyus School">
+    <h1>Panel de la web</h1>
+    <span id="demoFlag" class="demo-flag hidden">DATOS DE EJEMPLO</span>
+    <a class="btn" href="https://analytics.google.com" target="_blank" rel="noopener">Analytics</a>
+    <a class="btn" href="https://search.google.com/search-console" target="_blank" rel="noopener">Search Console</a>
+    <a class="btn" href="https://clarity.microsoft.com" target="_blank" rel="noopener">Clarity (mapas de calor)</a>
+    <button class="btn" id="logout" type="button">Cerrar sesión</button>
+  </header>
+
+  <div class="filters">
+    <div class="seg" role="group" aria-label="Periodo" id="range">
+      <button type="button" data-days="7">7 días</button>
+      <button type="button" data-days="28" aria-pressed="true">28 días</button>
+      <button type="button" data-days="90">3 meses</button>
+      <button type="button" data-days="180">6 meses</button>
+      <button type="button" data-days="365">12 meses</button>
+      <button type="button" data-days="486">16 meses</button>
+    </div>
+    <span class="range-text" id="rangeText"></span>
+    <span class="spacer"></span>
+    <button class="btn" type="button" id="refresh">Actualizar</button>
+  </div>
+
+  <nav class="tabs" aria-label="Secciones">
+    <a href="#resumen">Resumen</a><a href="#trafico">De dónde vienen</a><a href="#paginas">Páginas</a>
+    <a href="#formularios">Formularios</a><a href="#clics">Clics y secciones</a><a href="#google">Google</a>
+    <a href="#indexacion">Indexación</a><a href="#chat">Chat Yusi</a><a href="#errores">Errores 404</a>
+  </nav>
+
+  <div id="setup"></div>
+  <div id="main">
+
+  <section class="block" id="resumen">
+    <h2>Resumen</h2>
+    <p class="lead">Cada cifra se compara con el periodo anterior de la misma duración.</p>
+    <div class="kpis" id="kpis"></div>
+    <div class="grid g2">
+      <div class="card"><h3>Usuarios por día</h3><p class="sub">Personas distintas que visitan la web</p><div class="chart" id="chUsers"></div><details class="tbl"><summary>Ver tabla</summary><div id="tbUsers"></div></details></div>
+      <div class="card"><h3>Leads por día</h3><p class="sub">Formularios enviados con éxito</p><div class="chart" id="chLeads"></div><details class="tbl"><summary>Ver tabla</summary><div id="tbLeads"></div></details></div>
+    </div>
+  </section>
+
+  <section class="block" id="trafico">
+    <h2>De dónde vienen</h2>
+    <p class="lead">Canal de llegada de cada sesión y cuántos leads trae cada uno.</p>
+    <div class="grid g2">
+      <div class="card"><h3>Sesiones por canal</h3><p class="sub">Orgánico = Google y otros buscadores sin pagar</p><div class="hbars" id="hbChannels"></div></div>
+      <div class="card"><h3>Canales y conversión</h3><p class="sub">Leads ÷ sesiones</p><div id="tbChannels"></div></div>
+      <div class="card"><h3>Fuente / medio</h3><p class="sub">Detalle de cada origen (incluye campañas con UTM)</p><div id="tbSources"></div></div>
+      <div class="card"><h3>Dispositivo y ubicación</h3><p class="sub">Usuarios</p><div class="hbars" id="hbDevices" style="margin-bottom:14px"></div><div id="tbCities"></div></div>
+    </div>
+  </section>
+
+  <section class="block" id="paginas">
+    <h2>Páginas</h2>
+    <p class="lead">Vistas, tiempo activo medio por usuario y leads generados en cada página.</p>
+    <div class="card"><div class="tools"><input type="search" placeholder="Filtrar páginas…" id="fPages" aria-label="Filtrar páginas"></div><div id="tbPages"></div></div>
+  </section>
+
+  <section class="block" id="formularios">
+    <h2>Formularios</h2>
+    <p class="lead">Cuánta gente empieza cada formulario, cuántos lo envían y dónde lo abandonan.</p>
+    <div class="card" style="margin-bottom:14px"><h3>Embudo por formulario</h3><p class="sub">% éxito = enviados con éxito ÷ empezados</p><div id="tbForms"></div></div>
+    <div class="grid g2">
+      <div class="card"><h3>Campos completados</h3><p class="sub">Si un campo baja mucho respecto al anterior, ahí se pierde la gente</p><div class="tools"><select id="fForm" aria-label="Formulario"></select></div><div class="hbars" id="hbFields"></div></div>
+      <div class="card"><h3>Leads por programa y perfil</h3><p class="sub">Solo campos de elección, nunca datos personales</p><div id="tbLeadsDetail"></div></div>
+    </div>
+  </section>
+
+  <section class="block" id="clics">
+    <h2>Clics y secciones</h2>
+    <p class="lead">Qué botones se pulsan, desde qué sección y hasta dónde llega la gente en cada página. Para ver el mapa de calor exacto, abre Clarity.</p>
+    <div class="grid g2" style="margin-bottom:14px">
+      <div class="card"><h3>Botones de acción más pulsados</h3><p class="sub">Inscríbete, Reserva, Hablamos, Dossier, Contacto…</p><div id="tbCtas"></div></div>
+      <div class="card"><h3>Hasta dónde llegan</h3><p class="sub">% de las vistas de la página que llegan a ver cada sección</p><div class="tools"><select id="fSecPage" aria-label="Página"></select></div><div class="hbars" id="hbSections"></div></div>
+    </div>
+    <div class="card" style="margin-bottom:14px"><h3>Todos los clics</h3><p class="sub">Cada botón y enlace de la web</p><div class="tools"><input type="search" placeholder="Buscar texto, sección o página…" id="fClicks" aria-label="Buscar clics"></div><div id="tbClicks"></div></div>
+    <div class="card"><h3>Todos los eventos</h3><p class="sub">Recuento bruto de cada evento medido</p><div id="tbEvents"></div></div>
+  </section>
+
+  <section class="block" id="google">
+    <h2>Google (Search Console)</h2>
+    <p class="lead">Búsquedas en las que aparece la web. Search Console guarda 16 meses de historial y tarda 2–3 días en tener los datos.</p>
+    <div class="kpis" id="kpisGsc"></div>
+    <div class="grid g2" style="margin-bottom:14px">
+      <div class="card"><h3>Clics desde Google por día</h3><p class="sub">Visitas que llegan desde el buscador</p><div class="chart" id="chGscClicks"></div></div>
+      <div class="card"><h3>Impresiones por día</h3><p class="sub">Veces que la web aparece en resultados</p><div class="chart" id="chGscImpr"></div></div>
+    </div>
+    <div class="grid g2">
+      <div class="card"><h3>Búsquedas</h3><p class="sub">Qué escribe la gente antes de llegar</p><div class="tools"><input type="search" placeholder="Filtrar búsquedas…" id="fQueries" aria-label="Filtrar búsquedas"></div><div id="tbQueries"></div></div>
+      <div class="card"><h3>Páginas en Google</h3><p class="sub">Rendimiento de cada URL en el buscador</p><div id="tbGscPages"></div></div>
+    </div>
+  </section>
+
+  <section class="block" id="indexacion">
+    <h2>Indexación</h2>
+    <p class="lead">Estado en Google de cada página del sitemap, consultado directamente a Search Console (se refresca cada 6 horas).</p>
+    <div class="card"><div id="tbIndex"></div></div>
+  </section>
+
+  <section class="block" id="chat">
+    <h2>Chat Yusi</h2>
+    <p class="lead">Las preguntas sin respuesta son dudas reales de familias y docentes: buenas candidatas para el FAQ del chat y para artículos del blog.</p>
+    <div class="grid g2">
+      <div class="card"><h3>Preguntas más hechas</h3><p class="sub">Botón o texto que Yusi reconoció</p><div id="tbChatQ"></div></div>
+      <div class="card"><h3>Preguntas sin respuesta</h3><p class="sub">Texto escrito, con emails y teléfonos borrados</p><div id="tbChatNo"></div></div>
+    </div>
+  </section>
+
+  <section class="block" id="errores">
+    <h2>Errores 404</h2>
+    <p class="lead">URLs que ya no existen y siguen recibiendo visitas. Cada una necesita una redirección en <code>vercel.json</code>.</p>
+    <div class="card"><div id="tbNotFound"></div></div>
+  </section>
+  </div>
+</div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  var $ = function (s) { return document.querySelector(s); };
+  var DEMO = /[?&]demo=1/.test(location.search);
+  var days = 28, data = null, busy = false;
+  try { var sd = Number(localStorage.getItem('gy-dash-days')); if (sd) days = sd; } catch (e) {}
+
+  /* ---------- formato ---------- */
+  var nf = new Intl.NumberFormat('es-ES');
+  var n0 = function (v) { return nf.format(Math.round(v || 0)); };
+  var compact = function (v) { v = v || 0; if (Math.abs(v) >= 1e6) return (v / 1e6).toFixed(1).replace('.', ',') + ' M'; if (Math.abs(v) >= 1e4) return Math.round(v / 1e3) + ' mil'; return n0(v); };
+  var pct = function (v, d) { return (v * 100).toFixed(d == null ? 1 : d).replace('.', ',') + ' %'; };
+  var secs = function (s) { s = Math.round(s || 0); var m = Math.floor(s / 60); return m ? m + ' min ' + (s % 60) + ' s' : s + ' s'; };
+  var pos = function (p) { return (p || 0).toFixed(1).replace('.', ','); };
+  var dLabel = function (iso) { var d = new Date(iso + 'T12:00:00'); return d.toLocaleDateString('es-ES', { day: 'numeric', month: 'short' }); };
+  var el = function (tag, attrs, text) { var e = document.createElement(tag); if (attrs) for (var k in attrs) e.setAttribute(k, attrs[k]); if (text != null) e.textContent = text; return e; };
+  var clear = function (node) { while (node.firstChild) node.removeChild(node.firstChild); return node; };
+  var cv = function (name) { return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); };
+  var notSet = function (v) { return !v || v === '(not set)' ? '(sin valor)' : v; };
+
+  /* ---------- tablas ---------- */
+  function table(target, cols, rows, opts) {
+    opts = opts || {};
+    var box = clear(typeof target === 'string' ? $(target) : target);
+    if (!rows || !rows.length) { box.appendChild(el('div', { class: 'empty' }, opts.empty || 'Sin datos en este periodo.')); return; }
+    var state = { key: opts.sort || null, dir: -1 };
+    var wrap = el('div', { class: 'tablebox' }), t = el('table'), thead = el('thead'), tb = el('tbody'), hr = el('tr');
+    cols.forEach(function (c) {
+      var th = el('th', { scope: 'col', class: c.num ? 'num' : '' }, c.label);
+      th.tabIndex = 0;
+      var go = function () { state.dir = state.key === c.key ? -state.dir : -1; state.key = c.key; draw(); };
+      th.onclick = go; th.onkeydown = function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } };
+      c._th = th; hr.appendChild(th);
+    });
+    thead.appendChild(hr); t.appendChild(thead); t.appendChild(tb); wrap.appendChild(t); box.appendChild(wrap);
+    function draw() {
+      var list = rows.slice();
+      if (opts.filter) list = list.filter(opts.filter);
+      if (state.key) list.sort(function (a, b) { var x = a[state.key], y = b[state.key]; if (typeof x === 'number') return (x - y) * state.dir; return String(x).localeCompare(String(y), 'es') * state.dir; });
+      cols.forEach(function (c) { c._th.setAttribute('aria-sort', state.key === c.key ? (state.dir < 0 ? 'descending' : 'ascending') : 'none'); });
+      clear(tb);
+      list.slice(0, opts.limit || 500).forEach(function (r) {
+        var tr = el('tr');
+        cols.forEach(function (c) {
+          var td = el('td', { class: (c.num ? 'num' : '') + (c.wrap ? ' wrap-any' : '') });
+          var v = c.render ? c.render(r) : (c.fmt ? c.fmt(r[c.key]) : r[c.key]);
+          if (v instanceof Node) td.appendChild(v); else td.textContent = v == null ? '' : v;
+          tr.appendChild(td);
+        });
+        tb.appendChild(tr);
+      });
+      if (!list.length) { var tr = el('tr'), td = el('td', { colspan: cols.length, class: 'empty' }, 'Ningún resultado con ese filtro.'); tr.appendChild(td); tb.appendChild(tr); }
+    }
+    draw();
+    return { redraw: draw };
+  }
+  function meter(v) { var m = el('div', { class: 'meter', role: 'img', 'aria-label': pct(v, 0) }); var i = el('i'); i.style.width = Math.max(0, Math.min(1, v)) * 100 + '%'; m.appendChild(i); return m; }
+
+  /* ---------- barras horizontales ---------- */
+  function hbars(target, items, opts) {
+    opts = opts || {};
+    var box = clear($(target));
+    if (!items.length) { box.appendChild(el('div', { class: 'empty' }, 'Sin datos en este periodo.')); return; }
+    var max = opts.max || Math.max.apply(null, items.map(function (i) { return i.value; })) || 1;
+    items.forEach(function (i) {
+      var row = el('div', { class: 'hbar' });
+      var n = el('div', { class: 'n', title: i.label }, i.label);
+      var tr = el('div', { class: 'track' });
+      var b = el('div', { class: 'bar' }); b.style.width = 'calc(' + (i.value / max * 100) + '% - 70px)';
+      if (opts.color) b.style.background = opts.color;
+      tr.appendChild(b); tr.appendChild(el('span', { class: 'v' }, opts.fmt ? opts.fmt(i.value, i) : n0(i.value)));
+      row.appendChild(n); row.appendChild(tr); box.appendChild(row);
+    });
+  }
+
+  /* ---------- gráficos SVG (línea y columnas) con tooltip ---------- */
+  var NS = 'http://www.w3.org/2000/svg';
+  function svgEl(tag, a) { var e = document.createElementNS(NS, tag); for (var k in a) e.setAttribute(k, a[k]); return e; }
+  // escala con marcas redondas (1, 2, 5 × 10ⁿ), de 3 a 5 divisiones, siempre enteras
+  function niceScale(v) { v = Math.max(v, 1); var raw = v / 4, p = Math.pow(10, Math.floor(Math.log10(raw))), f = raw / p; var step = Math.max(1, (f <= 1 ? 1 : f <= 2 ? 2 : f <= 5 ? 5 : 10) * p); var ticks = Math.max(3, Math.ceil(v / step)); return { max: step * ticks, ticks: ticks }; }
+  var charts = [];
+  function chart(target, series, opts) {
+    var spec = { target: target, series: series, opts: opts };
+    charts.push(spec); drawChart(spec);
+  }
+  function drawChart(spec) {
+    var host = clear($(spec.target)), pts = spec.series, o = spec.opts;
+    if (!pts.length || pts.every(function (p) { return !p[o.y]; })) { host.appendChild(el('div', { class: 'empty' }, 'Sin datos en este periodo.')); return; }
+    var W = host.clientWidth || 600, H = host.clientHeight || 220, m = { l: 44, r: 12, t: 10, b: 24 };
+    var iw = W - m.l - m.r, ih = H - m.t - m.b;
+    var sc = niceScale(Math.max.apply(null, pts.map(function (p) { return p[o.y]; }))), max = sc.max;
+    var svg = svgEl('svg', { viewBox: '0 0 ' + W + ' ' + H, role: 'img', 'aria-label': o.label });
+    var color = cv(o.color || '--s1');
+    for (var g = 0; g <= sc.ticks; g++) {
+      var gy = m.t + ih - ih * g / sc.ticks;
+      svg.appendChild(svgEl('line', { x1: m.l, x2: W - m.r, y1: gy, y2: gy, stroke: cv(g ? '--grid' : '--axis'), 'stroke-width': 1 }));
+      var tl = svgEl('text', { x: m.l - 8, y: gy + 3.5, 'text-anchor': 'end' }); tl.textContent = compact(max * g / sc.ticks); svg.appendChild(tl);
+    }
+    var n = pts.length, step = iw / Math.max(1, o.type === 'col' ? n : n - 1);
+    var X = function (i) { return o.type === 'col' ? m.l + step * i + step / 2 : m.l + step * i; };
+    var Y = function (v) { return m.t + ih - (v / max) * ih; };
+    var every = Math.ceil(n / Math.max(2, Math.floor(iw / 70)));
+    pts.forEach(function (p, i) {
+      if (i % every === 0 || i === n - 1 && n < 10) { var t = svgEl('text', { x: X(i), y: H - 6, 'text-anchor': 'middle' }); t.textContent = dLabel(p.date); svg.appendChild(t); }
+    });
+    if (o.type === 'col') {
+      var bw = Math.max(1, Math.min(24, step - 2));
+      pts.forEach(function (p, i) {
+        var v = p[o.y]; if (!v) return;
+        var h = Math.max(1, ih * v / max), x = X(i) - bw / 2, y = m.t + ih - h, r = Math.min(4, bw / 2, h);
+        svg.appendChild(svgEl('path', { fill: color, d: 'M' + x + ',' + (y + h) + 'V' + (y + r) + 'Q' + x + ',' + y + ' ' + (x + r) + ',' + y + 'H' + (x + bw - r) + 'Q' + (x + bw) + ',' + y + ' ' + (x + bw) + ',' + (y + r) + 'V' + (y + h) + 'Z' }));
+      });
+    } else {
+      var d = pts.map(function (p, i) { return (i ? 'L' : 'M') + X(i).toFixed(1) + ',' + Y(p[o.y]).toFixed(1); }).join('');
+      svg.appendChild(svgEl('path', { d: d + 'L' + X(n - 1) + ',' + (m.t + ih) + 'L' + X(0) + ',' + (m.t + ih) + 'Z', fill: cv('--s1-wash') }));
+      svg.appendChild(svgEl('path', { d: d, fill: 'none', stroke: color, 'stroke-width': 2, 'stroke-linejoin': 'round', 'stroke-linecap': 'round' }));
+      var last = pts[n - 1];
+      svg.appendChild(svgEl('circle', { cx: X(n - 1), cy: Y(last[o.y]), r: 4, fill: color, stroke: cv('--card'), 'stroke-width': 2 }));
+    }
+    var cross = svgEl('line', { y1: m.t, y2: m.t + ih, stroke: cv('--axis'), 'stroke-width': 1, opacity: 0 });
+    var dot = svgEl('circle', { r: 4, fill: color, stroke: cv('--card'), 'stroke-width': 2, opacity: 0 });
+    svg.appendChild(cross); svg.appendChild(dot);
+    var hit = svgEl('rect', { x: m.l, y: m.t, width: iw, height: ih, fill: 'transparent', tabindex: 0 });
+    svg.appendChild(hit);
+    host.appendChild(svg);
+    var tip = el('div', { class: 'tip', role: 'status' }); host.appendChild(tip);
+    var show = function (i) {
+      var p = pts[i]; if (!p) return;
+      cross.setAttribute('x1', X(i)); cross.setAttribute('x2', X(i)); cross.setAttribute('opacity', 1);
+      if (o.type !== 'col') { dot.setAttribute('cx', X(i)); dot.setAttribute('cy', Y(p[o.y])); dot.setAttribute('opacity', 1); }
+      clear(tip); tip.appendChild(el('div', { class: 't' }, new Date(p.date + 'T12:00:00').toLocaleDateString('es-ES', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' })));
+      (o.tip || [{ key: o.y, label: o.label }]).forEach(function (row, k) {
+        var r = el('div', { class: 'r' }), a = el('span'), key = el('i', { class: 'k' });
+        key.style.background = k === 0 ? color : 'transparent'; a.appendChild(key); a.appendChild(document.createTextNode(row.label));
+        r.appendChild(a); r.appendChild(el('b', null, (row.fmt || n0)(p[row.key]))); tip.appendChild(r);
+      });
+      var tx = X(i) + 12; if (tx + 160 > W) tx = X(i) - 172;
+      tip.style.left = tx + 'px'; tip.style.top = '4px'; tip.style.opacity = 1;
+    };
+    var hide = function () { tip.style.opacity = 0; cross.setAttribute('opacity', 0); dot.setAttribute('opacity', 0); };
+    var idx = function (ev) { var b = svg.getBoundingClientRect(), x = (ev.clientX - b.left) * (W / b.width); return Math.max(0, Math.min(n - 1, Math.round(o.type === 'col' ? (x - m.l - step / 2) / step : (x - m.l) / step))); };
+    var cur = n - 1;
+    hit.addEventListener('pointermove', function (ev) { cur = idx(ev); show(cur); });
+    hit.addEventListener('pointerleave', hide);
+    hit.addEventListener('focus', function () { show(cur); });
+    hit.addEventListener('blur', hide);
+    hit.addEventListener('keydown', function (e) { if (e.key === 'ArrowRight') { cur = Math.min(n - 1, cur + 1); show(cur); } if (e.key === 'ArrowLeft') { cur = Math.max(0, cur - 1); show(cur); } });
+  }
+  var rt; window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(function () { charts.forEach(drawChart); }, 120); });
+  if (window.matchMedia) matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function () { charts.forEach(drawChart); });
+
+  /* ---------- tiles ---------- */
+  function tile(label, value, cur, prev, opts) {
+    opts = opts || {};
+    var t = el('div', { class: 'card tile' + (opts.lead ? ' lead' : '') });
+    t.appendChild(el('div', { class: 'label' }, label));
+    t.appendChild(el('div', { class: 'value' }, value));
+    var d = el('div', { class: 'delta' });
+    if (prev > 0 && cur != null) {
+      var ch = (cur - prev) / prev, upGood = !opts.lowerIsBetter, good = ch === 0 ? null : (ch > 0) === upGood;
+      var b = el('b', { class: good == null ? '' : good ? 'up' : 'down' }, (ch > 0 ? '▲ +' : ch < 0 ? '▼ ' : '') + pct(ch, 0).replace('-', '−'));
+      d.appendChild(b); d.appendChild(document.createTextNode(' vs periodo anterior'));
+    } else d.textContent = 'Sin periodo anterior para comparar';
+    t.appendChild(d);
+    return t;
+  }
+
+  /* ---------- pintar ---------- */
+  var tables = {};
+  function render(D) {
+    data = D; charts = [];
+    $('#rangeText').textContent = D.range ? 'Del ' + new Date(D.range.startDate + 'T12:00').toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' }) + ' al ' + new Date(D.range.endDate + 'T12:00').toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' }) : '';
+    renderSetup(D);
+    var G = D.ga && !D.ga.fatal ? D.ga : null, S = D.gsc && !D.gsc.fatal ? D.gsc : null;
+
+    // Resumen
+    var k = clear($('#kpis'));
+    if (G) {
+      var T = G.totals, P = G.prevTotals, lc = G.keyEvents.generate_lead || 0, lp = G.prevKeyEvents.generate_lead || 0;
+      k.appendChild(tile('Leads', n0(lc), lc, lp, { lead: true }));
+      k.appendChild(tile('Usuarios', n0(T.users), T.users, P.users));
+      k.appendChild(tile('Sesiones', n0(T.sessions), T.sessions, P.sessions));
+      k.appendChild(tile('Conversión (leads ÷ sesiones)', T.sessions ? pct(lc / T.sessions) : '—', T.sessions ? lc / T.sessions : null, P.sessions ? lp / P.sessions : 0));
+      k.appendChild(tile('Tiempo activo medio', secs(T.avgEngagementSec), T.avgEngagementSec, P.avgEngagementSec));
+      k.appendChild(tile('Clics en WhatsApp', n0(G.keyEvents.whatsapp_click), G.keyEvents.whatsapp_click || 0, G.prevKeyEvents.whatsapp_click || 0));
+      if (S) k.appendChild(tile('Clics desde Google', n0(S.totals.clicks), S.totals.clicks, S.prevTotals.clicks));
+      chart('#chUsers', G.daily, { y: 'users', label: 'Usuarios', tip: [{ key: 'users', label: 'Usuarios' }, { key: 'sessions', label: 'Sesiones' }, { key: 'views', label: 'Páginas vistas' }] });
+      chart('#chLeads', G.daily, { y: 'leads', label: 'Leads', type: 'col', color: '--s2' });
+      table('#tbUsers', [{ key: 'date', label: 'Día', fmt: dLabel }, { key: 'users', label: 'Usuarios', num: 1, fmt: n0 }, { key: 'sessions', label: 'Sesiones', num: 1, fmt: n0 }, { key: 'views', label: 'Vistas', num: 1, fmt: n0 }], G.daily.slice().reverse());
+      table('#tbLeads', [{ key: 'date', label: 'Día', fmt: dLabel }, { key: 'leads', label: 'Leads', num: 1, fmt: n0 }], G.daily.slice().reverse());
+
+      // Tráfico
+      hbars('#hbChannels', G.channels.map(function (c) { return { label: c.channel, value: c.sessions }; }));
+      table('#tbChannels', [{ key: 'channel', label: 'Canal' }, { key: 'sessions', label: 'Sesiones', num: 1, fmt: n0 }, { key: 'leads', label: 'Leads', num: 1, fmt: n0 }, { key: 'conv', label: 'Conversión', num: 1, fmt: function (v) { return pct(v); } }, { key: 'engagementRate', label: 'Interacción', num: 1, fmt: function (v) { return pct(v, 0); } }],
+        G.channels.map(function (c) { return Object.assign({ conv: c.sessions ? c.leads / c.sessions : 0 }, c); }), { sort: 'sessions' });
+      table('#tbSources', [{ key: 'source', label: 'Fuente / medio', wrap: 1 }, { key: 'sessions', label: 'Sesiones', num: 1, fmt: n0 }, { key: 'users', label: 'Usuarios', num: 1, fmt: n0 }], G.sources, { sort: 'sessions' });
+      var du = G.devices.reduce(function (a, b) { return a + b.users; }, 0) || 1;
+      var DEV = { desktop: 'Ordenador', mobile: 'Móvil', tablet: 'Tablet' };
+      hbars('#hbDevices', G.devices.map(function (d) { return { label: DEV[d.device] || d.device, value: d.users }; }), { fmt: function (v) { return pct(v / du, 0); } });
+      table('#tbCities', [{ key: 'city', label: 'Ciudad', render: function (r) { return notSet(r.city) + (r.region && r.region !== '(not set)' ? ' · ' + r.region : ''); } }, { key: 'users', label: 'Usuarios', num: 1, fmt: n0 }], G.cities, { sort: 'users', limit: 12 });
+
+      // Páginas
+      var pageRows = G.pages.map(function (p) { return Object.assign({ conv: p.views ? p.leads / p.views : 0 }, p); });
+      tables.pages = table('#tbPages', [{ key: 'path', label: 'Página', wrap: 1 }, { key: 'views', label: 'Vistas', num: 1, fmt: n0 }, { key: 'users', label: 'Usuarios', num: 1, fmt: n0 }, { key: 'avgSec', label: 'Tiempo medio', num: 1, fmt: secs }, { key: 'leads', label: 'Leads', num: 1, fmt: n0 }, { key: 'conv', label: 'Leads por 100 vistas', num: 1, fmt: function (v) { return (v * 100).toFixed(1).replace('.', ','); } }],
+        pageRows, { sort: 'views', filter: function (r) { var q = $('#fPages').value.trim().toLowerCase(); return !q || r.path.toLowerCase().indexOf(q) >= 0; } });
+
+      // Formularios
+      var FN = { contacto: 'Contacto (Home, Nosotros, Eventos, Contacto)', academy_inscripcion: 'Inscripción Academy / Lab', academy_info: 'Información Academy', puntoyaparte_inscripcion: 'Inscripción Punto y aparte', consentimiento_imagen: 'Consentimiento de imagen' };
+      table('#tbForms', [{ key: 'form', label: 'Formulario', render: function (r) { return FN[r.form] || notSet(r.form); } }, { key: 'form_start', label: 'Empiezan', num: 1, fmt: n0 }, { key: 'form_submit', label: 'Envían', num: 1, fmt: n0 }, { key: 'form_success', label: 'Éxito', num: 1, fmt: n0 }, { key: 'form_error', label: 'Errores', num: 1, fmt: n0 }, { key: 'form_abandon', label: 'Abandonan', num: 1, fmt: n0 },
+        { key: 'rate', label: '% éxito', num: 1, render: function (r) { var w = el('div'); w.style.cssText = 'display:flex;gap:8px;align-items:center;justify-content:flex-end'; w.appendChild(meter(r.rate)); w.appendChild(el('span', null, pct(r.rate, 0))); return w; } }],
+        G.forms.map(function (f) { return Object.assign({ rate: f.form_start ? f.form_success / f.form_start : 0 }, f); }), { sort: 'form_start', empty: 'Aún no hay formularios empezados en este periodo (o falta registrar la dimensión form_name).' });
+      var fs = clear($('#fForm')), formsSeen = {};
+      G.fields.forEach(function (f) { formsSeen[f.form] = 1; });
+      Object.keys(formsSeen).forEach(function (f) { fs.appendChild(el('option', { value: f }, FN[f] || notSet(f))); });
+      var drawFields = function () {
+        var f = fs.value, list = G.fields.filter(function (x) { return x.form === f; });
+        hbars('#hbFields', list.map(function (x) { return { label: notSet(x.field), value: x.count }; }));
+      };
+      fs.onchange = drawFields; drawFields();
+      table('#tbLeadsDetail', [{ key: 'form', label: 'Formulario', render: function (r) { return FN[r.form] || notSet(r.form); } }, { key: 'programa', label: 'Programa', fmt: notSet }, { key: 'perfil', label: 'Perfil', fmt: notSet }, { key: 'producto', label: 'Producto', fmt: notSet }, { key: 'count', label: 'Leads', num: 1, fmt: n0 }], G.leads, { sort: 'count' });
+
+      // Clics
+      table('#tbCtas', [{ key: 'text', label: 'Botón', fmt: notSet }, { key: 'section', label: 'Sección', fmt: notSet }, { key: 'page', label: 'Página', wrap: 1 }, { key: 'count', label: 'Clics', num: 1, fmt: n0 }], G.ctas, { sort: 'count' });
+      tables.clicks = table('#tbClicks', [{ key: 'text', label: 'Texto', fmt: notSet, wrap: 1 }, { key: 'section', label: 'Sección', fmt: notSet }, { key: 'page', label: 'Página', wrap: 1 }, { key: 'count', label: 'Clics', num: 1, fmt: n0 }], G.clicks,
+        { sort: 'count', filter: function (r) { var q = $('#fClicks').value.trim().toLowerCase(); return !q || (r.text + ' ' + r.section + ' ' + r.page).toLowerCase().indexOf(q) >= 0; } });
+      table('#tbEvents', [{ key: 'name', label: 'Evento' }, { key: 'count', label: 'Veces', num: 1, fmt: n0 }, { key: 'users', label: 'Usuarios', num: 1, fmt: n0 }], G.events, { sort: 'count' });
+      var viewsByPage = {}; G.pages.forEach(function (p) { viewsByPage[p.path] = p.views; });
+      var sp = clear($('#fSecPage')), pagesWithSec = {};
+      G.sections.forEach(function (s) { pagesWithSec[s.page] = (pagesWithSec[s.page] || 0) + s.count; });
+      Object.keys(pagesWithSec).sort(function (a, b) { return (viewsByPage[b] || 0) - (viewsByPage[a] || 0); }).forEach(function (p) { sp.appendChild(el('option', { value: p }, p)); });
+      var drawSecs = function () {
+        var p = sp.value, base = viewsByPage[p] || 0, list = G.sections.filter(function (s) { return s.page === p; });
+        if (!base) base = Math.max.apply(null, list.map(function (s) { return s.count; }).concat([1]));
+        hbars('#hbSections', list.sort(function (a, b) { return b.count - a.count; }).map(function (s) { return { label: notSet(s.section), value: Math.min(1, s.count / base) }; }), { max: 1, fmt: function (v) { return pct(v, 0); } });
+      };
+      sp.onchange = drawSecs; drawSecs();
+
+      // Chat y errores
+      table('#tbChatQ', [{ key: 'text', label: 'Pregunta', fmt: notSet, wrap: 1 }, { key: 'count', label: 'Veces', num: 1, fmt: n0 }], G.chatQuestions, { sort: 'count' });
+      table('#tbChatNo', [{ key: 'text', label: 'Lo que escribieron', fmt: notSet, wrap: 1 }, { key: 'count', label: 'Veces', num: 1, fmt: n0 }], G.chatNoAnswer, { sort: 'count', empty: 'Ninguna pregunta sin respuesta en este periodo.' });
+      table('#tbNotFound', [{ key: 'path', label: 'URL rota', fmt: notSet, wrap: 1 }, { key: 'count', label: 'Visitas', num: 1, fmt: n0 }], G.notFound, { sort: 'count', empty: 'Ninguna URL rota con visitas en este periodo.' });
+    } else {
+      ['#tbUsers', '#tbLeads', '#chUsers', '#chLeads', '#hbChannels', '#tbChannels', '#tbSources', '#hbDevices', '#tbCities', '#tbPages', '#tbForms', '#hbFields', '#tbLeadsDetail', '#tbCtas', '#tbClicks', '#tbEvents', '#hbSections', '#tbChatQ', '#tbChatNo', '#tbNotFound'].forEach(function (s) { clear($(s)).appendChild(el('div', { class: 'empty' }, 'Google Analytics no está conectado.')); });
+    }
+
+    // Search Console
+    var kg = clear($('#kpisGsc'));
+    if (S) {
+      kg.appendChild(tile('Clics', n0(S.totals.clicks), S.totals.clicks, S.prevTotals.clicks));
+      kg.appendChild(tile('Impresiones', n0(S.totals.impressions), S.totals.impressions, S.prevTotals.impressions));
+      kg.appendChild(tile('CTR medio', pct(S.totals.ctr), S.totals.ctr, S.prevTotals.ctr));
+      kg.appendChild(tile('Posición media', pos(S.totals.position), S.totals.position, S.prevTotals.position, { lowerIsBetter: true }));
+      var gd = S.daily.map(function (r) { return { date: r.date, clicks: r.clicks, impressions: r.impressions, ctr: r.ctr, position: r.position }; });
+      chart('#chGscClicks', gd, { y: 'clicks', label: 'Clics', tip: [{ key: 'clicks', label: 'Clics' }, { key: 'impressions', label: 'Impresiones' }, { key: 'position', label: 'Posición media', fmt: pos }] });
+      chart('#chGscImpr', gd, { y: 'impressions', label: 'Impresiones' });
+      tables.queries = table('#tbQueries', [{ key: 'query', label: 'Búsqueda', wrap: 1 }, { key: 'clicks', label: 'Clics', num: 1, fmt: n0 }, { key: 'impressions', label: 'Impr.', num: 1, fmt: n0 }, { key: 'ctr', label: 'CTR', num: 1, fmt: function (v) { return pct(v); } }, { key: 'position', label: 'Posición', num: 1, fmt: pos }], S.queries,
+        { sort: 'clicks', filter: function (r) { var q = $('#fQueries').value.trim().toLowerCase(); return !q || r.query.toLowerCase().indexOf(q) >= 0; } });
+      table('#tbGscPages', [{ key: 'page', label: 'URL', wrap: 1, fmt: function (u) { return String(u).replace(/^https?:\/\/(www\.)?genyusschool\.com/, '') || '/'; } }, { key: 'clicks', label: 'Clics', num: 1, fmt: n0 }, { key: 'impressions', label: 'Impr.', num: 1, fmt: n0 }, { key: 'position', label: 'Posición', num: 1, fmt: pos }], S.pages, { sort: 'clicks' });
+    } else ['#chGscClicks', '#chGscImpr', '#tbQueries', '#tbGscPages'].forEach(function (s) { clear($(s)).appendChild(el('div', { class: 'empty' }, 'Search Console no está conectado.')); });
+
+    // Indexación
+    var VER = { PASS: ['Indexada', 'good'], PARTIAL: ['Parcial', 'warn'], FAIL: ['No indexada', 'bad'], NEUTRAL: ['Excluida', 'warn'], VERDICT_UNSPECIFIED: ['Sin datos', 'warn'], ERROR: ['Error de consulta', 'bad'] };
+    var icon = function (kind) {
+      var s = svgEl('svg', { viewBox: '0 0 16 16', 'aria-hidden': 'true' });
+      var c = kind === 'good' ? '--good-mark' : kind === 'bad' ? '--bad' : '--warn-mark';
+      s.appendChild(svgEl('circle', { cx: 8, cy: 8, r: 7, fill: cv(c) }));
+      s.appendChild(svgEl('path', { d: kind === 'good' ? 'M4.5 8.2l2.2 2.2 4.8-4.8' : kind === 'bad' ? 'M5.5 5.5l5 5M10.5 5.5l-5 5' : 'M8 4.5v4.2M8 11.2v.3', stroke: kind === 'warn' ? '#0b0b0b' : '#fff', 'stroke-width': 1.8, fill: 'none', 'stroke-linecap': 'round' }));
+      return s;
+    };
+    table('#tbIndex', [{ key: 'path', label: 'Página' }, { key: 'verdict', label: 'Estado', render: function (r) { var v = VER[r.verdict] || [r.verdict || '—', 'warn'], w = el('span', { class: 'status' }); w.appendChild(icon(v[1])); w.appendChild(document.createTextNode(v[0])); return w; } },
+      { key: 'coverage', label: 'Detalle de Google', wrap: 1 }, { key: 'lastCrawl', label: 'Último rastreo', fmt: function (v) { return v ? new Date(v).toLocaleDateString('es-ES', { day: 'numeric', month: 'short', year: 'numeric' }) : '—'; } }],
+      D.index || [], { empty: 'Search Console no está conectado.' });
+  }
+
+  function renderSetup(D) {
+    var box = clear($('#setup'));
+    var c = D.configured || {}, missing = [];
+    if (!c.serviceAccount) missing.push('GOOGLE_SERVICE_ACCOUNT');
+    if (!c.ga) missing.push('GA4_PROPERTY_ID');
+    if (!c.gsc) missing.push('GSC_SITE');
+    var issues = [];
+    if (D.ga && D.ga.fatal) issues.push('Google Analytics: ' + D.ga.fatal);
+    if (D.gsc && D.gsc.fatal) issues.push('Search Console: ' + D.gsc.fatal);
+    var dimErr = [];
+    if (D.ga && D.ga.errors) Object.keys(D.ga.errors).forEach(function (k) { var m = D.ga.errors[k]; if (/customEvent|dimension/i.test(m)) dimErr.push(k); else issues.push('Analytics (' + k + '): ' + m); });
+    if (D.gsc && D.gsc.errors) Object.keys(D.gsc.errors).forEach(function (k) { issues.push('Search Console (' + k + '): ' + D.gsc.errors[k]); });
+    if (!missing.length && !issues.length && !dimErr.length) return;
+    var n = el('div', { class: 'notice warn', role: 'status' });
+    n.appendChild(el('h3', null, missing.length ? 'Falta conectar Google' : 'Avisos de configuración'));
+    if (missing.length) {
+      var p = el('p'); p.appendChild(document.createTextNode('Añade en Vercel → Settings → Environment Variables: '));
+      missing.forEach(function (m, i) { if (i) p.appendChild(document.createTextNode(', ')); p.appendChild(el('code', null, m)); });
+      p.appendChild(document.createTextNode('. Después vuelve a desplegar.')); n.appendChild(p);
+    }
+    if (D.serviceAccountEmail) {
+      var p2 = el('p'); p2.appendChild(document.createTextNode('Da acceso de lectura a esta cuenta en GA4 (Administrar → Gestión de acceso, rol Lector) y en Search Console (Configuración → Usuarios y permisos, permiso Restringido): '));
+      p2.appendChild(el('code', null, D.serviceAccountEmail)); n.appendChild(p2);
+    }
+    if (dimErr.length) n.appendChild(el('p', null, 'Faltan dimensiones personalizadas en GA4 (Administrar → Definiciones personalizadas, ámbito Evento): form_name, programa, perfil, producto, field_name, link_text, section, question, text, missing_path. Afecta a: ' + dimErr.join(', ') + '. Tras crearlas, los datos aparecen desde ese día.'));
+    issues.slice(0, 6).forEach(function (m) { n.appendChild(el('p', null, m)); });
+    box.appendChild(n);
+  }
+
+  /* ---------- carga ---------- */
+  function load(fresh) {
+    if (busy) return; busy = true;
+    $('#main').classList.add('loading');
+    document.querySelectorAll('#range button').forEach(function (b) { b.setAttribute('aria-pressed', String(Number(b.dataset.days) === days)); });
+    var p = DEMO ? Promise.resolve(demo(days)) : fetch('/api/dashboard/data?days=' + days + (fresh ? '&fresh=1' : ''), { credentials: 'same-origin' }).then(function (r) {
+      if (r.status === 401) { showLogin(); throw new Error('login'); }
+      return r.json();
+    });
+    p.then(function (D) { showApp(); render(D); }).catch(function (e) { if (e.message !== 'login') { showApp(); clear($('#setup')).appendChild(el('div', { class: 'notice warn' }, 'No se han podido cargar los datos: ' + e.message)); } })
+      .then(function () { busy = false; $('#main').classList.remove('loading'); });
+  }
+  function showLogin() { $('#app').classList.add('hidden'); $('#login').classList.remove('hidden'); $('#login input').focus(); }
+  function showApp() { $('#login').classList.add('hidden'); $('#app').classList.remove('hidden'); $('#demoFlag').classList.toggle('hidden', !DEMO); }
+
+  $('#login form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var f = e.target, err = f.querySelector('.err'), btn = f.querySelector('button');
+    err.textContent = ''; btn.disabled = true; btn.textContent = 'Comprobando…';
+    fetch('/api/dashboard/login', { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ password: f.password.value }) })
+      .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
+      .then(function (x) { if (x.ok) { f.reset(); load(); } else err.textContent = x.j.error || 'No se ha podido entrar.'; })
+      .catch(function () { err.textContent = 'Error de conexión.'; })
+      .then(function () { btn.disabled = false; btn.textContent = 'Entrar'; });
+  });
+  $('#logout').onclick = function () { fetch('/api/dashboard/logout', { method: 'POST', credentials: 'same-origin' }).then(function () { location.reload(); }); };
+  $('#refresh').onclick = function () { load(true); };
+  $('#range').addEventListener('click', function (e) { var b = e.target.closest('button'); if (!b) return; days = Number(b.dataset.days); try { localStorage.setItem('gy-dash-days', String(days)); } catch (x) {} load(); });
+  ['#fPages', '#fClicks', '#fQueries'].forEach(function (s) { $(s).addEventListener('input', function () { var t = { '#fPages': 'pages', '#fClicks': 'clicks', '#fQueries': 'queries' }[s]; if (tables[t]) tables[t].redraw(); }); });
+
+  /* ---------- datos de ejemplo (?demo=1) ---------- */
+  function demo(n) {
+    var seed = 7; var rnd = function () { seed = (seed * 16807) % 2147483647; return seed / 2147483647; };
+    var end = new Date(Date.now() - 864e5), daily = [], gd = [];
+    for (var i = n - 1; i >= 0; i--) {
+      var d = new Date(end.getTime() - i * 864e5), iso = d.toISOString().slice(0, 10), wk = d.getDay() % 6 === 0 ? 0.6 : 1, trend = 1 + (n - i) / n * 0.5;
+      var u = Math.round((40 + rnd() * 25) * wk * trend);
+      daily.push({ date: iso, users: u, sessions: Math.round(u * 1.25), views: Math.round(u * 2.9), leads: rnd() < 0.55 * wk ? Math.ceil(rnd() * 3) : 0 });
+      gd.push({ date: iso, clicks: Math.round(u * 0.32), impressions: Math.round(u * 9 + rnd() * 80), ctr: 0.035, position: 14 - (n - i) / n * 4 + rnd() * 2 });
+    }
+    var sum = function (k) { return daily.reduce(function (a, b) { return a + b[k]; }, 0); };
+    var U = sum('users'), Ss = sum('sessions'), V = sum('views'), Ld = sum('leads');
+    var pages = [['/', .34], ['/academy-lab', .22], ['/programas', .1], ['/programas/genyusgo', .08], ['/programas/sem-colegios', .07], ['/eventos', .06], ['/nosotros', .05], ['/contacto', .04], ['/programas/sem-insti', .03], ['/politicasgenyus', .01]];
+    var pl = { '/': .3, '/academy-lab': .45, '/contacto': .15, '/eventos': .05, '/nosotros': .05 };
+    var gscC = gd.reduce(function (a, b) { return a + b.clicks; }, 0), gscI = gd.reduce(function (a, b) { return a + b.impressions; }, 0);
+    return {
+      ok: true, days: n, range: { startDate: daily[0].date, endDate: daily[daily.length - 1].date }, configured: { serviceAccount: true, ga: true, gsc: true },
+      ga: {
+        errors: {}, totals: { users: U, newUsers: Math.round(U * .8), sessions: Ss, views: V, engagementRate: .61, avgEngagementSec: 84 }, prevTotals: { users: Math.round(U * .82), sessions: Math.round(Ss * .8), views: Math.round(V * .85), engagementRate: .57, avgEngagementSec: 71 },
+        keyEvents: { generate_lead: Ld, whatsapp_click: Math.round(Ld * 1.7), form_start: Ld * 4 }, prevKeyEvents: { generate_lead: Math.round(Ld * .7), whatsapp_click: Math.round(Ld * 1.5), form_start: Ld * 3 },
+        daily: daily,
+        pages: pages.map(function (p) { var v = Math.round(V * p[1]); return { path: p[0], views: v, users: Math.round(v * .7), avgSec: 40 + rnd() * 90, leads: Math.round(Ld * (pl[p[0]] || 0)) }; }),
+        channels: [['Organic Search', .41], ['Direct', .27], ['Organic Social', .14], ['Referral', .09], ['Email', .05], ['Paid Social', .04]].map(function (c, i) { var s = Math.round(Ss * c[1]); return { channel: c[0], sessions: s, users: Math.round(s * .8), engagementRate: .5 + rnd() * .2, leads: Math.round(Ld * [.38, .3, .12, .1, .08, .02][i]) }; }),
+        sources: [['google / organic', .38], ['(direct) / (none)', .27], ['instagram.com / referral', .1], ['linkedin.com / referral', .06], ['bing / organic', .03], ['newsletter / email', .05]].map(function (s) { var x = Math.round(Ss * s[1]); return { source: s[0], sessions: x, users: Math.round(x * .8) }; }),
+        devices: [{ device: 'mobile', users: Math.round(U * .58) }, { device: 'desktop', users: Math.round(U * .38) }, { device: 'tablet', users: Math.round(U * .04) }],
+        cities: [['Oviedo', 'Asturias', .21], ['Madrid', 'Comunidad de Madrid', .19], ['Gijón', 'Asturias', .14], ['Avilés', 'Asturias', .06], ['Barcelona', 'Cataluña', .05], ['Valencia', 'Comunidad Valenciana', .03]].map(function (c) { return { city: c[0], region: c[1], users: Math.round(U * c[2]) }; }),
+        events: [['page_view', V], ['ui_click', Math.round(V * .9)], ['section_view', V * 3], ['scroll_depth', V * 2], ['cta_click', Math.round(V * .12)], ['form_start', Ld * 4], ['generate_lead', Ld], ['whatsapp_click', Math.round(Ld * 1.7)], ['chatbot_open', Math.round(U * .2)]].map(function (e) { return { name: e[0], count: e[1], users: Math.round(e[1] * .4) }; }),
+        forms: [{ form: 'academy_inscripcion', form_start: Ld * 2, form_submit: Math.round(Ld * .7), form_success: Math.round(Ld * .62), form_error: 2, form_abandon: Math.round(Ld * 1.2) },
+          { form: 'contacto', form_start: Ld * 1.5, form_submit: Math.round(Ld * .4), form_success: Math.round(Ld * .38), form_error: 1, form_abandon: Math.round(Ld * 1.1) },
+          { form: 'academy_info', form_start: Math.round(Ld * .4), form_submit: 1, form_success: 1, form_error: 0, form_abandon: 3 }],
+        leads: [{ form: 'academy_inscripcion', programa: 'Genyus Academy', perfil: '', producto: '', count: Math.round(Ld * .45) }, { form: 'academy_inscripcion', programa: 'Genyus Lab', perfil: '', producto: '', count: Math.round(Ld * .17) }, { form: 'contacto', programa: '', perfil: 'Colegio', producto: 'Genyus Go Colegios', count: Math.round(Ld * .2) }, { form: 'contacto', programa: '', perfil: 'Padre', producto: 'Genyus Academy/LAB', count: Math.round(Ld * .12) }, { form: 'contacto', programa: '', perfil: 'Institución', producto: 'SEM Instituciones', count: Math.round(Ld * .06) }],
+        fields: ['Nombre y apellidos del alumno/a', 'Fecha de nacimiento', 'Colegio / Centro educativo', 'Localidad / Municipio', 'Nombre y apellidos', 'Teléfono de contacto', 'Correo Electrónico', 'Datos bancarios / de facturación (IBAN)'].map(function (f, i) { return { form: 'academy_inscripcion', field: f, count: Math.round(Ld * 2 * Math.pow(.9, i) * (i === 7 ? .7 : 1)) }; })
+          .concat(['Nombre y apellido', 'Email', 'Teléfono', 'Comentario'].map(function (f, i) { return { form: 'contacto', field: f, count: Math.round(Ld * 1.5 * Math.pow(.8, i)) }; })),
+        ctas: [['Reserva la plaza', 'Hero', '/academy-lab', 64], ['¿Hablamos?', 'Menú', '/', 41], ['Descargar dossier', 'CTA Dossier', '/programas/sem-colegios', 22], ['Inscríbete', 'Academy + Lab', '/', 19], ['Contáctanos', 'CTA Hablamos', '/programas/genyusgo', 11]].map(function (c) { return { text: c[0], section: c[1], page: c[2], count: c[3] }; }),
+        clicks: [['Academy + Lab', 'Menú', '/', 120], ['Programas', 'Menú', '/', 96], ['Reserva la plaza', 'Hero', '/academy-lab', 64], ['Instagram', 'Footer', '/', 22], ['WhatsApp', 'Chat Yusi', '/academy-lab', 31], ['Ver vídeo', 'Revive la SEM', '/eventos', 18]].map(function (c) { return { text: c[0], section: c[1], page: c[2], count: c[3] }; }),
+        sections: [['/', 'Hero', 1], ['/', 'Por qué colaborar', .78], ['/', 'Programas', .66], ['/', 'Academy + Lab', .52], ['/', 'Metodología', .37], ['/', 'Contacto', .22], ['/', 'Footer', .15], ['/academy-lab', 'Hero', 1], ['/academy-lab', 'Academy y Lab', .81], ['/academy-lab', 'Horario', .6], ['/academy-lab', 'Inscripción', .41]].map(function (s) { var pv = Math.round(V * (s[0] === '/' ? .34 : .22)); return { page: s[0], section: s[1], count: Math.round(pv * s[2]) }; }),
+        chatQuestions: [['¿Qué horarios tenéis?', 34], ['¿Qué es Genyus Academy?', 29], ['¿Cómo reservo una plaza?', 21], ['¿Qué es Genyus Lab?', 12]].map(function (q) { return { text: q[0], count: q[1] }; }),
+        chatNoAnswer: [['¿hay descuento por hermanos?', 6], ['¿las clases se graban?', 4], ['¿hacéis campamentos en verano?', 3]].map(function (q) { return { text: q[0], count: q[1] }; }),
+        notFound: [['/sem-ayto', 9], ['/copia-de-eventos', 4], ['/blog', 3]].map(function (q) { return { path: q[0], count: q[1] }; })
+      },
+      gsc: {
+        errors: {}, totals: { clicks: gscC, impressions: gscI, ctr: gscC / gscI, position: 11.8 }, prevTotals: { clicks: Math.round(gscC * .75), impressions: Math.round(gscI * .8), ctr: gscC / gscI * .9, position: 13.4 }, daily: gd,
+        queries: [['genyus school', 210, 520, 1.6], ['genyus academy', 84, 260, 1.9], ['extraescolar emprendimiento', 12, 900, 9.4], ['semana del emprendimiento colegio', 9, 640, 11.2], ['competencia emprendedora primaria', 4, 1300, 18.6], ['emprendimiento para niños', 3, 2100, 24.1]].map(function (q) { return { query: q[0], clicks: q[1], impressions: q[2], ctr: q[1] / q[2], position: q[3] }; }),
+        pages: [['/', 260, 1800, 4.1], ['/academy-lab', 95, 2600, 8.7], ['/programas/sem-colegios', 18, 900, 12.4], ['/programas/genyusgo', 12, 1200, 15.2]].map(function (p) { return { page: 'https://www.genyusschool.com' + p[0], clicks: p[1], impressions: p[2], ctr: p[1] / p[2], position: p[3] }; })
+      },
+      index: [['/', 'PASS', 'Enviada e indexada'], ['/academy-lab', 'PASS', 'Enviada e indexada'], ['/programas', 'NEUTRAL', 'Rastreada: actualmente sin indexar'], ['/programas/genyusgo', 'PASS', 'Enviada e indexada'], ['/programas/sem-colegios', 'PASS', 'Enviada e indexada'], ['/programas/sem-insti', 'NEUTRAL', 'Descubierta: actualmente sin indexar'], ['/eventos', 'PASS', 'Enviada e indexada'], ['/nosotros', 'PASS', 'Enviada e indexada'], ['/contacto', 'PASS', 'Enviada e indexada'], ['/puntoyaparte', 'NEUTRAL', 'Rastreada: actualmente sin indexar'], ['/politicasgenyus', 'PASS', 'Enviada e indexada']].map(function (r, i) { return { path: r[0], verdict: r[1], coverage: r[2], lastCrawl: new Date(Date.now() - (i + 1) * 864e5 * 2).toISOString() }; })
+    };
+  }
+
+  load();
+})();
+</script>
+</body>
+</html>

@@ -139,8 +139,8 @@ async function gscData(site, cur, prev) {
   const t = r => r && r[0] ? r[0] : { clicks: 0, impressions: 0, ctr: 0, position: 0 };
   return { errors, totals: t(out.totals), prevTotals: t(out.prevTotals), daily: out.daily, queries: out.queries, pages: out.pages, devices: out.devices, countries: out.countries };
 }
-async function indexStatus(site) {
-  if (indexCache.data && Date.now() - indexCache.at < 6 * 3600000) return indexCache.data;
+async function indexStatus(site, fresh) {
+  if (!fresh && indexCache.data && Date.now() - indexCache.at < 6 * 3600000) return indexCache.data;
   const res = await Promise.allSettled(INDEX_URLS.map(p => L.googlePost('https://searchconsole.googleapis.com/v1/urlInspection/index:inspect',
     { inspectionUrl: SITE + p, siteUrl: site, languageCode: 'es-ES' })));
   const data = INDEX_URLS.map((p, i) => {
@@ -148,7 +148,8 @@ async function indexStatus(site) {
     const s = (res[i].value.inspectionResult || {}).indexStatusResult || {};
     return { path: p, verdict: s.verdict || '', coverage: s.coverageState || '', lastCrawl: s.lastCrawlTime || '', canonical: s.googleCanonical || '', fetch: s.pageFetchState || '' };
   });
-  indexCache = { at: Date.now(), data };
+  // solo se guarda si no hubo errores (p. ej. permisos aún sin dar)
+  if (!data.some(r => r.verdict === 'ERROR')) indexCache = { at: Date.now(), data };
   return data;
 }
 
@@ -175,12 +176,13 @@ module.exports = async (req, res) => {
     const [g, s, ix] = await Promise.allSettled([
       prop ? gaData(prop, cur, prev) : Promise.resolve(null),
       site ? gscData(site, cur, prev) : Promise.resolve(null),
-      site ? indexStatus(site) : Promise.resolve(null)
+      site ? indexStatus(site, u.searchParams.get('fresh') === '1') : Promise.resolve(null)
     ]);
     data.ga = g.status === 'fulfilled' ? g.value : { fatal: String(g.reason && g.reason.message) };
     data.gsc = s.status === 'fulfilled' ? s.value : { fatal: String(s.reason && s.reason.message) };
     data.index = ix.status === 'fulfilled' ? ix.value : [];
   }
-  cache.set(key, { at: Date.now(), data });
+  const failed = (data.ga && (data.ga.fatal || Object.keys(data.ga.errors || {}).length)) || (data.gsc && (data.gsc.fatal || Object.keys(data.gsc.errors || {}).length));
+  if (!failed) cache.set(key, { at: Date.now(), data });
   return L.send(res, 200, data);
 };

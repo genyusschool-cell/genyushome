@@ -566,7 +566,14 @@ details.tbl table{margin-top:6px}
       var p2 = el('p'); p2.appendChild(document.createTextNode('Da acceso de lectura a esta cuenta en GA4 (Administrar → Gestión de acceso, rol Lector) y en Search Console (Configuración → Usuarios y permisos, permiso Restringido): '));
       p2.appendChild(el('code', null, D.serviceAccountEmail)); n.appendChild(p2);
     }
-    if (dimErr.length) n.appendChild(el('p', null, 'Faltan dimensiones personalizadas en GA4 (Administrar → Definiciones personalizadas, ámbito Evento): form_name, programa, perfil, producto, field_name, link_text, section, question, text, missing_path. Afecta a: ' + dimErr.join(', ') + '. Tras crearlas, los datos aparecen desde ese día.'));
+    if (dimErr.length) {
+      var dm = {}; dimErr.forEach(function (k) { var m = String(D.ga.errors[k]).replace(/ For a list of valid.*$/, ''); (dm[m] = dm[m] || []).push(k); });
+      var dp = el('p'); dp.appendChild(el('b', null, 'Dimensiones personalizadas de Analytics: '));
+      dp.appendChild(document.createTextNode('Google responde: '));
+      Object.keys(dm).forEach(function (m, i) { if (i) dp.appendChild(document.createTextNode(' · ')); dp.appendChild(el('code', null, m)); dp.appendChild(document.createTextNode(' (' + dm[m].join(', ') + ')')); });
+      dp.appendChild(document.createTextNode('. Revisa en Administrar → Definiciones personalizadas que cada parámetro esté creado con ámbito Evento en esta misma propiedad.'));
+      n.appendChild(dp);
+    }
     issues.forEach(function (g) { var p = el('p'); p.appendChild(el('b', null, g.src + ': ')); p.appendChild(document.createTextNode(g.msg.replace(/ To learn more.*$/, '') + hint(g.msg) + (g.parts.length > 1 ? ' (afecta a ' + g.parts.length + ' consultas)' : ''))); n.appendChild(p); });
     box.appendChild(n);
   }

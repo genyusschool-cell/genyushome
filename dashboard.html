@@ -536,12 +536,24 @@ details.tbl table{margin-top:6px}
     if (!c.serviceAccount) missing.push('GOOGLE_SERVICE_ACCOUNT');
     if (!c.ga) missing.push('GA4_PROPERTY_ID');
     if (!c.gsc) missing.push('GSC_SITE');
-    var issues = [];
-    if (D.ga && D.ga.fatal) issues.push('Google Analytics: ' + D.ga.fatal);
-    if (D.gsc && D.gsc.fatal) issues.push('Search Console: ' + D.gsc.fatal);
+    var issues = [], groups = {};
+    var add = function (src, k, m) {
+      var key = src + '|' + m;
+      if (!groups[key]) { groups[key] = { src: src, msg: m, parts: [] }; issues.push(groups[key]); }
+      if (k) groups[key].parts.push(k);
+    };
+    var hint = function (m) {
+      if (/sufficient permission|does not have.*permission|not have permission|PERMISSION_DENIED/i.test(m)) return ' → La cuenta de servicio no tiene acceso. Añade su email como Lector (Analytics) o Restringido (Search Console).';
+      if (/not found|NOT_FOUND|invalid.*site|is not a valid site/i.test(m)) return ' → Revisa que GA4_PROPERTY_ID / GSC_SITE sean correctos.';
+      return '';
+    };
+    if (D.ga && D.ga.fatal) add('Google Analytics', null, D.ga.fatal);
+    if (D.gsc && D.gsc.fatal) add('Search Console', null, D.gsc.fatal);
     var dimErr = [];
-    if (D.ga && D.ga.errors) Object.keys(D.ga.errors).forEach(function (k) { var m = D.ga.errors[k]; if (/customEvent|dimension/i.test(m)) dimErr.push(k); else issues.push('Analytics (' + k + '): ' + m); });
-    if (D.gsc && D.gsc.errors) Object.keys(D.gsc.errors).forEach(function (k) { issues.push('Search Console (' + k + '): ' + D.gsc.errors[k]); });
+    if (D.ga && D.ga.errors) Object.keys(D.ga.errors).forEach(function (k) { var m = D.ga.errors[k]; if (/customEvent|dimension/i.test(m) && !/permission/i.test(m)) dimErr.push(k); else add('Google Analytics', k, m); });
+    if (D.gsc && D.gsc.errors) Object.keys(D.gsc.errors).forEach(function (k) { add('Search Console', k, D.gsc.errors[k]); });
+    var ixErr = (D.index || []).filter(function (r) { return r.verdict === 'ERROR'; });
+    if (ixErr.length) add('Indexación (Search Console)', ixErr.length + ' páginas', ixErr[0].coverage);
     if (!missing.length && !issues.length && !dimErr.length) return;
     var n = el('div', { class: 'notice warn', role: 'status' });
     n.appendChild(el('h3', null, missing.length ? 'Falta conectar Google' : 'Avisos de configuración'));
@@ -555,7 +567,7 @@ details.tbl table{margin-top:6px}
       p2.appendChild(el('code', null, D.serviceAccountEmail)); n.appendChild(p2);
     }
     if (dimErr.length) n.appendChild(el('p', null, 'Faltan dimensiones personalizadas en GA4 (Administrar → Definiciones personalizadas, ámbito Evento): form_name, programa, perfil, producto, field_name, link_text, section, question, text, missing_path. Afecta a: ' + dimErr.join(', ') + '. Tras crearlas, los datos aparecen desde ese día.'));
-    issues.slice(0, 6).forEach(function (m) { n.appendChild(el('p', null, m)); });
+    issues.forEach(function (g) { var p = el('p'); p.appendChild(el('b', null, g.src + ': ')); p.appendChild(document.createTextNode(g.msg.replace(/ To learn more.*$/, '') + hint(g.msg) + (g.parts.length > 1 ? ' (afecta a ' + g.parts.length + ' consultas)' : ''))); n.appendChild(p); });
     box.appendChild(n);
   }
 
